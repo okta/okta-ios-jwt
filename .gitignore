@@ -1,0 +1,8 @@
+xcuserdata
+Pods
+build
+*.xcworkspace
+Podfile.lock
+
+.DS_Store
+
