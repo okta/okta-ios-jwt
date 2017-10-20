@@ -14,9 +14,14 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testJWTCreation() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        do {
+            let jwt = try JSONWebToken(string: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ")
+            XCTAssertTrue("\(jwt.signatureAlgorithm)" == "\(SignatureAlgorithm.hmac(.sha256))")
+        } catch {
+            XCTAssertTrue(false)
+        }
     }
     
     func testPerformanceExample() {
