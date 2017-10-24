@@ -8,13 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		712B703B1FA008E0002524A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B703A1FA008E0002524A3 /* AppDelegate.swift */; };
-		712B703D1FA008E0002524A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B703C1FA008E0002524A3 /* ViewController.swift */; };
-		712B70401FA008E0002524A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B703E1FA008E0002524A3 /* Main.storyboard */; };
-		712B70421FA008E0002524A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712B70411FA008E0002524A3 /* Assets.xcassets */; };
-		712B70451FA008E0002524A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B70431FA008E0002524A3 /* LaunchScreen.storyboard */; };
+		712B70161F9E8935002524A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B70151F9E8935002524A3 /* AppDelegate.swift */; };
+		712B70181F9E8935002524A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B70171F9E8935002524A3 /* ViewController.swift */; };
+		712B701B1F9E8935002524A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B70191F9E8935002524A3 /* Main.storyboard */; };
+		712B701D1F9E8935002524A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712B701C1F9E8935002524A3 /* Assets.xcassets */; };
+		712B70201F9E8935002524A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B701E1F9E8935002524A3 /* LaunchScreen.storyboard */; };
 		951691A8EAA86E9B0AAA019E /* Pods_OktaJWT_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECB1329245F94CE928DE588 /* Pods_OktaJWT_Tests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		712B70261F9E8A55002524A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 712B70121F9E8935002524A3;
+			remoteInfo = OktaJWTTestSuite;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		096AD01DF63A2A8C0D25C233 /* Pods-OktaJWT_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OktaJWT_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -23,14 +33,14 @@
 		607FACE51AFB9204008FA782 /* OktaJWT_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWT_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		712B70381FA008E0002524A3 /* OktaJWTTestSuite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OktaJWTTestSuite.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		712B703A1FA008E0002524A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		712B703C1FA008E0002524A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		712B703F1FA008E0002524A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		712B70411FA008E0002524A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		712B70441FA008E0002524A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		712B70461FA008E0002524A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		712B704A1FA0094E002524A3 /* OktaJWTTestSuite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OktaJWTTestSuite.entitlements; sourceTree = "<group>"; };
+		712B70131F9E8935002524A3 /* OktaJWTTestSuite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OktaJWTTestSuite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		712B70151F9E8935002524A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		712B70171F9E8935002524A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		712B701A1F9E8935002524A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		712B701C1F9E8935002524A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		712B701F1F9E8935002524A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		712B70211F9E8935002524A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		712B70251F9E8952002524A3 /* OktaJWTTestSuite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OktaJWTTestSuite.entitlements; sourceTree = "<group>"; };
 		76899B006706BECE98510799 /* OktaJWT.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OktaJWT.podspec; path = ../OktaJWT.podspec; sourceTree = "<group>"; };
 		7F75ED7D7B7F2483029B0C02 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		926D216597811811FFC8C4F4 /* Pods-OktaJWT_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OktaJWT_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -45,7 +55,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		712B70351FA008E0002524A3 /* Frameworks */ = {
+		712B70101F9E8935002524A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,7 +70,7 @@
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACE81AFB9204008FA782 /* Tests */,
-				712B70391FA008E0002524A3 /* OktaJWTTestSuite */,
+				712B70141F9E8935002524A3 /* OktaJWTTestSuite */,
 				607FACD11AFB9204008FA782 /* Products */,
 				784E91113A4E148C2A67898F /* Pods */,
 				759503D3C68A90E3C2F90247 /* Frameworks */,
@@ -71,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACE51AFB9204008FA782 /* OktaJWT_Tests.xctest */,
-				712B70381FA008E0002524A3 /* OktaJWTTestSuite.app */,
+				712B70131F9E8935002524A3 /* OktaJWTTestSuite.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,16 +113,16 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		712B70391FA008E0002524A3 /* OktaJWTTestSuite */ = {
+		712B70141F9E8935002524A3 /* OktaJWTTestSuite */ = {
 			isa = PBXGroup;
 			children = (
-				712B704A1FA0094E002524A3 /* OktaJWTTestSuite.entitlements */,
-				712B703A1FA008E0002524A3 /* AppDelegate.swift */,
-				712B703C1FA008E0002524A3 /* ViewController.swift */,
-				712B703E1FA008E0002524A3 /* Main.storyboard */,
-				712B70411FA008E0002524A3 /* Assets.xcassets */,
-				712B70431FA008E0002524A3 /* LaunchScreen.storyboard */,
-				712B70461FA008E0002524A3 /* Info.plist */,
+				712B70251F9E8952002524A3 /* OktaJWTTestSuite.entitlements */,
+				712B70151F9E8935002524A3 /* AppDelegate.swift */,
+				712B70171F9E8935002524A3 /* ViewController.swift */,
+				712B70191F9E8935002524A3 /* Main.storyboard */,
+				712B701C1F9E8935002524A3 /* Assets.xcassets */,
+				712B701E1F9E8935002524A3 /* LaunchScreen.storyboard */,
+				712B70211F9E8935002524A3 /* Info.plist */,
 			);
 			path = OktaJWTTestSuite;
 			sourceTree = "<group>";
@@ -151,19 +161,20 @@
 			buildRules = (
 			);
 			dependencies = (
+				712B70271F9E8A55002524A3 /* PBXTargetDependency */,
 			);
 			name = OktaJWT_Tests;
 			productName = Tests;
 			productReference = 607FACE51AFB9204008FA782 /* OktaJWT_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		712B70371FA008E0002524A3 /* OktaJWTTestSuite */ = {
+		712B70121F9E8935002524A3 /* OktaJWTTestSuite */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 712B70491FA008E0002524A3 /* Build configuration list for PBXNativeTarget "OktaJWTTestSuite" */;
+			buildConfigurationList = 712B70241F9E8935002524A3 /* Build configuration list for PBXNativeTarget "OktaJWTTestSuite" */;
 			buildPhases = (
-				712B70341FA008E0002524A3 /* Sources */,
-				712B70351FA008E0002524A3 /* Frameworks */,
-				712B70361FA008E0002524A3 /* Resources */,
+				712B700F1F9E8935002524A3 /* Sources */,
+				712B70101F9E8935002524A3 /* Frameworks */,
+				712B70111F9E8935002524A3 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -171,7 +182,7 @@
 			);
 			name = OktaJWTTestSuite;
 			productName = OktaJWTTestSuite;
-			productReference = 712B70381FA008E0002524A3 /* OktaJWTTestSuite.app */;
+			productReference = 712B70131F9E8935002524A3 /* OktaJWTTestSuite.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -187,6 +198,17 @@
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 712B70121F9E8935002524A3;
+					};
+					712B70121F9E8935002524A3 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					712B70371FA008E0002524A3 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -213,7 +235,7 @@
 			projectRoot = "";
 			targets = (
 				607FACE41AFB9204008FA782 /* OktaJWT_Tests */,
-				712B70371FA008E0002524A3 /* OktaJWTTestSuite */,
+				712B70121F9E8935002524A3 /* OktaJWTTestSuite */,
 			);
 		};
 /* End PBXProject section */
@@ -226,13 +248,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		712B70361FA008E0002524A3 /* Resources */ = {
+		712B70111F9E8935002524A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				712B70451FA008E0002524A3 /* LaunchScreen.storyboard in Resources */,
-				712B70421FA008E0002524A3 /* Assets.xcassets in Resources */,
-				712B70401FA008E0002524A3 /* Main.storyboard in Resources */,
+				712B70201F9E8935002524A3 /* LaunchScreen.storyboard in Resources */,
+				712B701D1F9E8935002524A3 /* Assets.xcassets in Resources */,
+				712B701B1F9E8935002524A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,30 +323,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		712B70341FA008E0002524A3 /* Sources */ = {
+		712B700F1F9E8935002524A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				712B703D1FA008E0002524A3 /* ViewController.swift in Sources */,
-				712B703B1FA008E0002524A3 /* AppDelegate.swift in Sources */,
+				712B70181F9E8935002524A3 /* ViewController.swift in Sources */,
+				712B70161F9E8935002524A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		712B70271F9E8A55002524A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 712B70121F9E8935002524A3 /* OktaJWTTestSuite */;
+			targetProxy = 712B70261F9E8A55002524A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		712B703E1FA008E0002524A3 /* Main.storyboard */ = {
+		712B70191F9E8935002524A3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				712B703F1FA008E0002524A3 /* Base */,
+				712B701A1F9E8935002524A3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		712B70431FA008E0002524A3 /* LaunchScreen.storyboard */ = {
+		712B701E1F9E8935002524A3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				712B70441FA008E0002524A3 /* Base */,
+				712B701F1F9E8935002524A3 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -437,6 +467,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 926D216597811811FFC8C4F4 /* Pods-OktaJWT_Tests.debug.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -450,8 +482,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OktaJWTTestSuite.app/OktaJWTTestSuite";
 			};
 			name = Debug;
 		};
@@ -459,6 +493,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 096AD01DF63A2A8C0D25C233 /* Pods-OktaJWT_Tests.release.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -468,8 +504,60 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OktaJWTTestSuite.app/OktaJWTTestSuite";
+			};
+			name = Release;
+		};
+		712B70221F9E8935002524A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OktaJWTTestSuite/OktaJWTTestSuite.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OktaJWTTestSuite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.okta.jwt.OktaJWTTestSuite;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		712B70231F9E8935002524A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = OktaJWTTestSuite/OktaJWTTestSuite.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OktaJWTTestSuite/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.okta.jwt.OktaJWTTestSuite;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -544,11 +632,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		712B70491FA008E0002524A3 /* Build configuration list for PBXNativeTarget "OktaJWTTestSuite" */ = {
+		712B70241F9E8935002524A3 /* Build configuration list for PBXNativeTarget "OktaJWTTestSuite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				712B70471FA008E0002524A3 /* Debug */,
-				712B70481FA008E0002524A3 /* Release */,
+				712B70221F9E8935002524A3 /* Debug */,
+				712B70231F9E8935002524A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
