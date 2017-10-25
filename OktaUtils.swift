@@ -24,6 +24,7 @@ open class Utils: NSObject {
             var newIssuer = issuer
             return hasTrailingSlash == "/" ? String(newIssuer.characters.dropLast()) : issuer
         }
+
         return issuer
     }
 
@@ -48,6 +49,7 @@ open class Utils: NSObject {
             let padding = "".padding(toLength: Int(paddingLength), withPad: "=", startingAt: 0)
             base64 = base64 + padding
         }
+
         return Data(base64Encoded: base64, options: .ignoreUnknownCharacters)
     }
 
@@ -60,8 +62,10 @@ open class Utils: NSObject {
      */
     open class func isSupportedAlg(_ alg: String) -> Bool {
         switch alg {
-            case "RS256": return true
-            default: return false
+            case "RS256":
+                return true
+            default:
+                return false
         }
     }
 
@@ -78,6 +82,7 @@ open class Utils: NSObject {
             // Return the kid from the header object
             return String(describing: kid)
         }
+
         return nil
     }
 
@@ -116,6 +121,7 @@ open class Utils: NSObject {
                 return keyDict
             }
         }
+
         return nil
     }
 }

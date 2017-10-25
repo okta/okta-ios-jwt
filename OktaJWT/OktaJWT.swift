@@ -88,28 +88,28 @@ public struct OktaJWTValidator {
             jwt = try JSONWebToken(string: rawJWT)
         }
         catch {
-            throw OktaError.jwtError("String injected is not formatted as a JSON Web Token")
+            throw OktaJWTValidationError.MalformedJWT
         }
 
         // Check for valid algorithm type
         if !Utils.isSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier) {
-            throw OktaError.jwtError("The JWT algorithm \(jwt.signatureAlgorithm.jwtIdentifier) is not supported at this time.")
+            throw OktaJWTValidationError.NonSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier)
         }
 
         // Check for valid issuer - REQUIRED
         if !OktaJWTValidation.hasValidIssuer(jwt.payload.issuer, validIssuer: self.validatorOptions["iss"] as? String) {
-            throw OktaError.jwtError("Token issuer: \(String(describing: jwt.payload.issuer!)) does not match the valid issuer")
+            throw OktaJWTValidationError.InvalidIssuer
         }
 
         // Check for valid audience - REQUIRED
         if !OktaJWTValidation.hasValidAudience(jwt.payload.audience, validAudience: self.validatorOptions["aud"] as? String) {
-            throw OktaError.jwtError("Token audience: \(String(describing: jwt.payload.audience)) does not match the valid audience")
+            throw OktaJWTValidationError.InvalidAudience
         }
 
         // TODO Support azp claim
 
         guard let kid = Utils.getKeyIdFromHeader(jwt.decodedDataForPart(.header)) else {
-            throw OktaError.jwtError("Could not retrieve kid from JWT")
+            throw OktaJWTValidationError.NoKIDFromJWT
         }
 
         // Validate the JWK signature
@@ -117,36 +117,40 @@ public struct OktaJWTValidator {
         switch self.validationType {
             case .JWK:
                 if let givenJWK = self.jwk, let givenJWKId = givenJWK["kid"] {
+                    if givenJWKId != kid {
+                        throw OktaJWTValidationError.InvalidKID
+                    }
                     key = try self.getOrRetrieveKey(jwk: givenJWK, kid:givenJWKId)
+                    break
                 }
                 key = try self.getOrRetrieveKey(jwk: nil, kid: kid)
             case .RSAKey:
                 key = self.key!
         }
-
+        
         let signatureValidation = RSAPKCS1Verifier(key: key, hashFunction: .sha256).validateToken(jwt)
         if !signatureValidation.isValid {
-            throw OktaError.jwtError("Signature validation failed")
+            throw OktaJWTValidationError.InvalidSignature
         }
 
         // Validate the exp claim with or without leeway
         if let validateExp = self.validatorOptions["exp"] as? Bool, validateExp == true {
             if OktaJWTValidation.isExpired(jwt.payload.expiration, leeway: self.validatorOptions["leeway"] as? Int) {
-                throw OktaError.jwtError("The JWT expired and is no longer valid")
+                throw OktaJWTValidationError.ExpiredJWT
             }
         }
 
         // Validate the iat claim with or without leeway
         if let validateIssuedAt = self.validatorOptions["iat"] as? Bool, validateIssuedAt == true {
             if OktaJWTValidation.isIssuedInFuture(jwt.payload.issuedAt, leeway: self.validatorOptions["leeway"] as? Int) {
-                throw OktaError.jwtError("The JWT was issued in the future")
+                throw OktaJWTValidationError.IssuedInFuture
             }
         }
 
         // Validate the nonce claim
         if let nonce = jwt.payload.jsonPayload["nonce"] as? String {
             if !OktaJWTValidation.hasValidNonce(nonce, validNonce: self.validatorOptions["nonce"] as? String) {
-                throw OktaError.jwtError("Invalid JWT nonce")
+                throw OktaJWTValidationError.InvalidNonce
             }
         }
 
@@ -157,7 +161,7 @@ public struct OktaJWTValidator {
                 continue
             }
             if !OktaJWTValidation.hasValue(jwt.payload.jsonPayload[k] as? String, validClaim: v as? String) {
-                throw OktaError.jwtError("JWT does not contain \"\(v)\" in the payload")
+                throw OktaJWTValidationError.InvalidClaim(v)
             }
 
         }
@@ -183,21 +187,23 @@ public struct OktaJWTValidator {
         if jwk == nil {
             // Set the class's wellKnown object to ensure we validate the JWT based on values pulled from the well-known endpoint
             guard let wellKnown = OktaAPI.getDiscoveryDocument(issuer: validatorOptions["iss"] as! String) else {
-                throw OktaError.apiError("Could not retrieve well-known metadata endpoint")
+                throw OktaAPIError.NoWellKnown
             }
 
             // Call keys endpoint and find matching kid and create key
             guard let keysEndpoint = OktaAPI.getKeysEndpoint(json: wellKnown) else {
-                throw OktaError.apiError("Unable to capture jwks_uri from well-known endpoint")
+                throw OktaAPIError.NoJWKSEndpoint
             }
 
             guard let mKey = Utils.getKeyFromEndpoint(kid: kid, keysEndpoint) else {
-                throw OktaError.jwtError("Could not retrieve JWK")
+                throw OktaAPIError.NoKey
             }
+
             mJWK = mKey
         } else {
             mJWK = jwk!
         }
+
         return try self.createRSAKey(mJWK, kid: kid)
     }
 
@@ -214,7 +220,7 @@ public struct OktaJWTValidator {
         let decodedExponent = Utils.base64URLDecode(jwk["e"])
 
         if decodedModulus == nil || decodedExponent == nil {
-            throw OktaError.jwtError("Modulus or exponent from JWK could not be parsed")
+            throw OktaJWTValidationError.InvalidModulusOrExponent
         }
 
         let key = try RSAKey.registerOrUpdateKey(modulus: decodedModulus!, exponent: decodedExponent!, tag: "com.okta.jwt.\(kid)")

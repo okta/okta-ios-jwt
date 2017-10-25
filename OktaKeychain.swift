@@ -74,6 +74,7 @@ public class OktaKeychain: NSObject {
         if let parsedData = ref as? Data {
             return String(data: parsedData, encoding: .utf8)
         }
+
         return nil
     }
 

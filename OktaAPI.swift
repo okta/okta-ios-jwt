@@ -11,6 +11,7 @@
  */
 
 open class OktaAPI: NSObject {
+
     /**
          Returns the OpenID Connect well-known metadata.
          - parameters:
@@ -25,13 +26,12 @@ open class OktaAPI: NSObject {
             return nil
         }
 
-        let response = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-        
-        if response == nil {
-            return nil
-        } else {
-            return response!
-        }
+        if let response = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+            let json = response {
+                return json
+            }
+
+        return nil
     }
 
     /**
@@ -45,6 +45,7 @@ open class OktaAPI: NSObject {
         if let keysEndpoint = json["jwks_uri"] {
             return keysEndpoint as? String
         }
+
         return nil
     }
 
@@ -59,6 +60,7 @@ open class OktaAPI: NSObject {
         if let json = getDiscoveryDocument(issuer: issuer), let issuerEndpoint = json["issuer"] {
             return issuerEndpoint as? String
         }
+
         return nil
     }
 
@@ -75,6 +77,7 @@ open class OktaAPI: NSObject {
         if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
             return json
         }
+
         return nil
     }
 

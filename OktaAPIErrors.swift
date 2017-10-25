@@ -10,16 +10,21 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-public enum OktaError: Error {
-    case jwtError(String)
-    case apiError(String)
+public enum OktaAPIError: Error {
+    case NoWellKnown
+    case NoJWKSEndpoint
+    case NoKey
 }
 
-extension OktaError: LocalizedError {
+extension OktaAPIError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-            case .jwtError(error: let error): return NSLocalizedString(error, comment: "")
-            case .apiError(error: let error): return NSLocalizedString(error, comment: "")
+        case .NoWellKnown:
+            return NSLocalizedString("Could not retrieve well-known metadata endpoint", comment: "")
+        case .NoJWKSEndpoint:
+            return NSLocalizedString("Unable to capture jwks_uri from well-known endpoint", comment: "")
+        case .NoKey:
+            return NSLocalizedString("Unable to find JWK for Key ID", comment: "")
         }
     }
 }

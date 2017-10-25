@@ -39,6 +39,7 @@ open class OktaJWTValidation: NSObject {
         if dirtyIssuer! == validIssuer! {
             return true
         }
+
         return false
     }
 
@@ -60,6 +61,7 @@ open class OktaJWTValidation: NSObject {
                 return true
             }
         }
+
         return false
     }
 
@@ -85,6 +87,7 @@ open class OktaJWTValidation: NSObject {
         } else if now > exp! {
             return true
         }
+
         return false
     }
 
@@ -111,6 +114,7 @@ open class OktaJWTValidation: NSObject {
         } else if now < iat! {
             return true
         }
+
         return false
     }
 
