@@ -37,7 +37,6 @@ class JWTTests: XCTestCase {
             XCTAssertEqual(desc.localizedDescription, "String injected is not formatted as a JSON Web Token")
         }
     }
-
     func testInvalidIssuerForJWT() {
         let options = [ "issuer": "https://myrealsite.com"]
 
