@@ -27,13 +27,11 @@ public struct OktaJWTValidator {
         }
         
         if mOptions["exp"] == nil {
-            // Ensure the exp value is checked
-            mOptions["exp"] = true
+            mOptions["exp"] = false
         }
         
         if mOptions["iat"] == nil {
-            // Ensure the iat value is checked
-            mOptions["iat"] = true
+            mOptions["iat"] = false
         }
         
         self.validatorOptions = mOptions
@@ -86,12 +84,12 @@ public struct OktaJWTValidator {
             throw OktaJWTVerificationError.NonSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier)
         }
         
-        // Check for valid issuer - REQUIRED
+        // Check for valid issuer
         if !OktaJWTVerifier.hasValidIssuer(jwt.payload.issuer, validIssuer: self.validatorOptions["iss"] as? String) {
             throw OktaJWTVerificationError.InvalidIssuer
         }
         
-        // Check for valid audience - REQUIRED
+        // Check for valid audience
         if !OktaJWTVerifier.hasValidAudience(jwt.payload.audience, validAudience: self.validatorOptions["aud"] as? String) {
             throw OktaJWTVerificationError.InvalidAudience
         }

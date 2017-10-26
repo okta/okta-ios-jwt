@@ -9,7 +9,11 @@ open class OktaJWTVerifier: NSObject {
      True is the issuer is valid
      */
     open class func hasValidIssuer(_ dirtyIssuer: String?, validIssuer: String?) -> Bool {
-        if dirtyIssuer == nil || validIssuer == nil {
+        if validIssuer == nil {
+            return true
+        }
+        
+        if dirtyIssuer == nil {
             return false
         }
         
@@ -40,7 +44,7 @@ open class OktaJWTVerifier: NSObject {
      */
     open class func hasValidAudience(_ dirtyAudience: [String], validAudience: String?) -> Bool {
         if validAudience == nil {
-            return false
+            return true
         }
         
         for aud in dirtyAudience {
@@ -114,7 +118,7 @@ open class OktaJWTVerifier: NSObject {
      */
     open class func hasValidNonce(_ dirtyNonce: String, validNonce: String?) -> Bool {
         if validNonce == nil {
-            return false
+            return true
         }
         
         if dirtyNonce == validNonce! {
