@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'OktaJWT'
   s.version          = '0.1.0'
-  s.summary          = 'A JWT signing and validation libarary'
+  s.summary          = 'A JWT signing and verification libarary'
 
   s.description      = <<-DESC
 Library to sign and validate JSON Web Tokens.
