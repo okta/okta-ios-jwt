@@ -91,10 +91,14 @@ open class RequestsAPI: NSObject {
     open class func get(_ url: URL) -> Data? {
         // Default timeout of 5 seconds
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
+<<<<<<< HEAD
         request.addValue(
             "okta-ios-jwt/\(VERSION) iOS/\(UIDevice.current.systemVersion)",
             forHTTPHeaderField: "X-Okta-User-Agent-Extended"
         )
+=======
+        request.addValue("okta-ios-jwt/\(VERSION) iOS/]\(UIDevice.current.systemVersion)", forHTTPHeaderField: "X-Okta-Agent")
+>>>>>>> :seedling: Adds JWT validation
 
         do {
             let response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil

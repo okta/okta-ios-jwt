@@ -56,7 +56,11 @@ open class OktaJWTVerifier: NSObject {
      */
     open class func hasValidAudience(_ dirtyAudience: [String]?, validAudience: String?) -> Bool {
         if validAudience == nil {
+<<<<<<< HEAD
             return true
+=======
+            return false
+>>>>>>> :seedling: Adds JWT validation
         }
 
         guard let jwtAudience = dirtyAudience else {
@@ -134,7 +138,11 @@ open class OktaJWTVerifier: NSObject {
      */
     open class func hasValidNonce(_ dirtyNonce: String, validNonce: String?) -> Bool {
         if validNonce == nil {
+<<<<<<< HEAD
             return true
+=======
+            return false
+>>>>>>> :seedling: Adds JWT validation
         }
 
         if dirtyNonce == validNonce! {
