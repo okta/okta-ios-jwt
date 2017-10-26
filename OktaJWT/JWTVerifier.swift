@@ -44,7 +44,7 @@ open class OktaJWTVerifier: NSObject {
      */
     open class func hasValidAudience(_ dirtyAudience: [String]?, validAudience: String?) -> Bool {
         if validAudience == nil {
-            return false
+            return true
         }
 
         guard let jwtAudience = dirtyAudience else {
@@ -122,7 +122,7 @@ open class OktaJWTVerifier: NSObject {
      */
     open class func hasValidNonce(_ dirtyNonce: String, validNonce: String?) -> Bool {
         if validNonce == nil {
-            return false
+            return true
         }
 
         if dirtyNonce == validNonce! {
