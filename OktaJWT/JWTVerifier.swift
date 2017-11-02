@@ -97,7 +97,7 @@ open class OktaJWTVerifier: NSObject {
 
         return false
     }
-    
+
     /**
      Validates the issued at time against the current time +/- leeway.
      - parameters:
@@ -120,7 +120,7 @@ open class OktaJWTVerifier: NSObject {
         } else if now < iat! {
             return true
         }
-        
+
         return false
     }
 

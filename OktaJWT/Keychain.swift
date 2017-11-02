@@ -116,4 +116,41 @@ public class OktaKeychain: NSObject {
             SecItemDelete(dictionary)
         }
     }
+
+    /**
+     Create an RSA Keypair with tag
+     - parameters:
+         - tag: Hash to reference the stored Keychain item
+     - returns: RSA Private Key
+     */
+    public class func createPrivateRSAKey(tag: String) -> RSAKey? {
+        // We set the key attributes to permanent so we can retrieve it at a later point
+        let publicKeyAttr = [
+            kSecAttrIsPermanent: true,
+            kSecAttrApplicationTag: tag
+        ] as CFDictionary
+
+        let privateKeyAttr = [
+            kSecAttrIsPermanent: true,
+            kSecAttrApplicationTag: tag
+        ] as CFDictionary
+
+        let keyPairAttr = [
+            kSecAttrKeyType: kSecAttrKeyTypeRSA,
+            kSecAttrKeySizeInBits: 2048 as NSObject,
+            kSecPublicKeyAttrs: publicKeyAttr,
+            kSecPrivateKeyAttrs: privateKeyAttr
+        ] as CFDictionary
+
+        var publicKey: SecKey?
+        var privateKey: SecKey?
+
+        let statusCode = SecKeyGeneratePair(keyPairAttr, &publicKey, &privateKey)
+
+        if statusCode == noErr && publicKey != nil && privateKey != nil {
+            return RSAKey(secKey: privateKey!)
+        }
+
+        return nil
+    }
 }

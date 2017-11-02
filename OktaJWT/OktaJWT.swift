@@ -34,7 +34,9 @@ public struct OktaJWTValidator {
 
         if mOptions["audience"] != nil {
             // Update audience to "aud"
-            mOptions["aud"] = Utils.removeTrailingSlash(mOptions["audience"] as! String)
+            if mOptions["audience"] is String {
+                mOptions["aud"] = Utils.removeTrailingSlash(mOptions["audience"] as! String)
+            }
             mOptions.removeValue(forKey: "audience")
         }
 
@@ -95,12 +97,12 @@ public struct OktaJWTValidator {
         if !Utils.isSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier) {
             throw OktaJWTVerificationError.NonSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier)
         }
-        
+
         // Check for valid issuer
         if !OktaJWTVerifier.hasValidIssuer(jwt.payload.issuer, validIssuer: self.validatorOptions["iss"] as? String) {
             throw OktaJWTVerificationError.InvalidIssuer
         }
-        
+
         // Check for valid audience
         if !OktaJWTVerifier.hasValidAudience(jwt.payload.audience, validAudience: self.validatorOptions["aud"] as? String) {
             throw OktaJWTVerificationError.InvalidAudience

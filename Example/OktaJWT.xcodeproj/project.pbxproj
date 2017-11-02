@@ -12,6 +12,7 @@
 		712B70401FA008E0002524A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B703E1FA008E0002524A3 /* Main.storyboard */; };
 		712B70421FA008E0002524A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712B70411FA008E0002524A3 /* Assets.xcassets */; };
 		712B70451FA008E0002524A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B70431FA008E0002524A3 /* LaunchScreen.storyboard */; };
+		71815E161FAA804100F307D7 /* JWTSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71815E151FAA804100F307D7 /* JWTSigningTests.swift */; };
 		71B5D6821FA29B8D009FECCF /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71B5D6811FA29B8D009FECCF /* TestJWTs.plist */; };
 		71B5D68B1FA29C3B009FECCF /* JWTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D6831FA29BB1009FECCF /* JWTTests.swift */; };
 		71B5D68C1FA29C3E009FECCF /* IdTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D6851FA29BC9009FECCF /* IdTokenTests.swift */; };
@@ -44,6 +45,7 @@
 		712B70441FA008E0002524A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		712B70461FA008E0002524A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712B704A1FA0094E002524A3 /* OktaJWTTestSuite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OktaJWTTestSuite.entitlements; sourceTree = "<group>"; };
+		71815E151FAA804100F307D7 /* JWTSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTSigningTests.swift; sourceTree = "<group>"; };
 		71B5D6811FA29B8D009FECCF /* TestJWTs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestJWTs.plist; sourceTree = "<group>"; };
 		71B5D6831FA29BB1009FECCF /* JWTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTTests.swift; sourceTree = "<group>"; };
 		71B5D6851FA29BC9009FECCF /* IdTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdTokenTests.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				71B5D6871FA29BDE009FECCF /* MiscTests.swift */,
 				71B5D6891FA29BF7009FECCF /* TestUtilities.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				71815E151FAA804100F307D7 /* JWTSigningTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				71B5D68C1FA29C3E009FECCF /* IdTokenTests.swift in Sources */,
 				71B5D68D1FA29C41009FECCF /* MiscTests.swift in Sources */,
+				71815E161FAA804100F307D7 /* JWTSigningTests.swift in Sources */,
 				71B5D68E1FA29C44009FECCF /* TestUtilities.swift in Sources */,
 				71B5D68B1FA29C3B009FECCF /* JWTTests.swift in Sources */,
 			);
