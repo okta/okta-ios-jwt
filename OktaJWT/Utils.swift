@@ -1,5 +1,5 @@
 open class Utils: NSObject {
-    
+
     /**
      Removes the trailing slash for the supplied issuer param.
      - parameters:
@@ -12,10 +12,10 @@ open class Utils: NSObject {
             var newIssuer = issuer
             return hasTrailingSlash == "/" ? String(newIssuer.characters.dropLast()) : issuer
         }
-        
+
         return issuer
     }
-    
+
     /**
      Base 64 URL decodes a given String.
      - parameters:
@@ -25,11 +25,11 @@ open class Utils: NSObject {
      */
     open class func base64URLDecode(_ input: String?) -> Data? {
         if input == nil { return nil }
-        
+
         var base64 = input!
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
-        
+
         let length = Double(base64.lengthOfBytes(using: .utf8))
         let requiredLength = 4 * ceil(length / 4.0)
         let paddingLength = requiredLength - length
@@ -37,10 +37,10 @@ open class Utils: NSObject {
             let padding = "".padding(toLength: Int(paddingLength), withPad: "=", startingAt: 0)
             base64 = base64 + padding
         }
-        
+
         return Data(base64Encoded: base64, options: .ignoreUnknownCharacters)
     }
-    
+
     /**
      Checks to see if the current "alg" type is supported by this library.
      - parameters:
@@ -56,7 +56,7 @@ open class Utils: NSObject {
                 return false
         }
     }
-    
+
     /**
      Parses the kid from the JWT header.
      - parameters:
@@ -70,10 +70,10 @@ open class Utils: NSObject {
             // Return the kid from the header object
             return String(describing: kid)
         }
-        
+
         return nil
     }
-    
+
     /**
      Returns the matching key from the jwks_uri endpoint.
      - parameters:
@@ -87,10 +87,10 @@ open class Utils: NSObject {
         guard let keys = RequestsAPI.getJSON(url!)?["keys"] as? [Any] else {
             return nil
         }
-        
+
         return self.findKeyByKeyId(kid: kid, keys)
     }
-    
+
     /**
      Returns the matching key from a list of objects.
      - parameters:
@@ -109,7 +109,7 @@ open class Utils: NSObject {
                 return keyDict
             }
         }
-        
+
         return nil
     }
 }

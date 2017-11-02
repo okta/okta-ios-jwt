@@ -42,7 +42,7 @@ class IdTokenTests: XCTestCase {
         let options = [
             "issuer": TestUtils.issuer,
             "audience": "GJv1mKQtUAUbTalBeQLs"
-        ]
+            ] as [String : Any]
         
         let validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWK)
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
@@ -82,8 +82,8 @@ class IdTokenTests: XCTestCase {
         let options = [
             "issuer": TestUtils.issuer,
             "audience": "GJv1mKQtUAUbTalBeQLs",
-            "exp": true,
-            ] as [String: Any]
+            "exp": true
+        ] as [String: Any]
         
         let validator = OktaJWTValidator(options)
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in

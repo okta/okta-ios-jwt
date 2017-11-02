@@ -1,5 +1,5 @@
 open class RequestsAPI: NSObject {
-    
+
     /**
      Returns the OpenID Connect well-known metadata.
      - parameters:
@@ -13,15 +13,15 @@ open class RequestsAPI: NSObject {
         guard let data = self.get(discoveryUrl!) else {
             return nil
         }
-        
+
         if let response = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
             let json = response {
             return json
         }
-        
+
         return nil
     }
-    
+
     /**
      Extracts the JSON Web Keys URL information from the OpenID Connect metadata object.
      - parameters:
@@ -33,10 +33,10 @@ open class RequestsAPI: NSObject {
         if let keysEndpoint = json["jwks_uri"] {
             return keysEndpoint as? String
         }
-        
+
         return nil
     }
-    
+
     /**
      Extracts the issuer URL from the OpenID Connect metadata object.
      - parameters:
@@ -48,10 +48,10 @@ open class RequestsAPI: NSObject {
         if let json = getDiscoveryDocument(issuer: issuer), let issuerEndpoint = json["issuer"] {
             return issuerEndpoint as? String
         }
-        
+
         return nil
     }
-    
+
     /**
      Returns the GET HTTP response as a JSON object.
      - parameters:
@@ -65,10 +65,10 @@ open class RequestsAPI: NSObject {
         if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
             return json
         }
-        
+
         return nil
     }
-    
+
     /**
      Returns the GET HTTP response as the raw Data object.
      - parameters:
@@ -80,7 +80,7 @@ open class RequestsAPI: NSObject {
         // Default timeout of 5 seconds
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
         request.addValue("okta-ios-jwt/\(VERSION) iOS/]\(UIDevice.current.systemVersion)", forHTTPHeaderField: "X-Okta-Agent")
-        
+
         do {
             let response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil
             return try? NSURLConnection.sendSynchronousRequest(request, returning: response)

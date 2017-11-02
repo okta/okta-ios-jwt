@@ -1,5 +1,5 @@
 open class OktaJWTVerifier: NSObject {
-    
+
     /**
      Validates the issuer against the well-known endpoint or given issuer.
      - parameters:
@@ -12,11 +12,11 @@ open class OktaJWTVerifier: NSObject {
         if validIssuer == nil {
             return true
         }
-        
+
         if dirtyIssuer == nil {
             return false
         }
-        
+
         // Try to get issuer from well-known endpoint first
         if let wellKnownIssuer = RequestsAPI.getIssuerEndpoint(issuer: validIssuer!) {
             if dirtyIssuer! == wellKnownIssuer {
@@ -25,15 +25,15 @@ open class OktaJWTVerifier: NSObject {
                 return false
             }
         }
-        
+
         // If the issuer given does not have a 'well-known' endpoint, use the 'validIssuer'
         if dirtyIssuer! == validIssuer! {
             return true
         }
-        
+
         return false
     }
-    
+
     /**
      Validates the audience against the given audience.
      - parameters:
@@ -42,20 +42,24 @@ open class OktaJWTVerifier: NSObject {
      - returns:
      True is the audience is valid
      */
-    open class func hasValidAudience(_ dirtyAudience: [String], validAudience: String?) -> Bool {
+    open class func hasValidAudience(_ dirtyAudience: [String]?, validAudience: String?) -> Bool {
         if validAudience == nil {
             return true
         }
-        
-        for aud in dirtyAudience {
+
+        guard let jwtAudience = dirtyAudience else {
+            return false
+        }
+
+        for aud in jwtAudience {
             if aud == validAudience {
                 return true
             }
         }
-        
+
         return false
     }
-    
+
     /**
      Validates the expriation against the current time +/- leeway.
      - parameters:
@@ -68,7 +72,7 @@ open class OktaJWTVerifier: NSObject {
         if exp == nil {
             return false
         }
-        
+
         let now = Date()
         if let givenLeeway = leeway {
             // Use given leeway
@@ -78,10 +82,10 @@ open class OktaJWTVerifier: NSObject {
         } else if now > exp! {
             return true
         }
-        
+
         return false
     }
-    
+
     /**
      Validates the issued at time against the current time +/- leeway.
      - parameters:
@@ -94,7 +98,7 @@ open class OktaJWTVerifier: NSObject {
         if iat == nil {
             return false
         }
-        
+
         let now = Date()
         if let givenLeeway = leeway {
             // Use given leeway
@@ -104,10 +108,10 @@ open class OktaJWTVerifier: NSObject {
         } else if now < iat! {
             return true
         }
-        
+
         return false
     }
-    
+
     /**
      Validates the nonce against the given nonce.
      - parameters:
@@ -120,14 +124,14 @@ open class OktaJWTVerifier: NSObject {
         if validNonce == nil {
             return true
         }
-        
+
         if dirtyNonce == validNonce! {
             return true
         }
-        
+
         return false
     }
-    
+
     /**
      Validates the JWT payload claim against the given claim.
      - parameters:
@@ -140,11 +144,11 @@ open class OktaJWTVerifier: NSObject {
         if payloadClaim == nil || validClaim == nil {
             return false
         }
-        
+
         if payloadClaim! == validClaim! {
             return true
         }
-        
+
         return false
     }
 }
