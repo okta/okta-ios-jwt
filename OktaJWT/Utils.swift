@@ -20,12 +20,7 @@ open class Utils: NSObject {
      A modified String of the issuer without the trailing '/'
      */
     open class func removeTrailingSlash(_ issuer: String) -> String {
-        if let hasTrailingSlash = issuer.characters.last {
-            var newIssuer = issuer
-            return hasTrailingSlash == "/" ? String(newIssuer.characters.dropLast()) : issuer
-        }
-
-        return issuer
+        return String(issuer.suffix(1)) == "/" ? String(issuer.dropLast()) : issuer
     }
 
     /**
