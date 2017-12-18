@@ -7,14 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		712B703B1FA008E0002524A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B703A1FA008E0002524A3 /* AppDelegate.swift */; };
 		712B703D1FA008E0002524A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712B703C1FA008E0002524A3 /* ViewController.swift */; };
 		712B70401FA008E0002524A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B703E1FA008E0002524A3 /* Main.storyboard */; };
 		712B70421FA008E0002524A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 712B70411FA008E0002524A3 /* Assets.xcassets */; };
 		712B70451FA008E0002524A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 712B70431FA008E0002524A3 /* LaunchScreen.storyboard */; };
+		71B5D6821FA29B8D009FECCF /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71B5D6811FA29B8D009FECCF /* TestJWTs.plist */; };
+		71B5D68B1FA29C3B009FECCF /* JWTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D6831FA29BB1009FECCF /* JWTTests.swift */; };
+		71B5D68C1FA29C3E009FECCF /* IdTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D6851FA29BC9009FECCF /* IdTokenTests.swift */; };
+		71B5D68D1FA29C41009FECCF /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D6871FA29BDE009FECCF /* MiscTests.swift */; };
+		71B5D68E1FA29C44009FECCF /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5D6891FA29BF7009FECCF /* TestUtilities.swift */; };
 		951691A8EAA86E9B0AAA019E /* Pods_OktaJWT_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECB1329245F94CE928DE588 /* Pods_OktaJWT_Tests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		71B5D68F1FA29C61009FECCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 712B70371FA008E0002524A3;
+			remoteInfo = OktaJWTTestSuite;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		096AD01DF63A2A8C0D25C233 /* Pods-OktaJWT_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OktaJWT_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -22,7 +36,6 @@
 		275D50B0C6626676C39FBC28 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* OktaJWT_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWT_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		712B70381FA008E0002524A3 /* OktaJWTTestSuite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OktaJWTTestSuite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		712B703A1FA008E0002524A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		712B703C1FA008E0002524A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +44,11 @@
 		712B70441FA008E0002524A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		712B70461FA008E0002524A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		712B704A1FA0094E002524A3 /* OktaJWTTestSuite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OktaJWTTestSuite.entitlements; sourceTree = "<group>"; };
+		71B5D6811FA29B8D009FECCF /* TestJWTs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestJWTs.plist; sourceTree = "<group>"; };
+		71B5D6831FA29BB1009FECCF /* JWTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTTests.swift; sourceTree = "<group>"; };
+		71B5D6851FA29BC9009FECCF /* IdTokenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdTokenTests.swift; sourceTree = "<group>"; };
+		71B5D6871FA29BDE009FECCF /* MiscTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscTests.swift; sourceTree = "<group>"; };
+		71B5D6891FA29BF7009FECCF /* TestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
 		76899B006706BECE98510799 /* OktaJWT.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OktaJWT.podspec; path = ../OktaJWT.podspec; sourceTree = "<group>"; };
 		7F75ED7D7B7F2483029B0C02 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		926D216597811811FFC8C4F4 /* Pods-OktaJWT_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OktaJWT_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,7 +97,10 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				71B5D6831FA29BB1009FECCF /* JWTTests.swift */,
+				71B5D6851FA29BC9009FECCF /* IdTokenTests.swift */,
+				71B5D6871FA29BDE009FECCF /* MiscTests.swift */,
+				71B5D6891FA29BF7009FECCF /* TestUtilities.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -113,6 +134,7 @@
 				712B70411FA008E0002524A3 /* Assets.xcassets */,
 				712B70431FA008E0002524A3 /* LaunchScreen.storyboard */,
 				712B70461FA008E0002524A3 /* Info.plist */,
+				71B5D6811FA29B8D009FECCF /* TestJWTs.plist */,
 			);
 			path = OktaJWTTestSuite;
 			sourceTree = "<group>";
@@ -151,6 +173,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				71B5D6901FA29C61009FECCF /* PBXTargetDependency */,
 			);
 			name = OktaJWT_Tests;
 			productName = Tests;
@@ -187,6 +210,7 @@
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
+						TestTargetID = 712B70371FA008E0002524A3;
 					};
 					712B70371FA008E0002524A3 = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -230,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71B5D6821FA29B8D009FECCF /* TestJWTs.plist in Resources */,
 				712B70451FA008E0002524A3 /* LaunchScreen.storyboard in Resources */,
 				712B70421FA008E0002524A3 /* Assets.xcassets in Resources */,
 				712B70401FA008E0002524A3 /* Main.storyboard in Resources */,
@@ -287,7 +312,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -297,7 +322,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				71B5D68C1FA29C3E009FECCF /* IdTokenTests.swift in Sources */,
+				71B5D68D1FA29C41009FECCF /* MiscTests.swift in Sources */,
+				71B5D68E1FA29C44009FECCF /* TestUtilities.swift in Sources */,
+				71B5D68B1FA29C3B009FECCF /* JWTTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +339,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		71B5D6901FA29C61009FECCF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 712B70371FA008E0002524A3 /* OktaJWTTestSuite */;
+			targetProxy = 71B5D68F1FA29C61009FECCF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		712B703E1FA008E0002524A3 /* Main.storyboard */ = {
@@ -452,6 +488,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OktaJWTTestSuite.app/OktaJWTTestSuite";
 			};
 			name = Debug;
 		};
@@ -470,6 +507,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OktaJWTTestSuite.app/OktaJWTTestSuite";
 			};
 			name = Release;
 		};
