@@ -92,7 +92,7 @@ open class RequestsAPI: NSObject {
         // Default timeout of 5 seconds
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
         request.addValue(
-            "okta-ios-jwt/\(VERSION) iOS/]\(UIDevice.current.systemVersion)",
+            "okta-ios-jwt/\(VERSION) iOS/\(UIDevice.current.systemVersion)",
             forHTTPHeaderField: "X-Okta-User-Agent-Extended"
         )
 
