@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 
 ## Overview
-This library handles decoding and validating a JSON Web Token (JWT) issued by an Okta authorization server. It provides an easy-to-use and customizable interface for `idToken` validation based on [OIDC 3.1.3.7](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) for iOS applications.
+This library handles decoding and validating a JSON Web Token (JWT) issued by an Okta authorization server. It provides an easy-to-use and customizable interface for ID Token validation based on [OIDC 3.1.3.7](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) for iOS applications.
 
 ## Installation
 
@@ -52,6 +52,8 @@ When using OpenID Connect as an authentication mechinism, it is important to ver
   - `exp`: The JWT hasn't expired.
   - `iat`: The JWT was not issued in the future.
   - `nonce`: Cryptographic string generated at the time of authorization.
+
+> To learn more about the verification cases and Okta's tokens, take a look at [Working with OAuth 2.0 Tokens](https://developer.okta.com/authentication-guide/tokens/validating-id-tokens).
 
 ```swift
 let options = [
