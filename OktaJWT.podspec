@@ -15,5 +15,5 @@ Library to sign and validate JSON Web Tokens.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'OktaJWT/**/*'
+  s.source_files = 'OktaJWT/**/*.{h,m,swift}'
 end
