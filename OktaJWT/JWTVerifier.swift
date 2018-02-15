@@ -134,15 +134,7 @@ open class OktaJWTVerifier: NSObject {
      */
     open class func hasValidNonce(_ dirtyNonce: String, validNonce: String?) -> Bool {
         if validNonce == nil {
-<<<<<<< HEAD
-<<<<<<< HEAD
             return true
-=======
-            return false
->>>>>>> :seedling: Adds JWT validation
-=======
-            return true
->>>>>>> :white_check_mark: Adds JWT validation tests
         }
 
         if dirtyNonce == validNonce! {
