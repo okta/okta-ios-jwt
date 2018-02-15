@@ -97,7 +97,7 @@ class JWTTests: XCTestCase {
         let options = [
             "issuer": TestUtils.issuer,
             "audience": TestUtils.audience,
-            "exp": true,
+            "exp": true
         ] as [String: Any]
 
         let validator = OktaJWTValidator(options)

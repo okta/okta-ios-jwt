@@ -94,7 +94,7 @@ class IdTokenTests: XCTestCase {
         let options = [
             "issuer": TestUtils.issuer,
             "audience": TestUtils.clientId,
-            "exp": true,
+            "exp": true
         ] as [String: Any]
 
         let validator = OktaJWTValidator(options)
