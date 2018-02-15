@@ -73,7 +73,7 @@ class MiscTests: XCTestCase {
 
     func testNoKIDInHeaderJWT() {
         let options = [
-            "issuer": "https://example.oktapreview.com/oauth2/default",
+            "issuer": TestUtils.issuer,
             "audience": TestUtils.audience
         ]
 
