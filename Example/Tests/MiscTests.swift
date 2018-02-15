@@ -40,7 +40,7 @@ class MiscTests: XCTestCase {
 
     func testHasNoTrailingSlash() {
         let issuer = Utils.removeTrailingSlash(TestUtils.issuer)
-        XCTAssertEqual(issuer, "https://example.oktapreview.com/oauth2/default")
+        XCTAssertEqual(issuer, "https://demo-org.oktapreview.com/oauth2/default")
     }
 
     func testStoringAndRemoveFromKeychain() {
@@ -73,7 +73,7 @@ class MiscTests: XCTestCase {
 
     func testNoKIDInHeaderJWT() {
         let options = [
-            "issuer": TestUtils.issuer,
+            "issuer": "https://example.oktapreview.com/oauth2/default",
             "audience": TestUtils.audience
         ]
 

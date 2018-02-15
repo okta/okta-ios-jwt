@@ -119,4 +119,19 @@ open class Utils: NSObject {
 
         return nil
     }
+
+    /**
+     Returns the device model used when making API requests
+     - returns:
+     A String of the device used (iPhone, iPad, Emulator, etc)
+    */
+    internal class func deviceModel() -> String {
+        // Returns the device information
+        var system = utsname()
+        uname(&system)
+        let model = withUnsafePointer(to: &system.machine.0) { ptr in
+            return String(cString: ptr)
+        }
+        return model
+    }
 }
