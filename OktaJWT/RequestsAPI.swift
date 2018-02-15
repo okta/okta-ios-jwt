@@ -92,13 +92,19 @@ open class RequestsAPI: NSObject {
         // Default timeout of 5 seconds
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
         request.addValue(
-            "okta-ios-jwt/\(VERSION) iOS/\(UIDevice.current.systemVersion)",
+            "okta-ios-jwt/\(VERSION) iOS/\(UIDevice.current.systemVersion) Device/\(Utils.deviceModel())",
             forHTTPHeaderField: "X-Okta-User-Agent-Extended"
         )
 
-        do {
-            let response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil
-            return try? NSURLConnection.sendSynchronousRequest(request, returning: response)
+        var responseData: Data?
+        let semaphore = DispatchSemaphore(value: 0)
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            responseData = data
+            semaphore.signal()
         }
+        task.resume()
+        semaphore.wait()
+        return responseData
     }
 }

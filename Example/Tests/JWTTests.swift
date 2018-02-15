@@ -142,14 +142,14 @@ class JWTTests: XCTestCase {
         let options = [
             "issuer" : TestUtils.issuer,
             "audience": TestUtils.audience,
-            "cid": "GJv1mKQtUAUbTalBeQLs",
+            "cid": TestUtils.clientId,
             "exp": false,
             "iat": false
         ] as [String: Any]
 
         let validator = OktaJWTValidator(options, key: TestUtils.exampleRSAKey!)
         guard let isValid = try? validator.isValid(jwts["OktaJWT"] as! String) else {
-            return XCTFail()
+            return XCTFail("VALID token was returned as INVALID.")
         }
         XCTAssertEqual(isValid, true)
     }

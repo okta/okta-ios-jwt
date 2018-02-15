@@ -24,7 +24,7 @@ class IdTokenTests: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
-        RSAKey.removeKeyWithTag("com.okta.jwt.mlu6Wdq5u6GrlH_J3jZdGLg-yPOnVh3_gH8Knf6IPlU")
+        RSAKey.removeKeyWithTag("com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg")
     }
 
     func testInvalidIssuerForIdToken() {
@@ -53,7 +53,7 @@ class IdTokenTests: XCTestCase {
     func testInvalidModulusForIdToken() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs"
+            "audience": TestUtils.clientId
         ]
 
         let validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWK)
@@ -66,7 +66,7 @@ class IdTokenTests: XCTestCase {
     func testInvalidKeyIDForIdTokenGivenJWK() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs"
+            "audience": TestUtils.clientId
         ]
 
         let validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWKID)
@@ -77,10 +77,10 @@ class IdTokenTests: XCTestCase {
     }
 
     func testInvalidSignatureForIdTokenGivenJWK() {
-        RSAKey.removeKeyWithTag("com.okta.jwt.mlu6Wdq5u6GrlH_J3jZdGLg-yPOnVh3_gH8Knf6IPlU")
+        RSAKey.removeKeyWithTag("com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg")
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs"
+            "audience": TestUtils.clientId
         ]
 
         let validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWKModulus)
@@ -93,8 +93,8 @@ class IdTokenTests: XCTestCase {
     func testExpiredForIdToken() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs",
-            "exp": true,
+            "audience": TestUtils.clientId,
+            "exp": true
         ] as [String: Any]
 
         let validator = OktaJWTValidator(options)
@@ -107,7 +107,7 @@ class IdTokenTests: XCTestCase {
     func testIssuedAtForIdToken() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs",
+            "audience": TestUtils.clientId,
             "iat": true,
             "leeway": -800000000
         ] as [String : Any]
@@ -122,7 +122,7 @@ class IdTokenTests: XCTestCase {
     func testInvalidNonceForIdToken() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs",
+            "audience": TestUtils.clientId,
             "exp": false,
             "iat": false,
             "nonce": "fakeNonce"
@@ -138,10 +138,10 @@ class IdTokenTests: XCTestCase {
     func testMiscValuesFailureForIdToken() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs",
+            "audience": TestUtils.clientId,
             "exp": false,
             "iat": false,
-            "nonce": "2C2C7E93-04A7-4249-9236-488C14CD34C6",
+            "nonce": "A3ADBD9B-F3B4-4FBD-B51C-2334F1359BEC",
             "test1": "abc123"
         ] as [String : Any]
 
@@ -155,17 +155,17 @@ class IdTokenTests: XCTestCase {
     func testMiscValuesSuccessForIdToken() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs",
+            "audience": TestUtils.clientId,
             "exp": false,
             "iat": false,
-            "nonce": "2C2C7E93-04A7-4249-9236-488C14CD34C6",
-            "sub": "00u70qxs5zkVyPBT50h7"
+            "nonce": "A3ADBD9B-F3B4-4FBD-B51C-2334F1359BEC",
+            "sub": "00ue1gi0ptZpa67pU0h7"
         ] as [String : Any]
 
         let validator = OktaJWTValidator(options)
 
         guard let isValid = try? validator.isValid(jwts["OktaIDToken"] as! String) else {
-            return XCTFail()
+            return XCTFail("VALID token was returned as INVALID.")
         }
         XCTAssertEqual(isValid, true)
     }
@@ -173,10 +173,10 @@ class IdTokenTests: XCTestCase {
     func testSuccessForIdTokenGivenJWK() {
         let options = [
             "issuer": TestUtils.issuer,
-            "audience": "GJv1mKQtUAUbTalBeQLs",
+            "audience": TestUtils.clientId,
             "exp": false,
             "iat": false,
-            "nonce": "2C2C7E93-04A7-4249-9236-488C14CD34C6"
+            "nonce": "A3ADBD9B-F3B4-4FBD-B51C-2334F1359BEC"
         ] as [String : Any]
 
         let validator = OktaJWTValidator(options, jwk: TestUtils.exampleJWK)
@@ -193,7 +193,7 @@ class IdTokenTests: XCTestCase {
         let validator = OktaJWTValidator(options, jwk: TestUtils.exampleJWK)
 
         guard let isValid = try? validator.isValid(jwts["OktaIDToken"] as! String) else {
-            return XCTFail()
+            return XCTFail("VALID token was returned as INVALID.")
         }
         XCTAssertEqual(isValid, true)
     }
