@@ -36,6 +36,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
+//  Modifications Copyright (C) 2018 Okta, Inc. and/or its affiliates.
+//
 
 
 
@@ -335,7 +337,6 @@ private extension Data {
                 return self
             }
         }
-        
-        return self.subdata(in : range.toRange()!)
+        return self.subdata(in : Range(range)!)
     }
 }
