@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 [![License](https://img.shields.io/cocoapods/l/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 [![Platform](https://img.shields.io/cocoapods/p/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
+[![Platform](https://img.shields.io/badge/swift-4.2-green.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 
 ## Overview
 This library handles decoding and validating a JSON Web Token (JWT) issued by an Okta authorization server. It provides an easy-to-use and customizable interface for ID Token validation based on [OIDC 3.1.3.7](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) for iOS applications.
@@ -81,21 +82,21 @@ To ensure proper error handling, you can catch, handle, and recover from specifi
 do {
   let valid = try validator.isValid(idToken)
   print("Valid: \(valid)")
-} catch OktaJWTVerificationError.MalformedJWT {
+} catch OktaJWTVerificationError.malformedJWT {
   // Malformed idToken -> "ey.xx"
-} catch OktaJWTVerificationError.NonSupportedAlg(let algType) {
+} catch OktaJWTVerificationError.nonSupportedAlg(let algType) {
   // Algorithm type {algType} not supported
-} catch OktaJWTVerificationError.InvalidIssuer {
+} catch OktaJWTVerificationError.invalidIssuer {
   // idToken issuer != given issuer
-} catch OktaJWTVerificationError.InvalidAudience {
+} catch OktaJWTVerificationError.invalidAudience {
   // idToken audience != given audience
-} catch OktaJWTVerificationError.InvalidSignature {
+} catch OktaJWTVerificationError.invalidSignature {
   // Invalid signature
-} catch OktaJWTVerificationError.ExpiredJWT {
+} catch OktaJWTVerificationError.expiredJWT {
   // idToken expired!
-} catch OktaJWTVerificationError.IssuedInFuture {
+} catch OktaJWTVerificationError.issuedInFuture {
   // idToken issued in the future
-} catch OktaJWTVerificationError.InvalidNonce {
+} catch OktaJWTVerificationError.invalidNonce {
   // Invalid nonce
 } catch let error {
   // Misc Error: {error}
@@ -121,7 +122,7 @@ let jwtString = "ey..."
 do {
   let valid = try validator.isValid(jwtString)
   print("Valid: \(valid)")
-} catch OktaJWTVerificationError.InvalidClaim(let claim) {
+} catch OktaJWTVerificationError.invalidClaim(let claim) {
   // Claim {claim} not present
 } catch let error {
   // Misc Error: {error}

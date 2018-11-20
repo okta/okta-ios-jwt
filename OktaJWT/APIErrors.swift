@@ -11,19 +11,19 @@
  */
 
 public enum OktaAPIError: Error {
-    case NoWellKnown
-    case NoJWKSEndpoint
-    case NoKey
+    case noWellKnown
+    case noJWKSEndpoint
+    case noKey
 }
 
 extension OktaAPIError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-            case .NoWellKnown:
+            case .noWellKnown:
                 return NSLocalizedString("Could not retrieve well-known metadata endpoint", comment: "")
-            case .NoJWKSEndpoint:
+            case .noJWKSEndpoint:
                 return NSLocalizedString("Unable to capture jwks_uri from well-known endpoint", comment: "")
-            case .NoKey:
+            case .noKey:
                 return NSLocalizedString("Unable to find JWK for Key ID", comment: "")
             }
     }
