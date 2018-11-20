@@ -11,46 +11,46 @@
  */
 
 public enum OktaJWTVerificationError: Error {
-    case MalformedJWT
-    case NonSupportedAlg(String)
-    case InvalidIssuer
-    case InvalidAudience
-    case NoKIDFromJWT
-    case InvalidKID
-    case InvalidSignature
-    case InvalidModulusOrExponent
-    case ExpiredJWT
-    case IssuedInFuture
-    case InvalidNonce
-    case InvalidClaim(Any)
+    case malformedJWT
+    case nonSupportedAlg(String)
+    case invalidIssuer
+    case invalidAudience
+    case noKIDFromJWT
+    case invalidKID
+    case invalidSignature
+    case invalidModulusOrExponent
+    case expiredJWT
+    case issuedInFuture
+    case invalidNonce
+    case invalidClaim(Any)
 }
 
 extension OktaJWTVerificationError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-            case .MalformedJWT:
+            case .malformedJWT:
                 return NSLocalizedString("String injected is not formatted as a JSON Web Token", comment: "")
-            case .NonSupportedAlg(alg: let alg):
+            case .nonSupportedAlg(alg: let alg):
                 return NSLocalizedString("The JWT algorithm \(alg) is not supported at this time", comment: "")
-            case .InvalidIssuer:
+            case .invalidIssuer:
                 return NSLocalizedString("Token issuer does not match the valid issuer", comment: "")
-            case .InvalidAudience:
+            case .invalidAudience:
                 return NSLocalizedString("Token audience does not match the valid audience", comment: "")
-            case .NoKIDFromJWT:
+            case .noKIDFromJWT:
                 return NSLocalizedString("Could not retrieve kid from JWT", comment: "")
-            case .InvalidKID:
+            case .invalidKID:
                 return NSLocalizedString("Invalid Key ID", comment: "")
-            case .InvalidSignature:
+            case .invalidSignature:
                 return NSLocalizedString("Signature validation failed", comment: "")
-            case .InvalidModulusOrExponent:
+            case .invalidModulusOrExponent:
                 return NSLocalizedString("Modulus or exponent from JWK could not be parsed", comment: "")
-            case .ExpiredJWT:
+            case .expiredJWT:
                 return NSLocalizedString("The JWT expired and is no longer valid", comment: "")
-            case .IssuedInFuture:
+            case .issuedInFuture:
                 return NSLocalizedString("The JWT was issued in the future", comment: "")
-            case .InvalidNonce:
+            case .invalidNonce:
                 return NSLocalizedString("Invalid nonce", comment: "")
-            case .InvalidClaim(value: let value):
+            case .invalidClaim(value: let value):
                 return NSLocalizedString("JWT does not contain \"\(value)\" in the payload", comment: "")
             }
     }
