@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-let VERSION = "1.0.1"
+let VERSION = "2.0.0"
 
 public struct OktaJWTValidator {
     private var validatorOptions: [String: Any]
