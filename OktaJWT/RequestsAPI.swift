@@ -93,7 +93,7 @@ open class RequestsAPI: NSObject {
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
         request.addValue(
             "okta-ios-jwt/\(VERSION) iOS/\(UIDevice.current.systemVersion) Device/\(Utils.deviceModel())",
-            forHTTPHeaderField: "X-Okta-User-Agent-Extended"
+            forHTTPHeaderField: "User-Agent"
         )
 
         var responseData: Data?
