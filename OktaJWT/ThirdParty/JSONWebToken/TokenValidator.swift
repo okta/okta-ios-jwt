@@ -2,6 +2,7 @@
 //  TokenValidator.swift
 //
 //  Created by Antoine Palazzolo on 23/11/15.
+//  Modifications Copyright (C) 2018 Okta, Inc. and/or its affiliates.
 //
 
 import Foundation
