@@ -52,6 +52,7 @@
 		76899B006706BECE98510799 /* OktaJWT.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OktaJWT.podspec; path = ../OktaJWT.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7F75ED7D7B7F2483029B0C02 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		926D216597811811FFC8C4F4 /* Pods-OktaJWT_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OktaJWT_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		FAE2ADD121AD67B90063FC73 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +121,7 @@
 				76899B006706BECE98510799 /* OktaJWT.podspec */,
 				275D50B0C6626676C39FBC28 /* README.md */,
 				7F75ED7D7B7F2483029B0C02 /* LICENSE */,
+				FAE2ADD121AD67B90063FC73 /* .travis.yml */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -127,8 +129,8 @@
 		712B70391FA008E0002524A3 /* OktaJWTTestSuite */ = {
 			isa = PBXGroup;
 			children = (
-				712B704A1FA0094E002524A3 /* OktaJWTTestSuite.entitlements */,
 				712B703A1FA008E0002524A3 /* AppDelegate.swift */,
+				712B704A1FA0094E002524A3 /* OktaJWTTestSuite.entitlements */,
 				712B703C1FA008E0002524A3 /* ViewController.swift */,
 				712B703E1FA008E0002524A3 /* Main.storyboard */,
 				712B70411FA008E0002524A3 /* Assets.xcassets */,
