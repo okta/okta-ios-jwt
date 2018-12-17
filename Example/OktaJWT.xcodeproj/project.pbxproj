@@ -170,6 +170,7 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				723CCC0AD03F08DC1B157534 /* [CP] Embed Pods Frameworks */,
+				57A052DDD1C50CAE60F7AA87 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,13 +267,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		57A052DDD1C50CAE60F7AA87 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		723CCC0AD03F08DC1B157534 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/OktaJWT/OktaJWT.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -281,7 +297,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OktaJWT_Tests/Pods-OktaJWT_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		74B502BA27ED40A6495D20BA /* [CP] Check Pods Manifest.lock */ = {
