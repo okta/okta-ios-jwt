@@ -6,6 +6,7 @@
 [![Platform](https://img.shields.io/badge/swift-4.2-green.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 
 ## Overview
+
 This library handles decoding and validating a JSON Web Token (JWT) issued by an Okta authorization server. It provides an easy-to-use and customizable interface for ID Token validation based on [OIDC 3.1.3.7](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) for iOS applications.
 
 ## Installation
@@ -17,6 +18,7 @@ pod 'OktaJWT'
 ```
 
 ## Usage
+
 This library supports **validating** JWTs by extending the [JSONWebToken](https://github.com/kreactive/JSONWebToken) Swift library. By default, it will fetch the public keys from the OAuth 2.0 `/keys` endpoint of the specified authorization server, validate the JWT signature, and verify the token against given assertions.
 
 First, create a dictionary of verification options and instantiate the `OktaJWTValidator`:
@@ -45,13 +47,14 @@ do {
 ```
 
 ### `idToken` Validation
+
 When using OpenID Connect as an authentication mechinism, it is important to verify the `idToken` returned from the `/token` endpoint. To ensure the token is valid, include the following in your verification options:
 
-  - `issuer`: OAuth 2.0 [authorization server](https://developer.okta.com/authentication-guide/implementing-authentication/set-up-authz-server) minting the `idToken`.
-  - `audience`: The `clientID` of your OpenID Connect Application. See [Implementing Authentication - Auth Code Flow (Okta)](https://developer.okta.com/authentication-guide/implementing-authentication/auth-code-pkce) for more information.
-  - `exp`: The JWT hasn't expired.
-  - `iat`: The JWT was not issued in the future.
-  - `nonce`: Cryptographic string generated at the time of authorization.
+- `issuer`: OAuth 2.0 [authorization server](https://developer.okta.com/authentication-guide/implementing-authentication/set-up-authz-server) minting the `idToken`.
+- `audience`: The `clientID` of your OpenID Connect Application. See [Implementing Authentication - Auth Code Flow (Okta)](https://developer.okta.com/authentication-guide/implementing-authentication/auth-code-pkce) for more information.
+- `exp`: The JWT hasn't expired.
+- `iat`: The JWT was not issued in the future.
+- `nonce`: Cryptographic string generated at the time of authorization.
 
 > To learn more about the verification cases and Okta's tokens, take a look at [Working with OAuth 2.0 Tokens](https://developer.okta.com/authentication-guide/tokens/validating-id-tokens).
 
@@ -78,6 +81,7 @@ do {
 ```
 
 To ensure proper error handling, you can catch, handle, and recover from specific errors:
+
 ```swift
 do {
   let valid = try validator.isValid(idToken)
@@ -101,9 +105,10 @@ do {
 } catch let error {
   // Misc Error: {error}
 }
-``` 
+```
 
 ### Custom Claim Validation
+
 You can ask the verifier to assert a custom set of claims, provided that it can be validated as a String.
 
 ```swift
@@ -130,9 +135,11 @@ do {
 ```
 
 ### Advanced Options
+
 #### Optional Validator Params
-  - `jwk`: Pass a [JSON Web Key](https://tools.ietf.org/html/rfc7517) (JWK) to be used over the ones provided by the `/keys` endpoint.
-  - `RSAKey`: Use an existing `RSAKey`
+
+- `jwk`: Pass a [JSON Web Key](https://tools.ietf.org/html/rfc7517) (JWK) to be used over the ones provided by the `/keys` endpoint.
+- `RSAKey`: Use an existing `RSAKey`
 
 ```swift
 let options = [

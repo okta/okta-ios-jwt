@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-let VERSION = "1.0.0"
+let VERSION = "2.0.0"
 
 public struct OktaJWTValidator {
     private var validatorOptions: [String: Any]
@@ -95,12 +95,12 @@ public struct OktaJWTValidator {
         if !Utils.isSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier) {
             throw OktaJWTVerificationError.nonSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier)
         }
-        
+
         // Check for valid issuer
         if !OktaJWTVerifier.hasValidIssuer(jwt.payload.issuer, validIssuer: self.validatorOptions["iss"] as? String) {
             throw OktaJWTVerificationError.invalidIssuer
         }
-        
+
         // Check for valid audience
         if !OktaJWTVerifier.hasValidAudience(jwt.payload.audience, validAudience: self.validatorOptions["aud"] as? String) {
             throw OktaJWTVerificationError.invalidAudience
