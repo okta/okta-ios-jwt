@@ -2,6 +2,7 @@
 //  TokenValidator.swift
 //
 //  Created by Antoine Palazzolo on 23/11/15.
+//  Modifications Copyright (C) 2018 Okta, Inc. and/or its affiliates.
 //
 
 import Foundation
@@ -40,7 +41,7 @@ public func &(lhs : JSONWebTokenValidatorType, rhs : JSONWebTokenValidatorType) 
             } else {
                 return nil
             }
-            }.flatMap {$0}
+            }.compactMap {$0}
         return errors.count > 0 ? .failure(CombinedValidatorError(errors: errors)) : .success
     }
     return JSONWebTokenValidator(validator: and)

@@ -1,0 +1,7 @@
+language: objective-c
+osx_image: xcode10
+
+podfile: Example/Podfile
+xcode_workspace: Example/OktaJWT.xcworkspace
+xcode_scheme: OktaJWT-Example
+xcode_destination: platform=iOS Simulator,name=iPhone 8,OS=latest
