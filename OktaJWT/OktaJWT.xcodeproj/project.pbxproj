@@ -23,9 +23,9 @@
 		43751729224101A400448C2C /* ClaimValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751711224101A300448C2C /* ClaimValidator.swift */; };
 		4375172A224101A400448C2C /* SecKeyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751712224101A300448C2C /* SecKeyUtils.swift */; };
 		4375172B224101A400448C2C /* TokenSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751713224101A300448C2C /* TokenSigner.swift */; };
-		4375172C224101A400448C2C /* NSData+SHA.h in Headers */ = {isa = PBXBuildFile; fileRef = 43751714224101A300448C2C /* NSData+SHA.h */; };
+		4375172C224101A400448C2C /* NSData+SHA.h in Headers */ = {isa = PBXBuildFile; fileRef = 43751714224101A300448C2C /* NSData+SHA.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4375172D224101A400448C2C /* TokenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751715224101A300448C2C /* TokenValidator.swift */; };
-		4375172E224101A400448C2C /* NSData+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = 43751716224101A300448C2C /* NSData+HMAC.h */; };
+		4375172E224101A400448C2C /* NSData+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = 43751716224101A300448C2C /* NSData+HMAC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43751730224101A400448C2C /* JSONWebToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751718224101A300448C2C /* JSONWebToken.swift */; };
 		43751731224101A400448C2C /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = 43751719224101A300448C2C /* LICENCE */; };
 		43751732224101A400448C2C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375171A224101A400448C2C /* Utils.swift */; };
