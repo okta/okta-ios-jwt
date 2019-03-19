@@ -8,12 +8,58 @@
 
 /* Begin PBXBuildFile section */
 		437516FB2241011900448C2C /* OktaJWT.h in Headers */ = {isa = PBXBuildFile; fileRef = 437516F92241011900448C2C /* OktaJWT.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4375171D224101A400448C2C /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751703224101A300448C2C /* APIErrors.swift */; };
+		4375171E224101A400448C2C /* JWTVerificationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751704224101A300448C2C /* JWTVerificationTypes.swift */; };
+		4375171F224101A400448C2C /* JWTVerificationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751705224101A300448C2C /* JWTVerificationErrors.swift */; };
+		43751720224101A400448C2C /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751706224101A300448C2C /* Keychain.swift */; };
+		43751721224101A400448C2C /* OktaJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751707224101A300448C2C /* OktaJWT.swift */; };
+		43751722224101A400448C2C /* RSASSA_PKCS1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375170A224101A300448C2C /* RSASSA_PKCS1.swift */; };
+		43751723224101A400448C2C /* SignatureValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375170B224101A300448C2C /* SignatureValidator.swift */; };
+		43751724224101A400448C2C /* NSData+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4375170C224101A300448C2C /* NSData+HMAC.m */; };
+		43751725224101A400448C2C /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375170D224101A300448C2C /* HMAC.swift */; };
+		43751726224101A400448C2C /* NSData+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = 4375170E224101A300448C2C /* NSData+SHA.m */; };
+		43751727224101A400448C2C /* SignatureAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375170F224101A300448C2C /* SignatureAlgorithm.swift */; };
+		43751728224101A400448C2C /* NSData+Base64URLEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751710224101A300448C2C /* NSData+Base64URLEncoding.swift */; };
+		43751729224101A400448C2C /* ClaimValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751711224101A300448C2C /* ClaimValidator.swift */; };
+		4375172A224101A400448C2C /* SecKeyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751712224101A300448C2C /* SecKeyUtils.swift */; };
+		4375172B224101A400448C2C /* TokenSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751713224101A300448C2C /* TokenSigner.swift */; };
+		4375172C224101A400448C2C /* NSData+SHA.h in Headers */ = {isa = PBXBuildFile; fileRef = 43751714224101A300448C2C /* NSData+SHA.h */; };
+		4375172D224101A400448C2C /* TokenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751715224101A300448C2C /* TokenValidator.swift */; };
+		4375172E224101A400448C2C /* NSData+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = 43751716224101A300448C2C /* NSData+HMAC.h */; };
+		43751730224101A400448C2C /* JSONWebToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43751718224101A300448C2C /* JSONWebToken.swift */; };
+		43751731224101A400448C2C /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = 43751719224101A300448C2C /* LICENCE */; };
+		43751732224101A400448C2C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375171A224101A400448C2C /* Utils.swift */; };
+		43751733224101A400448C2C /* RequestsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375171B224101A400448C2C /* RequestsAPI.swift */; };
+		43751734224101A400448C2C /* JWTVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4375171C224101A400448C2C /* JWTVerifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		437516F62241011900448C2C /* OktaJWT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		437516F92241011900448C2C /* OktaJWT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OktaJWT.h; sourceTree = "<group>"; };
 		437516FA2241011900448C2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43751703224101A300448C2C /* APIErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
+		43751704224101A300448C2C /* JWTVerificationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTVerificationTypes.swift; sourceTree = "<group>"; };
+		43751705224101A300448C2C /* JWTVerificationErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTVerificationErrors.swift; sourceTree = "<group>"; };
+		43751706224101A300448C2C /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		43751707224101A300448C2C /* OktaJWT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OktaJWT.swift; sourceTree = "<group>"; };
+		4375170A224101A300448C2C /* RSASSA_PKCS1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSASSA_PKCS1.swift; sourceTree = "<group>"; };
+		4375170B224101A300448C2C /* SignatureValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureValidator.swift; sourceTree = "<group>"; };
+		4375170C224101A300448C2C /* NSData+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HMAC.m"; sourceTree = "<group>"; };
+		4375170D224101A300448C2C /* HMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		4375170E224101A300448C2C /* NSData+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SHA.m"; sourceTree = "<group>"; };
+		4375170F224101A300448C2C /* SignatureAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureAlgorithm.swift; sourceTree = "<group>"; };
+		43751710224101A300448C2C /* NSData+Base64URLEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+Base64URLEncoding.swift"; sourceTree = "<group>"; };
+		43751711224101A300448C2C /* ClaimValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimValidator.swift; sourceTree = "<group>"; };
+		43751712224101A300448C2C /* SecKeyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecKeyUtils.swift; sourceTree = "<group>"; };
+		43751713224101A300448C2C /* TokenSigner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenSigner.swift; sourceTree = "<group>"; };
+		43751714224101A300448C2C /* NSData+SHA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SHA.h"; sourceTree = "<group>"; };
+		43751715224101A300448C2C /* TokenValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenValidator.swift; sourceTree = "<group>"; };
+		43751716224101A300448C2C /* NSData+HMAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+HMAC.h"; sourceTree = "<group>"; };
+		43751718224101A300448C2C /* JSONWebToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWebToken.swift; sourceTree = "<group>"; };
+		43751719224101A300448C2C /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
+		4375171A224101A400448C2C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		4375171B224101A400448C2C /* RequestsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsAPI.swift; sourceTree = "<group>"; };
+		4375171C224101A400448C2C /* JWTVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTVerifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +76,7 @@
 		437516EC2241011900448C2C = {
 			isa = PBXGroup;
 			children = (
+				437517022241018900448C2C /* Sources */,
 				437516F82241011900448C2C /* OktaJWT */,
 				437516F72241011900448C2C /* Products */,
 			);
@@ -52,6 +99,52 @@
 			path = OktaJWT;
 			sourceTree = "<group>";
 		};
+		437517022241018900448C2C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				43751708224101A300448C2C /* ThirdParty */,
+				43751703224101A300448C2C /* APIErrors.swift */,
+				43751705224101A300448C2C /* JWTVerificationErrors.swift */,
+				43751704224101A300448C2C /* JWTVerificationTypes.swift */,
+				4375171C224101A400448C2C /* JWTVerifier.swift */,
+				43751706224101A300448C2C /* Keychain.swift */,
+				43751707224101A300448C2C /* OktaJWT.swift */,
+				4375171B224101A400448C2C /* RequestsAPI.swift */,
+				4375171A224101A400448C2C /* Utils.swift */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		43751708224101A300448C2C /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				43751709224101A300448C2C /* JSONWebToken */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		43751709224101A300448C2C /* JSONWebToken */ = {
+			isa = PBXGroup;
+			children = (
+				4375170A224101A300448C2C /* RSASSA_PKCS1.swift */,
+				4375170B224101A300448C2C /* SignatureValidator.swift */,
+				4375170C224101A300448C2C /* NSData+HMAC.m */,
+				4375170D224101A300448C2C /* HMAC.swift */,
+				4375170E224101A300448C2C /* NSData+SHA.m */,
+				4375170F224101A300448C2C /* SignatureAlgorithm.swift */,
+				43751710224101A300448C2C /* NSData+Base64URLEncoding.swift */,
+				43751711224101A300448C2C /* ClaimValidator.swift */,
+				43751712224101A300448C2C /* SecKeyUtils.swift */,
+				43751713224101A300448C2C /* TokenSigner.swift */,
+				43751714224101A300448C2C /* NSData+SHA.h */,
+				43751715224101A300448C2C /* TokenValidator.swift */,
+				43751716224101A300448C2C /* NSData+HMAC.h */,
+				43751718224101A300448C2C /* JSONWebToken.swift */,
+				43751719224101A300448C2C /* LICENCE */,
+			);
+			path = JSONWebToken;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -59,6 +152,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4375172C224101A400448C2C /* NSData+SHA.h in Headers */,
+				4375172E224101A400448C2C /* NSData+HMAC.h in Headers */,
 				437516FB2241011900448C2C /* OktaJWT.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +190,7 @@
 				TargetAttributes = {
 					437516F52241011900448C2C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -120,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43751731224101A400448C2C /* LICENCE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +227,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43751723224101A400448C2C /* SignatureValidator.swift in Sources */,
+				4375171F224101A400448C2C /* JWTVerificationErrors.swift in Sources */,
+				43751730224101A400448C2C /* JSONWebToken.swift in Sources */,
+				43751725224101A400448C2C /* HMAC.swift in Sources */,
+				4375172A224101A400448C2C /* SecKeyUtils.swift in Sources */,
+				43751720224101A400448C2C /* Keychain.swift in Sources */,
+				4375171E224101A400448C2C /* JWTVerificationTypes.swift in Sources */,
+				4375172D224101A400448C2C /* TokenValidator.swift in Sources */,
+				43751727224101A400448C2C /* SignatureAlgorithm.swift in Sources */,
+				43751729224101A400448C2C /* ClaimValidator.swift in Sources */,
+				43751728224101A400448C2C /* NSData+Base64URLEncoding.swift in Sources */,
+				43751733224101A400448C2C /* RequestsAPI.swift in Sources */,
+				43751732224101A400448C2C /* Utils.swift in Sources */,
+				4375171D224101A400448C2C /* APIErrors.swift in Sources */,
+				43751721224101A400448C2C /* OktaJWT.swift in Sources */,
+				4375172B224101A400448C2C /* TokenSigner.swift in Sources */,
+				43751722224101A400448C2C /* RSASSA_PKCS1.swift in Sources */,
+				43751734224101A400448C2C /* JWTVerifier.swift in Sources */,
+				43751724224101A400448C2C /* NSData+HMAC.m in Sources */,
+				43751726224101A400448C2C /* NSData+SHA.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +378,7 @@
 		437516FF2241011900448C2C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +396,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.jwt.OktaJWT;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +405,7 @@
 		437517002241011900448C2C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
