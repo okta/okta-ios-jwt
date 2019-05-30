@@ -119,7 +119,11 @@ public class TestUtils {
                     options: [],
                     format: nil
                 ) as? [String: Any] {
-                return result != nil ? result! : [:]
+                #if swift(>=5.0)
+                return result
+                #else
+                return result ?? [:]
+                #endif
             }
         }
         return [:]
