@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'OktaJWT'
-  s.version          = '2.0.0'
+  s.version          = '2.0.1'
   s.summary          = 'A JWT verification library'
 
   s.description      = <<-DESC
@@ -15,5 +15,5 @@ Library to validate JSON Web Tokens.
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'OktaJWT/**/*.{h,m,swift}'
+  s.source_files = 'Sources/**/*.{h,m,swift}'
 end
