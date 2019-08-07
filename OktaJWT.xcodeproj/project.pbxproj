@@ -58,7 +58,6 @@
 		A126079B22FA131B007AE25E /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126079922FA131B007AE25E /* TestJWTs.plist */; };
 		A12607A122FA147E007AE25E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A126079D22FA147E007AE25E /* LaunchScreen.storyboard */; };
 		A12607A222FA147E007AE25E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A126079F22FA147E007AE25E /* Main.storyboard */; };
-		A12607AC22FA16BB007AE25E /* OktaJWTLib.h in Headers */ = {isa = PBXBuildFile; fileRef = A12607AA22FA16BA007AE25E /* OktaJWTLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A12607B022FA1713007AE25E /* NSData+HMAC.h in Sources */ = {isa = PBXBuildFile; fileRef = A126079022FA0F8E007AE25E /* NSData+HMAC.h */; };
 		A12607B122FA1713007AE25E /* NSData+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = A126079222FA0F8E007AE25E /* NSData+HMAC.m */; };
 		A12607B222FA1713007AE25E /* NSData+SHA.h in Sources */ = {isa = PBXBuildFile; fileRef = A126079122FA0F8E007AE25E /* NSData+SHA.h */; };
@@ -91,6 +90,7 @@
 		A12607CD22FA17B0007AE25E /* Utils.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074D22FA0D34007AE25E /* Utils.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		A12607D322FA19F7007AE25E /* NSData+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = A126079022FA0F8E007AE25E /* NSData+HMAC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A12607D422FA19F7007AE25E /* NSData+SHA.h in Headers */ = {isa = PBXBuildFile; fileRef = A126079122FA0F8E007AE25E /* NSData+SHA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A12607E422FB49AB007AE25E /* OktaJWTLib.h in Headers */ = {isa = PBXBuildFile; fileRef = A12607E222FB49AB007AE25E /* OktaJWTLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,10 +144,13 @@
 		A126079E22FA147E007AE25E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Tests/OktaJWTTestSuite/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A12607A022FA147E007AE25E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Tests/OktaJWTTestSuite/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A12607A822FA16BA007AE25E /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A12607AA22FA16BA007AE25E /* OktaJWTLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OktaJWTLib.h; sourceTree = "<group>"; };
-		A12607AB22FA16BB007AE25E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A12607D122FA1993007AE25E /* OktaJWTTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OktaJWTTests-Bridging-Header.h"; path = "Tests/OktaJWTTests-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		A12607D222FA19AD007AE25E /* OktaJWT-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OktaJWT-Bridging-Header.h"; path = "Tests/OktaJWTTestSuite/OktaJWT-Bridging-Header.h"; sourceTree = "<group>"; };
+		A12607E122FB49AB007AE25E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Framework/Info.plist; sourceTree = SOURCE_ROOT; };
+		A12607E222FB49AB007AE25E /* OktaJWTLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OktaJWTLib.h; path = Framework/OktaJWTLib.h; sourceTree = SOURCE_ROOT; };
+		A12607E522FB4C61007AE25E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A12607E622FB4C61007AE25E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A12607E722FB4C61007AE25E /* OktaJWT.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = OktaJWT.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,10 +181,13 @@
 		A121D21322FA090E006C1839 = {
 			isa = PBXGroup;
 			children = (
+				A12607E622FB4C61007AE25E /* LICENSE */,
+				A12607E722FB4C61007AE25E /* OktaJWT.podspec */,
+				A12607E522FB4C61007AE25E /* README.md */,
 				A126074622FA0D18007AE25E /* Sources */,
-				A126072C22FA0AB9007AE25E /* OktaJWT */,
-				A126073B22FA0C21007AE25E /* OktaJWTTests */,
-				A12607A922FA16BA007AE25E /* OktaJWTLib */,
+				A126072C22FA0AB9007AE25E /* HostApplication */,
+				A126073B22FA0C21007AE25E /* Tests */,
+				A12607A922FA16BA007AE25E /* Framework */,
 				A121D21D22FA090E006C1839 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -196,7 +202,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A126072C22FA0AB9007AE25E /* OktaJWT */ = {
+		A126072C22FA0AB9007AE25E /* HostApplication */ = {
 			isa = PBXGroup;
 			children = (
 				A12607D222FA19AD007AE25E /* OktaJWT-Bridging-Header.h */,
@@ -208,10 +214,10 @@
 				A126072F22FA0AF6007AE25E /* OktaJWTTestSuite.entitlements */,
 				A126073222FA0AF7007AE25E /* ViewController.swift */,
 			);
-			name = OktaJWT;
+			name = HostApplication;
 			sourceTree = "<group>";
 		};
-		A126073B22FA0C21007AE25E /* OktaJWTTests */ = {
+		A126073B22FA0C21007AE25E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				A12607D122FA1993007AE25E /* OktaJWTTests-Bridging-Header.h */,
@@ -222,7 +228,7 @@
 				A126073F22FA0C4B007AE25E /* MiscTests.swift */,
 				A126073D22FA0C4B007AE25E /* TestUtilities.swift */,
 			);
-			path = OktaJWTTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		A126074622FA0D18007AE25E /* Sources */ = {
@@ -273,13 +279,13 @@
 			path = JSONWebToken;
 			sourceTree = "<group>";
 		};
-		A12607A922FA16BA007AE25E /* OktaJWTLib */ = {
+		A12607A922FA16BA007AE25E /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				A12607AA22FA16BA007AE25E /* OktaJWTLib.h */,
-				A12607AB22FA16BB007AE25E /* Info.plist */,
+				A12607E122FB49AB007AE25E /* Info.plist */,
+				A12607E222FB49AB007AE25E /* OktaJWTLib.h */,
 			);
-			path = OktaJWTLib;
+			path = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +295,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A12607AC22FA16BB007AE25E /* OktaJWTLib.h in Headers */,
+				A12607E422FB49AB007AE25E /* OktaJWTLib.h in Headers */,
 				A12607C622FA17B0007AE25E /* APIErrors.swift in Headers */,
 				A12607C722FA17B0007AE25E /* JWTVerificationErrors.swift in Headers */,
 				A12607C822FA17B0007AE25E /* JWTVerificationTypes.swift in Headers */,
@@ -760,7 +766,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = OktaJWTLib/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -788,7 +794,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = OktaJWTLib/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Framework/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

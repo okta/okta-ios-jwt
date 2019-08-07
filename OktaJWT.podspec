@@ -16,4 +16,5 @@ Library to validate JSON Web Tokens.
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'Sources/**/*.{h,m,swift}'
+  s.swift_version = '4.2'
 end
