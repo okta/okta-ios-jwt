@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "OktaJWT_Example.app"
-               BlueprintName = "OktaJWT_Example"
-               ReferencedContainer = "container:OktaJWT.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "OktaJWT_Tests.xctest"
-               BlueprintName = "OktaJWT_Tests"
+               BlueprintIdentifier = "A121D21B22FA090E006C1839"
+               BuildableName = "OktaJWT.app"
+               BlueprintName = "OktaJWT"
                ReferencedContainer = "container:OktaJWT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "OktaJWT_Tests.xctest"
-               BlueprintName = "OktaJWT_Tests"
+               BlueprintIdentifier = "A121D22F22FA0913006C1839"
+               BuildableName = "OktaJWTTests.xctest"
+               BlueprintName = "OktaJWTTests"
                ReferencedContainer = "container:OktaJWT.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "OktaJWT_Example.app"
-            BlueprintName = "OktaJWT_Example"
+            BlueprintIdentifier = "A121D21B22FA090E006C1839"
+            BuildableName = "OktaJWT.app"
+            BlueprintName = "OktaJWT"
             ReferencedContainer = "container:OktaJWT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -79,9 +65,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "OktaJWT_Example.app"
-            BlueprintName = "OktaJWT_Example"
+            BlueprintIdentifier = "A121D21B22FA090E006C1839"
+            BuildableName = "OktaJWT.app"
+            BlueprintName = "OktaJWT"
             ReferencedContainer = "container:OktaJWT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -98,9 +84,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "OktaJWT_Example.app"
-            BlueprintName = "OktaJWT_Example"
+            BlueprintIdentifier = "A121D21B22FA090E006C1839"
+            BuildableName = "OktaJWT.app"
+            BlueprintName = "OktaJWT"
             ReferencedContainer = "container:OktaJWT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

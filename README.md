@@ -3,7 +3,9 @@
 [![Version](https://img.shields.io/cocoapods/v/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 [![License](https://img.shields.io/cocoapods/l/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 [![Platform](https://img.shields.io/cocoapods/p/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/badge/swift-4.2-green.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
+[![Platform](https://img.shields.io/badge/swift-5.0-green.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 
 ## Overview
 
@@ -11,10 +13,20 @@ This library handles decoding and validating a JSON Web Token (JWT) issued by an
 
 ## Installation
 
+### Cocoapods
+
 OktaJWT is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'OktaJWT'
+```
+
+### Carthage
+
+To integrate this SDK into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your Cartfile:
+
+```ruby
+github "okta/okta-ios-jwt"
 ```
 
 ## Usage
