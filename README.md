@@ -25,7 +25,9 @@ pod 'OktaJWT'
 
 To integrate this SDK into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your Cartfile:
 
+```ruby
 github "okta/okta-ios-jwt"
+```
 
 ## Usage
 
