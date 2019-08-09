@@ -13,11 +13,19 @@ This library handles decoding and validating a JSON Web Token (JWT) issued by an
 
 ## Installation
 
+### Cocoapods
+
 OktaJWT is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'OktaJWT'
 ```
+
+### Carthage
+
+To integrate this SDK into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your Cartfile:
+
+github "okta/okta-ios-jwt"
 
 ## Usage
 
