@@ -4,7 +4,7 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.okta.jwt.OktaJWTTestSuite</string>
+		<string>$(AppIdentifierPrefix)com.okta.OktaJWT-iOS</string>
 	</array>
 </dict>
 </plist>

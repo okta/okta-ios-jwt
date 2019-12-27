@@ -10,7 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import OktaJWT
+@testable import OktaJWTLib
 
 public class TestUtils {
     var jwts: [String: Any] = [:]
@@ -110,8 +110,7 @@ public class TestUtils {
 
     class func readFromPList(_ name: String) -> [String : Any] {
         // Parse the given plist file
-
-        if let path = Bundle.main.url(forResource: name, withExtension: "plist"),
+        if let path = Bundle(for: TestUtils.self).url(forResource: name, withExtension: "plist"),
             let data = try? Data(contentsOf: path) {
             if let result = try? PropertyListSerialization
                 .propertyList(

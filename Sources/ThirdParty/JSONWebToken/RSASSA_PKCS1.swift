@@ -8,7 +8,7 @@
 import Foundation
 import Security
 
-private func paddingForHashFunction(_ f : SignatureAlgorithm.HashFunction) -> SecPadding {
+internal func paddingForHashFunction(_ f : SignatureAlgorithm.HashFunction) -> SecPadding {
     switch f {
     case .sha256:
         return SecPadding.PKCS1SHA256
@@ -83,82 +83,6 @@ public struct RSAKey {
             }
         } else {
             throw Error.invalidP12NoIdentityFound
-        }
-    }
-}
-
-public struct RSAPKCS1Verifier : SignatureValidator {
-    let hashFunction : SignatureAlgorithm.HashFunction
-    let key : RSAKey
-    
-    public init(key : RSAKey, hashFunction : SignatureAlgorithm.HashFunction) {
-        self.hashFunction = hashFunction
-        self.key = key
-    }
-    public func canVerifyWithSignatureAlgorithm(_ alg : SignatureAlgorithm) -> Bool {
-        if case SignatureAlgorithm.rsassa_PKCS1(self.hashFunction) = alg {
-            return true
-        }
-        return false
-    }
-    public func verify(_ input : Data, signature : Data) -> Bool {
-        let signedDataHash = (input as NSData).jwt_shaDigest(withSize: self.hashFunction.rawValue)
-        let padding = paddingForHashFunction(self.hashFunction)
-        
-        let result = signature.withUnsafeBytes { signatureRawPointer in
-            signedDataHash.withUnsafeBytes { signedHashRawPointer in
-                SecKeyRawVerify(
-                    key.value,
-                    padding,
-                    signedHashRawPointer,
-                    signedDataHash.count,
-                    signatureRawPointer,
-                    signature.count
-                )
-            }
-        }
-        
-        switch result {
-        case errSecSuccess:
-            return true
-        default:
-            return false
-        }
-    }
-}
-
-public struct RSAPKCS1Signer : TokenSigner {
-    enum Error : Swift.Error {
-        case securityError(OSStatus)
-    }
-    
-    let hashFunction : SignatureAlgorithm.HashFunction
-    let key : RSAKey
-    
-    public init(hashFunction : SignatureAlgorithm.HashFunction, key : RSAKey) {
-        self.hashFunction = hashFunction
-        self.key = key
-    }
-    
-    public var signatureAlgorithm : SignatureAlgorithm {
-        return .rsassa_PKCS1(self.hashFunction)
-    }
-
-    public func sign(_ input : Data) throws -> Data {
-        let signedDataHash = (input as NSData).jwt_shaDigest(withSize: self.hashFunction.rawValue)
-        let padding = paddingForHashFunction(self.hashFunction)
-        
-        var result = Data(count: SecKeyGetBlockSize(self.key.value))
-        var resultSize = result.count
-        let status = result.withUnsafeMutableBytes { resultBytes in
-            SecKeyRawSign(key.value, padding, (signedDataHash as NSData).bytes.bindMemory(to: UInt8.self, capacity: signedDataHash.count), signedDataHash.count, UnsafeMutablePointer<UInt8>(resultBytes), &resultSize)
-        }
-        
-        switch status {
-        case errSecSuccess:
-            return result.subdata(in: 0..<resultSize)
-        default:
-            throw Error.securityError(status)
         }
     }
 }

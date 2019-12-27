@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1010"
+   LastUpgradeVersion = "1130"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A121D21B22FA090E006C1839"
-               BuildableName = "OktaJWT.app"
-               BlueprintName = "OktaJWT"
+               BlueprintIdentifier = "2FF91AAA23B5E8D300CFC89C"
+               BuildableName = "OktaJWTLib.framework"
+               BlueprintName = "OktaJWTLib_macOS"
                ReferencedContainer = "container:OktaJWT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,24 +32,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A121D22F22FA0913006C1839"
-               BuildableName = "OktaJWTTests.xctest"
-               BlueprintName = "OktaJWTTests"
+               BlueprintIdentifier = "2FF91AD123B5EC5600CFC89C"
+               BuildableName = "OktaJWTTests_macOS.xctest"
+               BlueprintName = "OktaJWTTests_macOS"
                ReferencedContainer = "container:OktaJWT.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A121D21B22FA090E006C1839"
-            BuildableName = "OktaJWT.app"
-            BlueprintName = "OktaJWT"
-            ReferencedContainer = "container:OktaJWT.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -61,18 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A121D21B22FA090E006C1839"
-            BuildableName = "OktaJWT.app"
-            BlueprintName = "OktaJWT"
-            ReferencedContainer = "container:OktaJWT.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -80,16 +57,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A121D21B22FA090E006C1839"
-            BuildableName = "OktaJWT.app"
-            BlueprintName = "OktaJWT"
+            BlueprintIdentifier = "2FF91AAA23B5E8D300CFC89C"
+            BuildableName = "OktaJWTLib.framework"
+            BlueprintName = "OktaJWTLib_macOS"
             ReferencedContainer = "container:OktaJWT.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

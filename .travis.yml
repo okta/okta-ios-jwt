@@ -1,5 +1,5 @@
 language: objective-c
 osx_image: xcode10.1
 xcode_project: OktaJWT.xcodeproj
-xcode_scheme: OktaJWT
+xcode_scheme: OktaJWTLib_iOS
 xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 8

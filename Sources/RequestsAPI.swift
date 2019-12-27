@@ -11,7 +11,6 @@
  */
 
 import Foundation
-import UIKit
 
 open class RequestsAPI: NSObject {
 
@@ -29,9 +28,12 @@ open class RequestsAPI: NSObject {
             return nil
         }
 
-        if let response = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-            let json = response {
-            return json
+        if let response = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+            #if swift(>=5.0)
+            return response
+            #else
+            return response ?? nil
+            #endif
         }
 
         return nil
@@ -94,10 +96,7 @@ open class RequestsAPI: NSObject {
     open class func get(_ url: URL) -> Data? {
         // Default timeout of 5 seconds
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
-        request.addValue(
-            "okta-ios-jwt/\(VERSION) iOS/\(UIDevice.current.systemVersion) Device/\(Utils.deviceModel())",
-            forHTTPHeaderField: "User-Agent"
-        )
+        request.addValue(Utils.buildUserAgentString(), forHTTPHeaderField: "User-Agent")
 
         var responseData: Data?
         let semaphore = DispatchSemaphore(value: 0)
