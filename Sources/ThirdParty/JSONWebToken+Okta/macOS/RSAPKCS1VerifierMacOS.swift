@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017, Okta, Inc. and/or its affiliates. All rights reserved.
+* Copyright (c) 2020, Okta, Inc. and/or its affiliates. All rights reserved.
 * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
 *
 * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -12,7 +12,7 @@
 
 import Foundation
 
-public struct RSAPKCS1VerifierMacOS: RSAPKCS1Verifier {
+public struct RSAPKCS1VerifierMacOS: RSAPKCS1VerifierProtocol {
     public let hashFunction: SignatureAlgorithm.HashFunction
     public let key: RSAKey
 
@@ -20,10 +20,7 @@ public struct RSAPKCS1VerifierMacOS: RSAPKCS1Verifier {
         self.hashFunction = hashFunction
         self.key = key
     }
-    public func canVerifyWithSignatureAlgorithm(_ alg: SignatureAlgorithm) -> Bool {
-        // TODO: implement
-        return true
-    }
+
     public func verify(_ input: Data, signature: Data) -> Bool {
         // TODO: implement
         return true

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017, Okta, Inc. and/or its affiliates. All rights reserved.
+* Copyright (c) 2020, Okta, Inc. and/or its affiliates. All rights reserved.
 * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
 *
 * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -12,7 +12,7 @@
 
 import Foundation
 
-public protocol RSAPKCS1Signer: TokenSigner {
+public protocol RSAPKCS1SignerProtocol: TokenSigner {
     var hashFunction: SignatureAlgorithm.HashFunction { get }
     var key: RSAKey { get }
 
@@ -23,14 +23,14 @@ public protocol RSAPKCS1Signer: TokenSigner {
     func sign(_ input: Data) throws -> Data
 }
 
-public extension RSAPKCS1Signer {
+public extension RSAPKCS1SignerProtocol {
     var signatureAlgorithm: SignatureAlgorithm {
         return .rsassa_PKCS1(self.hashFunction)
     }
 }
 
 public class RSAPKCS1SignerFactory {
-    public static func createSigner(hashFunction: SignatureAlgorithm.HashFunction, key: RSAKey) -> RSAPKCS1Signer {
+    public static func createSigner(hashFunction: SignatureAlgorithm.HashFunction, key: RSAKey) -> RSAPKCS1SignerProtocol {
 #if os(iOS)
         return RSAPKCS1SignerIOS(hashFunction: hashFunction, key: key)
 #elseif os(OSX)

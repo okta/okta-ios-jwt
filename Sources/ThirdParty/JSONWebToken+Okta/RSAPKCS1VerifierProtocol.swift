@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017, Okta, Inc. and/or its affiliates. All rights reserved.
+* Copyright (c) 2020, Okta, Inc. and/or its affiliates. All rights reserved.
 * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
 *
 * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -12,7 +12,7 @@
 
 import Foundation
 
-public protocol RSAPKCS1Verifier : SignatureValidator {
+public protocol RSAPKCS1VerifierProtocol : SignatureValidator {
     var hashFunction: SignatureAlgorithm.HashFunction { get }
     var key: RSAKey { get }
 
@@ -23,7 +23,7 @@ public protocol RSAPKCS1Verifier : SignatureValidator {
     func verify(_ input: Data, signature: Data) -> Bool
 }
 
-public extension RSAPKCS1Verifier {
+public extension RSAPKCS1VerifierProtocol {
     func canVerifyWithSignatureAlgorithm(_ alg: SignatureAlgorithm) -> Bool {
         if case SignatureAlgorithm.rsassa_PKCS1(self.hashFunction) = alg {
             return true
@@ -33,7 +33,7 @@ public extension RSAPKCS1Verifier {
 }
 
 public class RSAPKCS1VerifierFactory {
-    public static func createVerifier(key: RSAKey, hashFunction: SignatureAlgorithm.HashFunction) -> RSAPKCS1Verifier {
+    public static func createVerifier(key: RSAKey, hashFunction: SignatureAlgorithm.HashFunction) -> RSAPKCS1VerifierProtocol {
 #if os(iOS)
         return RSAPKCS1VerifierIOS(key: key, hashFunction: hashFunction)
 #elseif os(OSX)
