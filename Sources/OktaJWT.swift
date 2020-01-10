@@ -128,7 +128,7 @@ public struct OktaJWTValidator {
                 key = self.key!
         }
 
-        let signatureValidation = RSAPKCS1Verifier(key: key, hashFunction: .sha256).validateToken(jwt)
+        let signatureValidation = RSAPKCS1VerifierFactory.createVerifier(key: key, hashFunction: .sha256).validateToken(jwt)
         if !signatureValidation.isValid {
             throw OktaJWTVerificationError.invalidSignature
         }

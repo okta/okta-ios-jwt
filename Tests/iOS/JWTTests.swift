@@ -10,10 +10,10 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import UIKit
 import XCTest
-@testable import OktaJWT
+@testable import OktaJWTLib
 
+// TODO: port tests to MacOS
 class JWTTests: XCTestCase {
     var jwts: [String: Any] = [:]
 

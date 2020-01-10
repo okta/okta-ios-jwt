@@ -1,0 +1,48 @@
+/*
+* Copyright (c) 2020, Okta, Inc. and/or its affiliates. All rights reserved.
+* The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
+*
+* You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+* WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*
+* See the License for the specific language governing permissions and limitations under the License.
+*/
+
+import Foundation
+
+public struct RSAPKCS1VerifierIOS: RSAPKCS1VerifierProtocol {
+    public let hashFunction: SignatureAlgorithm.HashFunction
+    public let key: RSAKey
+
+    public init(key: RSAKey, hashFunction: SignatureAlgorithm.HashFunction) {
+        self.hashFunction = hashFunction
+        self.key = key
+    }
+
+    public func verify(_ input: Data, signature: Data) -> Bool {
+        let signedDataHash = (input as NSData).jwt_shaDigest(withSize: self.hashFunction.rawValue)
+        let padding = paddingForHashFunction(self.hashFunction)
+
+        let result = signature.withUnsafeBytes { signatureRawPointer in
+            signedDataHash.withUnsafeBytes { signedHashRawPointer in
+                SecKeyRawVerify(
+                    key.value,
+                    padding,
+                    signedHashRawPointer,
+                    signedDataHash.count,
+                    signatureRawPointer,
+                    signature.count
+                )
+            }
+        }
+
+        switch result {
+        case errSecSuccess:
+            return true
+        default:
+            return false
+        }
+    }
+}

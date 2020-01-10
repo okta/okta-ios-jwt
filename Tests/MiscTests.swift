@@ -10,9 +10,8 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import UIKit
 import XCTest
-@testable import OktaJWT
+@testable import OktaJWTLib
 
 class MiscTests: XCTestCase {
     var jwts: [String: Any] = [:]

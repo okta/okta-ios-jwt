@@ -11,6 +11,9 @@
  */
 
 import Foundation
+#if os(iOS)
+import UIKit
+#endif
 
 open class Utils: NSObject {
 
@@ -120,6 +123,14 @@ open class Utils: NSObject {
         }
 
         return nil
+    }
+
+    internal class func buildUserAgentString() -> String {
+#if os(iOS)
+        return "okta-ios-jwt/\(VERSION) iOS/\(UIDevice.current.systemVersion) Device/\(Utils.deviceModel())"
+#elseif os(OSX)
+        return "okta-ios-jwt/\(VERSION) macOS/\(ProcessInfo.processInfo.operatingSystemVersion) Device/\(Utils.deviceModel())"
+#endif
     }
 
     /**

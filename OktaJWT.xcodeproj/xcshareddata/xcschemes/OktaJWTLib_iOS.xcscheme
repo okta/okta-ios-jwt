@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A12607A722FA16BA007AE25E"
                BuildableName = "OktaJWTLib.framework"
-               BlueprintName = "OktaJWTLib"
+               BlueprintName = "OktaJWTLib_iOS"
                ReferencedContainer = "container:OktaJWT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,17 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A121D22F22FA0913006C1839"
+               BuildableName = "OktaJWTTests_iOS.xctest"
+               BlueprintName = "OktaJWTTests_iOS"
+               ReferencedContainer = "container:OktaJWT.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -47,12 +55,10 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A12607A722FA16BA007AE25E"
             BuildableName = "OktaJWTLib.framework"
-            BlueprintName = "OktaJWTLib"
+            BlueprintName = "OktaJWTLib_iOS"
             ReferencedContainer = "container:OktaJWT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -65,7 +71,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A12607A722FA16BA007AE25E"
             BuildableName = "OktaJWTLib.framework"
-            BlueprintName = "OktaJWTLib"
+            BlueprintName = "OktaJWTLib_iOS"
             ReferencedContainer = "container:OktaJWT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
