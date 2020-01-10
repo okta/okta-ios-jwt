@@ -14,7 +14,7 @@ import Foundation
 
 public struct RSAPKCS1SignerMacOS: RSAPKCS1SignerProtocol {
     public let hashFunction: SignatureAlgorithm.HashFunction
-    public let key : RSAKey
+    public let key: RSAKey
 
     public init(hashFunction: SignatureAlgorithm.HashFunction, key: RSAKey) {
         self.hashFunction = hashFunction

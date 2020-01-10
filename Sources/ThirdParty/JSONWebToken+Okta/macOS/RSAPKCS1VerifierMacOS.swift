@@ -23,6 +23,6 @@ public struct RSAPKCS1VerifierMacOS: RSAPKCS1VerifierProtocol {
 
     public func verify(_ input: Data, signature: Data) -> Bool {
         // TODO: implement
-        return true
+        return false
     }
 }
