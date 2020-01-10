@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F16C59523C746EC009BBA3F /* IdTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074022FA0C4B007AE25E /* IdTokenTests.swift */; };
 		2FA0FACD23B5F02C007A977D /* OktaJWTLib_iOS_BridgingHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FA0FACC23B5F02C007A977D /* OktaJWTLib_iOS_BridgingHeader.h */; };
+		2FCB032D23C8C6B9001EC758 /* OktaJWTLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12607A822FA16BA007AE25E /* OktaJWTLib.framework */; };
 		2FF91A8D23B53E5E00CFC89C /* RSAPKCS1VerifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF91A8223B53E3000CFC89C /* RSAPKCS1VerifierProtocol.swift */; };
 		2FF91A8E23B53E6100CFC89C /* RSAPKCS1SignerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF91A8623B53E3000CFC89C /* RSAPKCS1SignerProtocol.swift */; };
 		2FF91A8F23B53E6D00CFC89C /* RSAPKCS1VerifierIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF91A8423B53E3000CFC89C /* RSAPKCS1VerifierIOS.swift */; };
@@ -87,6 +88,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2FCB032A23C8C6AD001EC758 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A121D21422FA090E006C1839 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A12607A722FA16BA007AE25E;
+			remoteInfo = OktaJWTLib_iOS;
+		};
 		2FF91AD823B5EC5600CFC89C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A121D21422FA090E006C1839 /* Project object */;
@@ -185,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FCB032D23C8C6B9001EC758 /* OktaJWTLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +214,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FCB032C23C8C6B9001EC758 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2FF91A7E23B53E3000CFC89C /* JSONWebToken+Okta */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +308,7 @@
 				A126072C22FA0AB9007AE25E /* HostApplication */,
 				A126073B22FA0C21007AE25E /* Tests */,
 				A121D21D22FA090E006C1839 /* Products */,
+				2FCB032C23C8C6B9001EC758 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -463,6 +480,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2FCB032B23C8C6AD001EC758 /* PBXTargetDependency */,
 			);
 			name = OktaJWT_iOS;
 			productName = OktaJWT;
@@ -697,6 +715,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2FCB032B23C8C6AD001EC758 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A12607A722FA16BA007AE25E /* OktaJWTLib_iOS */;
+			targetProxy = 2FCB032A23C8C6AD001EC758 /* PBXContainerItemProxy */;
+		};
 		2FF91AD923B5EC5600CFC89C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2FF91AAA23B5E8D300CFC89C /* OktaJWTLib_macOS */;
@@ -992,6 +1015,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/iOS/Info.plist;
@@ -1014,6 +1038,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/iOS/Info.plist;
