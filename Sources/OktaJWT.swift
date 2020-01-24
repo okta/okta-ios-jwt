@@ -85,7 +85,11 @@ public struct OktaJWTValidator {
         var jwt: JSONWebToken
 
         do {
-            jwt = try JSONWebToken(string: rawJWT)
+            if let typ = self.validatorOptions["typ"] as? String {
+                jwt = try JSONWebToken(string: rawJWT, typeHeader: typ)
+            } else {
+                jwt = try JSONWebToken(string: rawJWT)
+            }
         }
         catch {
             throw OktaJWTVerificationError.malformedJWT
@@ -155,7 +159,7 @@ public struct OktaJWTValidator {
         }
 
         // Misc Verification
-        let testedValues = ["iss", "aud", "exp", "iat", "iss", "leeway", "nonce"] as [String]
+        let testedValues = ["iss", "aud", "exp", "iat", "iss", "leeway", "nonce", "typ"] as [String]
         for (k, v) in self.validatorOptions {
             if testedValues.contains(k) {
                 continue

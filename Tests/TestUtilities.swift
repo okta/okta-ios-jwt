@@ -95,6 +95,15 @@ public class TestUtils {
         "use": "sig"
     ]
 
+    static var validJWKCustomizeTypeHeader = [
+        "alg": "RS256",
+          "e": "AQAB",
+          "n": "jl16OeQa4tztkzfYK0Aett7Mdop882Nv6U0UbOZIKJhLWD0hcI0jr8hWdptG3S_TIuz1oWPvfDWnyb5GTcz4RA0gc3DNZPTOEm2fhA8Ut7bIpsrCNUy_oYOjkimEtS8muMunxVndUgRygJfDIt_GjJMZ9XZFsn7BEUReKDWVSQXLOmPQzq6qZfv6IvTGO-bTFp0vTurFmRMZMBvmUx-2ac1EeDbCtPztOrHHNEiApQi1lBRmjG7mFs_m2mLc6ExQR8eZyrQTGtmT9i1oSjNKMPR8H3IQ8EmWdtdWdIg-AEWjb--lDd2VEdM4_AVNlDzMs-aZp2VZbeGQ2UNR1gktNQ",
+        "kid": "01c094c3-459d-4c9d-9e0f-3d943004a887",
+        "kty": "RSA",
+        "use": "sig"
+    ]
+
     static var exampleRSAKey = TestUtils.createRSAKey(modulus: TestUtils.exampleJWK["n"]!, exponent: TestUtils.exampleJWK["e"]!)
 
     class func createRSAKey(modulus: String, exponent: String) -> RSAKey? {
