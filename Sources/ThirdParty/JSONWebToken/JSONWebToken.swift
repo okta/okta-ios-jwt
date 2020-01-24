@@ -146,8 +146,7 @@ public struct JSONWebToken {
     public let payload : Payload
     let base64Parts : (header : String,payload : String, signature : String)
     
-    public init(string input: String) throws {
-
+    public init(string input: String, typeHeader: String = "JWT") throws {
         let parts = input.components(separatedBy: ".")
         guard parts.count == 3 else { throw Error.badTokenStructure }
         
@@ -165,7 +164,7 @@ public struct JSONWebToken {
         
         let jsonHeader = try JSONWebToken.jwtJSONFromData(headerData,part: .header)
         
-        guard (jsonHeader["typ"] as? String).map({$0.uppercased() == "JWT"}) ?? true else {
+        guard (jsonHeader["typ"] as? String).map({$0.uppercased() == typeHeader.uppercased()}) ?? true else {
             throw Error.typeIsNotAJSONWebToken
         }
         guard let signatureAlgorithm = try (jsonHeader["alg"] as? String).map(SignatureAlgorithm.init) else {
