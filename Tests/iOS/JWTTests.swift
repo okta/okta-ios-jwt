@@ -154,4 +154,63 @@ class JWTTests: XCTestCase {
         XCTAssertEqual(isValid, true)
     }
 
+    func testValidTypeHeaderForJWT() {
+        let options = [
+            "iat": false,
+            "typ": "jwt",
+            "leeway": -800000000
+        ] as [String : Any]
+
+        let validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+
+        guard let isValid = try? validator.isValid(jwts["OktaJWTTypeHeader"] as! String) else {
+            return XCTFail("VALID token was returned as INVALID.")
+        }
+        XCTAssertEqual(isValid, true)
+    }
+
+    func testInvalidTypeHeaderForJWT() {
+        let options = [
+            "iat": false,
+            "typ": "jwt-invalid",
+            "leeway": -800000000
+        ] as [String : Any]
+
+        let validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaJWTTypeHeader"] as! String)) { error in
+            let desc = error as! OktaJWTVerificationError
+            XCTAssertEqual(desc.localizedDescription, "String injected is not formatted as a JSON Web Token")
+        }
+    }
+
+    func testValidCustomTypeHeaderForJWT() {
+        let options = [
+            "iat": false,
+            "typ": "okta-devicebind+jwt",
+            "leeway": -800000000
+        ] as [String : Any]
+
+        let validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+
+        guard let isValid = try? validator.isValid(jwts["OktaJWTTypeHeaderCustom"] as! String) else {
+            return XCTFail("VALID token was returned as INVALID.")
+        }
+        XCTAssertEqual(isValid, true)
+    }
+
+    func testInvalidCustomTypeHeaderForJWT() {
+        let options = [
+            "iat": false,
+            "typ": "jwt",
+            "leeway": -800000000
+        ] as [String : Any]
+
+        let validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaJWTTypeHeaderCustom"] as! String)) { error in
+            let desc = error as! OktaJWTVerificationError
+            XCTAssertEqual(desc.localizedDescription, "String injected is not formatted as a JSON Web Token")
+        }
+    }
 }
