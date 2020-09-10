@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0332BB81250ABE01007F3C48 /* JWTTestsMacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332BB7F250ABDFE007F3C48 /* JWTTestsMacOS.swift */; };
+		0332BB83250AC420007F3C48 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332BB82250AC420007F3C48 /* KeyStorage.swift */; };
+		0332BB84250AD958007F3C48 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332BB82250AC420007F3C48 /* KeyStorage.swift */; };
 		2F16C59523C746EC009BBA3F /* IdTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074022FA0C4B007AE25E /* IdTokenTests.swift */; };
 		2FA0FACD23B5F02C007A977D /* OktaJWTLib_iOS_BridgingHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FA0FACC23B5F02C007A977D /* OktaJWTLib_iOS_BridgingHeader.h */; };
 		2FCB032D23C8C6B9001EC758 /* OktaJWTLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12607A822FA16BA007AE25E /* OktaJWTLib.framework */; };
@@ -112,6 +115,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0332BB7F250ABDFE007F3C48 /* JWTTestsMacOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTTestsMacOS.swift; sourceTree = "<group>"; };
+		0332BB82250AC420007F3C48 /* KeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyStorage.swift; sourceTree = "<group>"; };
 		2FA0FACC23B5F02C007A977D /* OktaJWTLib_iOS_BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OktaJWTLib_iOS_BridgingHeader.h; sourceTree = "<group>"; };
 		2FF91A8023B53E3000CFC89C /* RSAPKCS1VerifierMacOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSAPKCS1VerifierMacOS.swift; sourceTree = "<group>"; };
 		2FF91A8123B53E3000CFC89C /* RSAPKCS1SignerMacOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSAPKCS1SignerMacOS.swift; sourceTree = "<group>"; };
@@ -237,6 +242,7 @@
 			children = (
 				2FF91A8023B53E3000CFC89C /* RSAPKCS1VerifierMacOS.swift */,
 				2FF91A8123B53E3000CFC89C /* RSAPKCS1SignerMacOS.swift */,
+				0332BB82250AC420007F3C48 /* KeyStorage.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF91AA323B5E68400CFC89C /* Info.plist */,
+				0332BB7F250ABDFE007F3C48 /* JWTTestsMacOS.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -647,6 +654,7 @@
 				2FF91ACB23B5E94B00CFC89C /* RSAPKCS1SignerProtocol.swift in Sources */,
 				2FF91AC823B5E94300CFC89C /* TokenValidator.swift in Sources */,
 				2FF91ACA23B5E94B00CFC89C /* RSAPKCS1VerifierProtocol.swift in Sources */,
+				0332BB83250AC420007F3C48 /* KeyStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0332BB81250ABE01007F3C48 /* JWTTestsMacOS.swift in Sources */,
 				2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */,
 				2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */,
 			);
@@ -697,6 +706,7 @@
 				A12607B922FA1713007AE25E /* ClaimValidator.swift in Sources */,
 				A12607BA22FA1713007AE25E /* SecKeyUtils.swift in Sources */,
 				A12607BB22FA1713007AE25E /* TokenSigner.swift in Sources */,
+				0332BB84250AD958007F3C48 /* KeyStorage.swift in Sources */,
 				A12607BC22FA1713007AE25E /* TokenValidator.swift in Sources */,
 				A12607BD22FA1713007AE25E /* JSONWebToken.swift in Sources */,
 				A12607BE22FA1713007AE25E /* APIErrors.swift in Sources */,
@@ -819,6 +829,7 @@
 		2FF91ADB23B5EC5600CFC89C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
@@ -838,6 +849,7 @@
 		2FF91ADC23B5EC5600CFC89C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/macOS/Info.plist;

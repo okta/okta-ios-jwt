@@ -105,15 +105,20 @@ public class TestUtils {
     ]
 
     static var exampleRSAKey = TestUtils.createRSAKey(modulus: TestUtils.exampleJWK["n"]!, exponent: TestUtils.exampleJWK["e"]!)
+    
+    class func getMacExampleRSAKey(keyStorageManager: PublicKeyStorageProtocol?) -> RSAKey? {
+        return TestUtils.createRSAKey(modulus: TestUtils.exampleJWK["n"]!, exponent: TestUtils.exampleJWK["e"]!, keyStorageManager: keyStorageManager)
+    }
 
-    class func createRSAKey(modulus: String, exponent: String) -> RSAKey? {
+    class func createRSAKey(modulus: String, exponent: String, keyStorageManager: PublicKeyStorageProtocol? = nil) -> RSAKey? {
         // Create an RSAKey from JWK
 
         let tag = "com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg"
         return try? RSAKey.registerOrUpdateKey(
             modulus: Utils.base64URLDecode(modulus)!,
             exponent: Utils.base64URLDecode(exponent)!,
-            tag: tag
+            tag: tag,
+            keyStorageManager: keyStorageManager
         )
     }
 

@@ -55,16 +55,16 @@ public extension RSAKey {
         case notBase64Readable
         case badKeyFormat
     }
-    @discardableResult public static func registerOrUpdateKey(_ keyData : Data, tag : String) throws -> RSAKey {
+    @discardableResult public static func registerOrUpdateKey(_ keyData : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> RSAKey {
         let key : SecKey? = try {
             if let existingData = try getKeyData(tag) {
                 let newData = keyData.dataByStrippingX509Header()
                 if existingData != newData {
-                    try updateKey(tag, data: newData)
+                    try updateKey(tag, data: newData, keyStorageManager: keyStorageManager)
                 }
-                return try getKey(tag)
+                return try getKey(tag, keyStorageManager: keyStorageManager)
             } else {
-                return try addKey(tag, data: keyData.dataByStrippingX509Header())
+                return try addKey(tag, data: keyData.dataByStrippingX509Header(), keyStorageManager: keyStorageManager)
             }
         }()
         if let result = key {
@@ -73,11 +73,11 @@ public extension RSAKey {
             throw KeyUtilError.badKeyFormat
         }
     }
-    @discardableResult public static func registerOrUpdateKey(modulus: Data, exponent : Data, tag : String) throws -> RSAKey {
+    @discardableResult public static func registerOrUpdateKey(modulus: Data, exponent : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> RSAKey {
         let combinedData = Data(modulus: modulus, exponent: exponent)
-        return try RSAKey.registerOrUpdateKey(combinedData, tag : tag)
+        return try RSAKey.registerOrUpdateKey(combinedData, tag : tag, keyStorageManager: keyStorageManager)
     }
-    @discardableResult public static func registerOrUpdatePublicPEMKey(_ keyData : Data, tag : String) throws -> RSAKey {
+    @discardableResult public static func registerOrUpdatePublicPEMKey(_ keyData : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> RSAKey {
         guard let stringValue = String(data: keyData, encoding: String.Encoding.utf8) else {
             throw KeyUtilError.notStringReadable
         }
@@ -105,70 +105,111 @@ public extension RSAKey {
         guard let decodedKeyData = Data(base64Encoded: base64Content, options:[.ignoreUnknownCharacters]) else {
             throw KeyUtilError.notBase64Readable
         }
-        return try RSAKey.registerOrUpdateKey(decodedKeyData, tag: tag)
+        return try RSAKey.registerOrUpdateKey(decodedKeyData, tag: tag, keyStorageManager: keyStorageManager)
     }
-    static func registeredKeyWithTag(_ tag : String) -> RSAKey? {
-        return ((try? getKey(tag)) ?? nil).map(RSAKey.init)
+    static func registeredKeyWithTag(_ tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) -> RSAKey? {
+        return ((try? getKey(tag, keyStorageManager: keyStorageManager)) ?? nil).map(RSAKey.init)
     }
-    static func removeKeyWithTag(_ tag : String) {
+    static func removeKeyWithTag(_ tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) {
         do {
-            try deleteKey(tag)
+            try deleteKey(tag, keyStorageManager: keyStorageManager)
         } catch {}
     }
 }
 
-private func getKey(_ tag: String) throws -> SecKey? {
-    var keyRef: AnyObject?
-    
-    var query = matchQueryWithTag(tag)
-    query[kSecReturnRef as String] = kCFBooleanTrue
-    
-    let status = SecItemCopyMatching(query as CFDictionary, &keyRef)
-    
-    switch status {
-    case errSecSuccess:
-        if keyRef != nil {
-            return (keyRef as! SecKey)
+private func getKey(_ tag: String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> SecKey? {
+    if (keyStorageManager != nil) {
+        return getKeyForCustomStorageManager(tag, keyStorageManager: keyStorageManager!)
+    } else {
+        var keyRef: AnyObject?
+        
+        var query = matchQueryWithTag(tag)
+        query[kSecReturnRef as String] = kCFBooleanTrue
+        
+        let status = SecItemCopyMatching(query as CFDictionary, &keyRef)
+        
+        switch status {
+        case errSecSuccess:
+            if keyRef != nil {
+                return (keyRef as! SecKey)
+            } else {
+                return nil
+            }
+        case errSecItemNotFound:
+            return nil
+        default:
+            throw RSAKey.Error.securityError(status)
+        }
+    }
+}
+
+private func getKeyForCustomStorageManager(_ tag: String, keyStorageManager: PublicKeyStorageProtocol) -> SecKey? {
+    do {
+        let data = try keyStorageManager.data(with: tag)
+        let attributes: [String: Any] = [
+                    kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
+                    kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+                    ]
+        if #available(iOS 10.0, *) {
+            return SecKeyCreateWithData(data as CFData, attributes as CFDictionary, nil)
         } else {
             return nil
         }
-    case errSecItemNotFound:
+    } catch {
         return nil
-    default:
-        throw RSAKey.Error.securityError(status)
-    }
-}
-internal func getKeyData(_ tag: String) throws -> Data? {
-    
-    var query = matchQueryWithTag(tag)
-    query[kSecReturnData as String] = kCFBooleanTrue
-    
-    var result: AnyObject? = nil
-    let status = SecItemCopyMatching(query as CFDictionary, &result)
-
-    switch status {
-    case errSecSuccess:
-        return (result as! Data)
-    case errSecItemNotFound:
-        return nil
-    default:
-        throw RSAKey.Error.securityError(status)
-    }
-}
-private func updateKey(_ tag: String, data: Data) throws {
-    let query = matchQueryWithTag(tag)
-    let updateParam = [kSecValueData as String : data]
-    let status = SecItemUpdate(query as CFDictionary, updateParam as CFDictionary)
-    guard status == errSecSuccess else {
-        throw RSAKey.Error.securityError(status)
     }
 }
 
-private func deleteKey(_ tag: String) throws {
-    let query = matchQueryWithTag(tag)
-    let status = SecItemDelete(query as CFDictionary)
-    if status != errSecSuccess {
-        throw RSAKey.Error.securityError(status)
+private func getKeyData(_ tag: String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> Data? {
+    if let keyStorageManager = keyStorageManager {
+        do {
+            return try keyStorageManager.data(with: tag)
+        } catch {
+            return nil
+        }
+    } else {
+        var query = matchQueryWithTag(tag)
+        query[kSecReturnData as String] = kCFBooleanTrue
+        
+        var result: AnyObject? = nil
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+
+        switch status {
+        case errSecSuccess:
+            return (result as! Data)
+        case errSecItemNotFound:
+            return nil
+        default:
+            throw RSAKey.Error.securityError(status)
+        }
+    }
+}
+private func updateKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStorageProtocol? = nil) throws {
+    if let keyStorageManager = keyStorageManager {
+        do {
+            try keyStorageManager.save(data: data, with: tag)
+        }
+    } else {
+        let query = matchQueryWithTag(tag)
+        let updateParam = [kSecValueData as String : data]
+        let status = SecItemUpdate(query as CFDictionary, updateParam as CFDictionary)
+        guard status == errSecSuccess else {
+            throw RSAKey.Error.securityError(status)
+        }
+    }
+}
+
+private func deleteKey(_ tag: String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws {
+    if let keyStorageManager = keyStorageManager {
+        do {
+            try keyStorageManager.delete(with: tag)
+        }
+    } else {
+        let query = matchQueryWithTag(tag)
+        let status = SecItemDelete(query as CFDictionary)
+        if status != errSecSuccess {
+            throw RSAKey.Error.securityError(status)
+        }
     }
 }
 private func matchQueryWithTag(_ tag : String) -> Dictionary<String, Any> {
@@ -179,20 +220,27 @@ private func matchQueryWithTag(_ tag : String) -> Dictionary<String, Any> {
     ]
 }
 
-private func addKey(_ tag: String, data: Data) throws -> SecKey? {
-    var publicAttributes = Dictionary<String, Any>()
-    publicAttributes[kSecAttrKeyType as String] = kSecAttrKeyTypeRSA
-    publicAttributes[kSecClass as String] = kSecClassKey
-    publicAttributes[kSecAttrApplicationTag as String] = tag as CFString
-    publicAttributes[kSecValueData as String] = data as CFData
-    publicAttributes[kSecReturnPersistentRef as String] = kCFBooleanTrue
-    
-    var persistentRef: CFTypeRef?
-    let status = SecItemAdd(publicAttributes as CFDictionary, &persistentRef)
-    if status == noErr || status == errSecDuplicateItem {
-        return try getKey(tag)
+private func addKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> SecKey? {
+    if let keyStorageManager = keyStorageManager {
+        do {
+            try keyStorageManager.save(data: data, with: tag)
+            return try getKey(tag, keyStorageManager: keyStorageManager)
+        }
+    } else {
+        var publicAttributes = Dictionary<String, Any>()
+        publicAttributes[kSecAttrKeyType as String] = kSecAttrKeyTypeRSA
+        publicAttributes[kSecClass as String] = kSecClassKey
+        publicAttributes[kSecAttrApplicationTag as String] = tag as CFString
+        publicAttributes[kSecValueData as String] = data as CFData
+        publicAttributes[kSecReturnPersistentRef as String] = kCFBooleanTrue
+        
+        var persistentRef: CFTypeRef?
+        let status = SecItemAdd(publicAttributes as CFDictionary, &persistentRef)
+        if status == noErr || status == errSecDuplicateItem {
+            return try getKey(tag)
+        }
+        throw RSAKey.Error.securityError(status)
     }
-    throw RSAKey.Error.securityError(status)
 }
 
 ///

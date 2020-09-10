@@ -22,7 +22,18 @@ public struct RSAPKCS1VerifierMacOS: RSAPKCS1VerifierProtocol {
     }
 
     public func verify(_ input: Data, signature: Data) -> Bool {
-        // TODO: implement
-        return false
+        let signedDataHash = (input as NSData).jwt_shaDigest(withSize: self.hashFunction.rawValue)
+        let padding = paddingForHashFunction(self.hashFunction)
+        
+        switch self.hashFunction.rawValue {
+        case 256:
+             return SecKeyVerifySignature(key.value, .rsaSignatureDigestPKCS1v15SHA256, signedDataHash as CFData, signature as CFData, nil)
+        case 384:
+            return SecKeyVerifySignature(key.value, .rsaSignatureDigestPKCS1v15SHA384, signedDataHash as CFData, signature as CFData, nil)
+        case 512:
+            return SecKeyVerifySignature(key.value, .rsaSignatureDigestPKCS1v15SHA512, signedDataHash as CFData, signature as CFData, nil)
+        default:
+            return false
+        }
     }
 }
