@@ -13,6 +13,7 @@
 let VERSION = "2.0.1"
 
 public struct OktaJWTValidator {
+    public var keyStorageManager: PublicKeyStorageProtocol? = nil
     private var validatorOptions: [String: Any]
     private var validationType: OktaJWTVerificationType
     private var jwk: [String: String]?
@@ -227,7 +228,7 @@ public struct OktaJWTValidator {
             throw OktaJWTVerificationError.invalidModulusOrExponent
         }
 
-        let key = try RSAKey.registerOrUpdateKey(modulus: decodedModulus!, exponent: decodedExponent!, tag: "com.okta.jwt.\(kid)")
+        let key = try RSAKey.registerOrUpdateKey(modulus: decodedModulus!, exponent: decodedExponent!, tag: "com.okta.jwt.\(kid)", keyStorageManager: keyStorageManager)
 
         // Cache key
         OktaKeychain.loadKey(tag: "com.okta.jwt.\(kid)")
