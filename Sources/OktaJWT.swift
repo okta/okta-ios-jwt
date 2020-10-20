@@ -183,7 +183,7 @@ public struct OktaJWTValidator {
      An RSAKey for validating the JWKs signature
      */
     private func getOrRetrieveKey(jwk: [String: String]?, kid: String) throws -> RSAKey {
-        if let key = RSAKey.registeredKeyWithTag("com.okta.jwt.\(kid)") {
+        if let key = RSAKey.registeredKeyWithTag("com.okta.jwt.\(kid)", keyStorageManager: keyStorageManager) {
             return key
         }
 
