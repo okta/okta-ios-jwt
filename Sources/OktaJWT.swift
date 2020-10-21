@@ -231,8 +231,33 @@ public struct OktaJWTValidator {
         let key = try RSAKey.registerOrUpdateKey(modulus: decodedModulus!, exponent: decodedExponent!, tag: "com.okta.jwt.\(kid)", keyStorageManager: keyStorageManager)
 
         // Cache key
-        OktaKeychain.loadKey(tag: "com.okta.jwt.\(kid)")
-
+        loadKey(tag: "com.okta.jwt.\(kid)")
         return key
+    }
+
+    /**
+    Loads the stored JWK tag into a the Storage so it can be cached and/or removed at
+    a later time.
+    - parameters:
+        - tag: Hash to reference the stored item
+    */
+    private func loadKey(tag: String){
+        if let keyStorageManager = keyStorageManager {
+            do {
+                let storedKey = try keyStorageManager.data(with: "com.okta.jwt.keys")
+                if !storedKey.isEmpty {
+                    var storedKeyString : String = ""
+                    storedKeyString = String(data: storedKey, encoding: .utf8) ?? ""
+                    try keyStorageManager.delete(with: storedKeyString)
+                    RSAKey.removeKeyWithTag(tag)
+                }
+                let objectData = tag.data(using: .utf8)
+                try keyStorageManager.save(data: objectData!, with: "com.okta.jwt.keys")
+            } catch let error {
+              print("Error caching key: \(error)")
+            }
+        } else {
+            OktaKeychain.loadKey(tag: tag)
+        }
     }
 }
