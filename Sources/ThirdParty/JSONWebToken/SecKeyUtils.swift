@@ -213,11 +213,15 @@ private func deleteKey(_ tag: String, keyStorageManager: PublicKeyStorageProtoco
     }
 }
 private func matchQueryWithTag(_ tag : String) -> Dictionary<String, Any> {
-    return [
+    var query: [String: Any] = [
         kSecAttrKeyType as String : kSecAttrKeyTypeRSA,
         kSecClass as String : kSecClassKey,
         kSecAttrApplicationTag as String : tag,
     ]
+    if #available(macOS 10.15, iOS 13.0, *) {
+        query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+    }
+    return query
 }
 
 private func addKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> SecKey? {
@@ -234,6 +238,10 @@ private func addKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStora
         publicAttributes[kSecValueData as String] = data as CFData
         publicAttributes[kSecReturnPersistentRef as String] = kCFBooleanTrue
         
+        if #available(macOS 10.15, iOS 13.0, *) {
+            publicAttributes[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+        }
+
         var persistentRef: CFTypeRef?
         let status = SecItemAdd(publicAttributes as CFDictionary, &persistentRef)
         if status == noErr || status == errSecDuplicateItem {
