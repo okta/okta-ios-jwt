@@ -43,11 +43,11 @@ public class OktaKeychain: NSObject {
             kSecValueData as String: objectData!,
             kSecAttrAccount as String: key
         ]
-
-        if #available(macOS 10.15, iOS 13.0, *) {
+        #if os(macOS)
+        if #available(macOS 10.15, *) {
             q[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
-
+        #endif
         // Delete existing (if applicable)
         SecItemDelete(q as CFDictionary)
 
@@ -69,11 +69,12 @@ public class OktaKeychain: NSObject {
             kSecMatchLimit as String: kSecMatchLimitOne,
             kSecAttrAccount as String: key
         ]
-
-        if #available(macOS 10.15, iOS 13.0, *) {
+        
+        #if os(macOS)
+        if #available(macOS 10.15, *) {
             q[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
-
+        #endif
         var ref: AnyObject? = nil
 
         let sanityCheck = SecItemCopyMatching(q as CFDictionary, &ref)
@@ -102,9 +103,11 @@ public class OktaKeychain: NSObject {
             kSecAttrAccount as String: key
         ]
 
-        if #available(macOS 10.15, iOS 13.0, *) {
+        #if os(macOS)
+        if #available(macOS 10.15, *) {
             q[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
+        #endif
 
         // Delete existing (if applicable)
         let sanityCheck = SecItemDelete(q as CFDictionary)
@@ -127,9 +130,11 @@ public class OktaKeychain: NSObject {
 
         for secItemClass in secItemClasses {
             var dictionary: [String: Any] = [ kSecClass as String:secItemClass ]
-            if #available(macOS 10.15, iOS 13.0, *) {
+            #if os(macOS)
+            if #available(macOS 10.15, *) {
                 dictionary[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
             }
+            #endif
             SecItemDelete(dictionary as CFDictionary)
         }
     }

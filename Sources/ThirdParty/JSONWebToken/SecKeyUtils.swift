@@ -218,9 +218,11 @@ private func matchQueryWithTag(_ tag : String) -> Dictionary<String, Any> {
         kSecClass as String : kSecClassKey,
         kSecAttrApplicationTag as String : tag,
     ]
-    if #available(macOS 10.15, iOS 13.0, *) {
+    #if os(macOS)
+    if #available(macOS 10.15, *) {
         query[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
     }
+    #endif
     return query
 }
 
@@ -237,10 +239,11 @@ private func addKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStora
         publicAttributes[kSecAttrApplicationTag as String] = tag as CFString
         publicAttributes[kSecValueData as String] = data as CFData
         publicAttributes[kSecReturnPersistentRef as String] = kCFBooleanTrue
-        
-        if #available(macOS 10.15, iOS 13.0, *) {
+        #if os(macOS)
+        if #available(macOS 10.15, *) {
             publicAttributes[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
         }
+        #endif
 
         var persistentRef: CFTypeRef?
         let status = SecItemAdd(publicAttributes as CFDictionary, &persistentRef)
