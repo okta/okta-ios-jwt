@@ -229,6 +229,7 @@
 		2FF91A7E23B53E3000CFC89C /* JSONWebToken+Okta */ = {
 			isa = PBXGroup;
 			children = (
+				0332BB82250AC420007F3C48 /* KeyStorage.swift */,
 				2FF91A8323B53E3000CFC89C /* iOS */,
 				2FF91A7F23B53E3000CFC89C /* macOS */,
 				2FF91A8223B53E3000CFC89C /* RSAPKCS1VerifierProtocol.swift */,
@@ -242,7 +243,6 @@
 			children = (
 				2FF91A8023B53E3000CFC89C /* RSAPKCS1VerifierMacOS.swift */,
 				2FF91A8123B53E3000CFC89C /* RSAPKCS1SignerMacOS.swift */,
-				0332BB82250AC420007F3C48 /* KeyStorage.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -829,7 +829,6 @@
 		2FF91ADB23B5EC5600CFC89C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
@@ -849,7 +848,6 @@
 		2FF91ADC23B5EC5600CFC89C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/macOS/Info.plist;

@@ -38,16 +38,20 @@ public class OktaKeychain: NSObject {
     internal class func set(key: String, _ object: String) {
         let objectData = object.data(using: .utf8)
 
-        let q = [
+        var q: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword as String,
             kSecValueData as String: objectData!,
             kSecAttrAccount as String: key
-        ] as CFDictionary
-
+        ]
+        #if os(macOS)
+        if #available(macOS 10.15, *) {
+            q[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+        }
+        #endif
         // Delete existing (if applicable)
-        SecItemDelete(q)
+        SecItemDelete(q as CFDictionary)
 
-        let sanityCheck = SecItemAdd(q, nil)
+        let sanityCheck = SecItemAdd(q as CFDictionary, nil)
         if sanityCheck != noErr {
             print("Error Storing to Keychain: \(sanityCheck.description)")
         }
@@ -59,16 +63,21 @@ public class OktaKeychain: NSObject {
          - key: Hash to reference the stored Keychain item
      */
     internal class func get(_ key: String) -> String? {
-        let q = [
+        var q: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecReturnData as String: kCFBooleanTrue,
             kSecMatchLimit as String: kSecMatchLimitOne,
             kSecAttrAccount as String: key
-        ] as CFDictionary
-
+        ]
+        
+        #if os(macOS)
+        if #available(macOS 10.15, *) {
+            q[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+        }
+        #endif
         var ref: AnyObject? = nil
 
-        let sanityCheck = SecItemCopyMatching(q, &ref)
+        let sanityCheck = SecItemCopyMatching(q as CFDictionary, &ref)
         if sanityCheck != noErr { return nil }
 
         if let parsedData = ref as? Data {
@@ -88,14 +97,20 @@ public class OktaKeychain: NSObject {
             return
         }
 
-        let q = [
+        var q: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword as String,
             kSecValueData as String: object.data(using: .utf8)!,
             kSecAttrAccount as String: key
-        ] as CFDictionary
+        ]
+
+        #if os(macOS)
+        if #available(macOS 10.15, *) {
+            q[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+        }
+        #endif
 
         // Delete existing (if applicable)
-        let sanityCheck = SecItemDelete(q)
+        let sanityCheck = SecItemDelete(q as CFDictionary)
         if sanityCheck != noErr {
             print("Error deleting keychain item: \(sanityCheck.description)")
         }
@@ -114,8 +129,13 @@ public class OktaKeychain: NSObject {
         ]
 
         for secItemClass in secItemClasses {
-            let dictionary = [ kSecClass as String:secItemClass ] as CFDictionary
-            SecItemDelete(dictionary)
+            var dictionary: [String: Any] = [ kSecClass as String:secItemClass ]
+            #if os(macOS)
+            if #available(macOS 10.15, *) {
+                dictionary[kSecUseDataProtectionKeychain as String] = kCFBooleanTrue
+            }
+            #endif
+            SecItemDelete(dictionary as CFDictionary)
         }
     }
 }
