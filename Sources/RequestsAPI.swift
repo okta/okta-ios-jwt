@@ -77,9 +77,10 @@ open class RequestsAPI: NSObject {
      A JSON representation of the HTTP response body.
      */
     open class func getJSON(_ url: URL) -> [String: Any]? {
-        let data = self.get(url)
-
-        if let json = try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+        guard let data = self.get(url) else {
+            return nil
+        }
+        if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
             return json
         }
 
