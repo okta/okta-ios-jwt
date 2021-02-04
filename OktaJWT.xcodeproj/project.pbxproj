@@ -88,6 +88,7 @@
 		A12607CD22FA17B0007AE25E /* Utils.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074D22FA0D34007AE25E /* Utils.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		A12607D322FA19F7007AE25E /* NSData+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = A126079022FA0F8E007AE25E /* NSData+HMAC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A12607D422FA19F7007AE25E /* NSData+SHA.h in Headers */ = {isa = PBXBuildFile; fileRef = A126079122FA0F8E007AE25E /* NSData+SHA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CBC727FC25CCB96F0040BCC1 /* RequestAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC727FB25CCB96F0040BCC1 /* RequestAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +177,7 @@
 		A12607E522FB4C61007AE25E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A12607E622FB4C61007AE25E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A12607E722FB4C61007AE25E /* OktaJWT.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = OktaJWT.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CBC727FB25CCB96F0040BCC1 /* RequestAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 				A126079922FA131B007AE25E /* TestJWTs.plist */,
 				A126073F22FA0C4B007AE25E /* MiscTests.swift */,
 				A126073D22FA0C4B007AE25E /* TestUtilities.swift */,
+				CBC727FB25CCB96F0040BCC1 /* RequestAPITests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 			files = (
 				2FF91A9B23B5421F00CFC89C /* JWTTests.swift in Sources */,
 				A126074422FA0C4B007AE25E /* MiscTests.swift in Sources */,
+				CBC727FC25CCB96F0040BCC1 /* RequestAPITests.swift in Sources */,
 				2F16C59523C746EC009BBA3F /* IdTokenTests.swift in Sources */,
 				2FF91A9C23B5422400CFC89C /* TestUtilities.swift in Sources */,
 			);
