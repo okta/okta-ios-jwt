@@ -251,8 +251,10 @@ public struct OktaJWTValidator {
                     try keyStorageManager.delete(with: storedKeyString)
                     RSAKey.removeKeyWithTag(tag)
                 }
-                let objectData = tag.data(using: .utf8)
-                try keyStorageManager.save(data: objectData!, with: "com.okta.jwt.keys")
+                guard let objectData = tag.data(using: .utf8) else {
+                    return
+                }
+                try keyStorageManager.save(data: objectData, with: "com.okta.jwt.keys")
             } catch let error {
               print("Error caching key: \(error)")
             }
