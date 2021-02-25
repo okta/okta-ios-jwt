@@ -34,7 +34,7 @@ public extension RSAPKCS1VerifierProtocol {
 
 public class RSAPKCS1VerifierFactory {
     public static func createVerifier(key: RSAKey, hashFunction: SignatureAlgorithm.HashFunction) -> RSAPKCS1VerifierProtocol {
-#if os(iOS)
+#if os(iOS) || os(watchOS)
         return RSAPKCS1VerifierIOS(key: key, hashFunction: hashFunction)
 #elseif os(OSX)
         return RSAPKCS1VerifierMacOS(key: key, hashFunction: hashFunction)

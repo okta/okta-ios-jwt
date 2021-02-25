@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 Library to validate JSON Web Tokens.
                        DESC
-  s.platforms        = { :ios => "12.0", :osx => "10.14"}
+  s.platforms        = { :ios => "12.0", :watchos => "6.0", :osx => "10.14"}
   s.homepage         = 'https://github.com/okta/okta-ios-jwt'
   s.license          = { :type => 'Apache-2.0', :file => 'LICENSE' }
   s.author           = { 'Okta Developers' => 'developers@okta.com' }
@@ -14,10 +14,12 @@ Library to validate JSON Web Tokens.
   s.social_media_url = 'https://twitter.com/oktaDev'
 
   s.ios.deployment_target = '12.0'
+  s.watchos.deployment_target = '6.0'
   s.osx.deployment_target = '10.14'
 
   s.source_files = 'Sources/**/*.{h,m,swift}'
-  s.ios.exclude_files = 'Sources/**/macOS/**'
-  s.osx.exclude_files = 'Sources/**/iOS/**'
+  s.ios.exclude_files = 'Sources/**/{watch,mac}OS/**'
+  s.watchos.exclude_files = 'Sources/**/{mac,i}OS/**'
+  s.osx.exclude_files = 'Sources/**/{watch,i}OS/**'
   s.swift_version = '4.2'
 end
