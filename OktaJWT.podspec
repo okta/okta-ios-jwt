@@ -18,8 +18,8 @@ Library to validate JSON Web Tokens.
   s.osx.deployment_target = '10.14'
 
   s.source_files = 'Sources/**/*.{h,m,swift}'
-  s.ios.exclude_files = 'Sources/**/{watch,mac}OS/**'
-  s.watchos.exclude_files = 'Sources/**/{mac,i}OS/**'
-  s.osx.exclude_files = 'Sources/**/{watch,i}OS/**'
+  s.ios.exclude_files = 'Sources/**/macOS/**'
+  s.watchos.exclude_files = 'Sources/**/macOS/**'
+  s.osx.exclude_files = 'Sources/**/iOS/**'
   s.swift_version = '4.2'
 end
