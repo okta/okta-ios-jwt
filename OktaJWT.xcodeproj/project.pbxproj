@@ -49,6 +49,42 @@
 		2FF91ADE23B5EC8D00CFC89C /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126079922FA131B007AE25E /* TestJWTs.plist */; };
 		2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073F22FA0C4B007AE25E /* MiscTests.swift */; };
 		2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073D22FA0C4B007AE25E /* TestUtilities.swift */; };
+		96EFAB6725E8607C007BEDA2 /* SecKeyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076A22FA0D9B007AE25E /* SecKeyUtils.swift */; };
+		96EFAB6825E8607C007BEDA2 /* SignatureValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076322FA0D9B007AE25E /* SignatureValidator.swift */; };
+		96EFAB6925E8607C007BEDA2 /* TokenSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076B22FA0D9B007AE25E /* TokenSigner.swift */; };
+		96EFAB6A25E8607C007BEDA2 /* JWTVerificationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074722FA0D34007AE25E /* JWTVerificationErrors.swift */; };
+		96EFAB6B25E8607C007BEDA2 /* RSAPKCS1SignerIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF91A8523B53E3000CFC89C /* RSAPKCS1SignerIOS.swift */; };
+		96EFAB6C25E8607C007BEDA2 /* KeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0332BB82250AC420007F3C48 /* KeyStorage.swift */; };
+		96EFAB6D25E8607C007BEDA2 /* JWTVerificationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074C22FA0D34007AE25E /* JWTVerificationTypes.swift */; };
+		96EFAB6E25E8607C007BEDA2 /* NSData+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = A126079322FA0F8E007AE25E /* NSData+SHA.m */; };
+		96EFAB6F25E8607C007BEDA2 /* JSONWebToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126077022FA0D9B007AE25E /* JSONWebToken.swift */; };
+		96EFAB7025E8607C007BEDA2 /* NSData+HMAC.h in Headers */ = {isa = PBXBuildFile; fileRef = A126079022FA0F8E007AE25E /* NSData+HMAC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFAB7125E8607C007BEDA2 /* ClaimValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076922FA0D9B007AE25E /* ClaimValidator.swift */; };
+		96EFAB7225E8607C007BEDA2 /* RSASSA_PKCS1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076222FA0D9B007AE25E /* RSASSA_PKCS1.swift */; };
+		96EFAB7325E8607C007BEDA2 /* RSAPKCS1VerifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF91A8223B53E3000CFC89C /* RSAPKCS1VerifierProtocol.swift */; };
+		96EFAB7425E8607C007BEDA2 /* NSData+Base64URLEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076822FA0D9B007AE25E /* NSData+Base64URLEncoding.swift */; };
+		96EFAB7525E8607C007BEDA2 /* OktaJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074A22FA0D34007AE25E /* OktaJWT.swift */; };
+		96EFAB7625E8607C007BEDA2 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074B22FA0D34007AE25E /* Keychain.swift */; };
+		96EFAB7725E8607C007BEDA2 /* JWTVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074822FA0D34007AE25E /* JWTVerifier.swift */; };
+		96EFAB7825E8607C007BEDA2 /* RSAPKCS1VerifierIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF91A8423B53E3000CFC89C /* RSAPKCS1VerifierIOS.swift */; };
+		96EFAB7925E8607C007BEDA2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074D22FA0D34007AE25E /* Utils.swift */; };
+		96EFAB7A25E8607C007BEDA2 /* NSData+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = A126079222FA0F8E007AE25E /* NSData+HMAC.m */; };
+		96EFAB7B25E8607C007BEDA2 /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074E22FA0D34007AE25E /* APIErrors.swift */; };
+		96EFAB7C25E8607C007BEDA2 /* SignatureAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076722FA0D9B007AE25E /* SignatureAlgorithm.swift */; };
+		96EFAB7D25E8607C007BEDA2 /* TokenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076D22FA0D9B007AE25E /* TokenValidator.swift */; };
+		96EFAB7E25E8607C007BEDA2 /* RequestsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074922FA0D34007AE25E /* RequestsAPI.swift */; };
+		96EFAB7F25E8607C007BEDA2 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076522FA0D9B007AE25E /* HMAC.swift */; };
+		96EFAB8025E8607C007BEDA2 /* RSAPKCS1SignerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF91A8623B53E3000CFC89C /* RSAPKCS1SignerProtocol.swift */; };
+		96EFAB8125E8607C007BEDA2 /* NSData+SHA.h in Headers */ = {isa = PBXBuildFile; fileRef = A126079122FA0F8E007AE25E /* NSData+SHA.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFAB9925E860B4007BEDA2 /* OktaJWTLib_watchOS_BridgingHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 96EFAB9725E860B4007BEDA2 /* OktaJWTLib_watchOS_BridgingHeader.h */; };
+		96EFABAD25E86111007BEDA2 /* APIErrors.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074E22FA0D34007AE25E /* APIErrors.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFABAE25E86111007BEDA2 /* JWTVerificationErrors.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074722FA0D34007AE25E /* JWTVerificationErrors.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFABAF25E86111007BEDA2 /* JWTVerificationTypes.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074C22FA0D34007AE25E /* JWTVerificationTypes.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFABB025E86111007BEDA2 /* JWTVerifier.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074822FA0D34007AE25E /* JWTVerifier.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFABB125E86111007BEDA2 /* Keychain.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074B22FA0D34007AE25E /* Keychain.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFABB225E86111007BEDA2 /* OktaJWT.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074A22FA0D34007AE25E /* OktaJWT.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFABB325E86111007BEDA2 /* RequestsAPI.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074922FA0D34007AE25E /* RequestsAPI.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		96EFABB425E86111007BEDA2 /* Utils.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074D22FA0D34007AE25E /* Utils.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		A126073422FA0AF7007AE25E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126072D22FA0AF6007AE25E /* AppDelegate.swift */; };
 		A126073722FA0AF7007AE25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A126073122FA0AF7007AE25E /* Assets.xcassets */; };
 		A126073822FA0AF7007AE25E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073222FA0AF7007AE25E /* ViewController.swift */; };
@@ -138,6 +174,9 @@
 		2FF91AA323B5E68400CFC89C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF91AAB23B5E8D300CFC89C /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF91AD223B5EC5600CFC89C /* OktaJWTTests_macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		96EFAB5325E85F8E007BEDA2 /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96EFAB9725E860B4007BEDA2 /* OktaJWTLib_watchOS_BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OktaJWTLib_watchOS_BridgingHeader.h; sourceTree = "<group>"; };
+		96EFAB9825E860B4007BEDA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A121D21C22FA090E006C1839 /* OktaJWT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OktaJWT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A121D23022FA0913006C1839 /* OktaJWTTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A126072D22FA0AF6007AE25E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Tests/OktaJWTTestSuite/AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +238,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FF91AD723B5EC5600CFC89C /* OktaJWTLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96EFAB5025E85F8E007BEDA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				2FF91A9623B53FB100CFC89C /* iOS */,
+				96EFAB9625E860B4007BEDA2 /* watchOS */,
 				2FF91A9223B53FB100CFC89C /* macOS */,
 			);
 			path = Framework;
@@ -311,6 +358,15 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		96EFAB9625E860B4007BEDA2 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				96EFAB9725E860B4007BEDA2 /* OktaJWTLib_watchOS_BridgingHeader.h */,
+				96EFAB9825E860B4007BEDA2 /* Info.plist */,
+			);
+			path = watchOS;
+			sourceTree = "<group>";
+		};
 		A121D21322FA090E006C1839 = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +391,7 @@
 				A12607A822FA16BA007AE25E /* OktaJWTLib.framework */,
 				2FF91AAB23B5E8D300CFC89C /* OktaJWTLib.framework */,
 				2FF91AD223B5EC5600CFC89C /* OktaJWTTests_macOS.xctest */,
+				96EFAB5325E85F8E007BEDA2 /* OktaJWTLib.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +487,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96EFAB4E25E85F8E007BEDA2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96EFAB9925E860B4007BEDA2 /* OktaJWTLib_watchOS_BridgingHeader.h in Headers */,
+				96EFABAD25E86111007BEDA2 /* APIErrors.swift in Headers */,
+				96EFABAE25E86111007BEDA2 /* JWTVerificationErrors.swift in Headers */,
+				96EFABAF25E86111007BEDA2 /* JWTVerificationTypes.swift in Headers */,
+				96EFABB025E86111007BEDA2 /* JWTVerifier.swift in Headers */,
+				96EFABB125E86111007BEDA2 /* Keychain.swift in Headers */,
+				96EFABB225E86111007BEDA2 /* OktaJWT.swift in Headers */,
+				96EFABB325E86111007BEDA2 /* RequestsAPI.swift in Headers */,
+				96EFABB425E86111007BEDA2 /* Utils.swift in Headers */,
+				96EFAB7025E8607C007BEDA2 /* NSData+HMAC.h in Headers */,
+				96EFAB8125E8607C007BEDA2 /* NSData+SHA.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A12607A322FA16BA007AE25E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,6 +561,24 @@
 			productName = OktaJWTTests_macOS;
 			productReference = 2FF91AD223B5EC5600CFC89C /* OktaJWTTests_macOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		96EFAB5225E85F8E007BEDA2 /* OktaJWTLib_watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96EFAB5A25E85F8F007BEDA2 /* Build configuration list for PBXNativeTarget "OktaJWTLib_watchOS" */;
+			buildPhases = (
+				96EFAB4E25E85F8E007BEDA2 /* Headers */,
+				96EFAB4F25E85F8E007BEDA2 /* Sources */,
+				96EFAB5025E85F8E007BEDA2 /* Frameworks */,
+				96EFAB5125E85F8E007BEDA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OktaJWTLib_watchOS;
+			productName = OktaJWTLib_watchOS;
+			productReference = 96EFAB5325E85F8E007BEDA2 /* OktaJWTLib.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 		A121D21B22FA090E006C1839 /* OktaJWT_iOS */ = {
 			isa = PBXNativeTarget;
@@ -557,6 +650,9 @@
 					2FF91AD123B5EC5600CFC89C = {
 						CreatedOnToolsVersion = 11.3;
 					};
+					96EFAB5225E85F8E007BEDA2 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 					A121D21B22FA090E006C1839 = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
@@ -586,6 +682,7 @@
 			targets = (
 				A12607A722FA16BA007AE25E /* OktaJWTLib_iOS */,
 				2FF91AAA23B5E8D300CFC89C /* OktaJWTLib_macOS */,
+				96EFAB5225E85F8E007BEDA2 /* OktaJWTLib_watchOS */,
 				A121D21B22FA090E006C1839 /* OktaJWT_iOS */,
 				A121D22F22FA0913006C1839 /* OktaJWTTests_iOS */,
 				2FF91AD123B5EC5600CFC89C /* OktaJWTTests_macOS */,
@@ -608,6 +705,13 @@
 				CB0101CE25D3B9A600E38341 /* sampleCorrectJSON.json in Resources */,
 				CB0101C625D3B8C200E38341 /* sampleIncorrectJSON.json in Resources */,
 				2FF91ADE23B5EC8D00CFC89C /* TestJWTs.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96EFAB5125E85F8E007BEDA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +784,38 @@
 				0332BB81250ABE01007F3C48 /* JWTTestsMacOS.swift in Sources */,
 				2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */,
 				2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96EFAB4F25E85F8E007BEDA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96EFAB7525E8607C007BEDA2 /* OktaJWT.swift in Sources */,
+				96EFAB6725E8607C007BEDA2 /* SecKeyUtils.swift in Sources */,
+				96EFAB6E25E8607C007BEDA2 /* NSData+SHA.m in Sources */,
+				96EFAB6825E8607C007BEDA2 /* SignatureValidator.swift in Sources */,
+				96EFAB7125E8607C007BEDA2 /* ClaimValidator.swift in Sources */,
+				96EFAB7B25E8607C007BEDA2 /* APIErrors.swift in Sources */,
+				96EFAB7A25E8607C007BEDA2 /* NSData+HMAC.m in Sources */,
+				96EFAB7225E8607C007BEDA2 /* RSASSA_PKCS1.swift in Sources */,
+				96EFAB6B25E8607C007BEDA2 /* RSAPKCS1SignerIOS.swift in Sources */,
+				96EFAB7825E8607C007BEDA2 /* RSAPKCS1VerifierIOS.swift in Sources */,
+				96EFAB6925E8607C007BEDA2 /* TokenSigner.swift in Sources */,
+				96EFAB7325E8607C007BEDA2 /* RSAPKCS1VerifierProtocol.swift in Sources */,
+				96EFAB6A25E8607C007BEDA2 /* JWTVerificationErrors.swift in Sources */,
+				96EFAB7925E8607C007BEDA2 /* Utils.swift in Sources */,
+				96EFAB7F25E8607C007BEDA2 /* HMAC.swift in Sources */,
+				96EFAB7D25E8607C007BEDA2 /* TokenValidator.swift in Sources */,
+				96EFAB7E25E8607C007BEDA2 /* RequestsAPI.swift in Sources */,
+				96EFAB6C25E8607C007BEDA2 /* KeyStorage.swift in Sources */,
+				96EFAB7425E8607C007BEDA2 /* NSData+Base64URLEncoding.swift in Sources */,
+				96EFAB6D25E8607C007BEDA2 /* JWTVerificationTypes.swift in Sources */,
+				96EFAB8025E8607C007BEDA2 /* RSAPKCS1SignerProtocol.swift in Sources */,
+				96EFAB7725E8607C007BEDA2 /* JWTVerifier.swift in Sources */,
+				96EFAB6F25E8607C007BEDA2 /* JSONWebToken.swift in Sources */,
+				96EFAB7C25E8607C007BEDA2 /* SignatureAlgorithm.swift in Sources */,
+				96EFAB7625E8607C007BEDA2 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +1013,74 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		96EFAB5825E85F8F007BEDA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Framework/watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.3.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
+				PRODUCT_MODULE_NAME = OktaJWTLib;
+				PRODUCT_NAME = OktaJWTLib;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Framework/watchOS/OktaJWTLib_watchOS_BridgingHeader.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		96EFAB5925E85F8F007BEDA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Framework/watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.3.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
+				PRODUCT_MODULE_NAME = OktaJWTLib;
+				PRODUCT_NAME = OktaJWTLib;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Framework/watchOS/OktaJWTLib_watchOS_BridgingHeader.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -1161,6 +1365,15 @@
 			buildConfigurations = (
 				2FF91ADB23B5EC5600CFC89C /* Debug */,
 				2FF91ADC23B5EC5600CFC89C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96EFAB5A25E85F8F007BEDA2 /* Build configuration list for PBXNativeTarget "OktaJWTLib_watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96EFAB5825E85F8F007BEDA2 /* Debug */,
+				96EFAB5925E85F8F007BEDA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -31,7 +31,7 @@ public extension RSAPKCS1SignerProtocol {
 
 public class RSAPKCS1SignerFactory {
     public static func createSigner(hashFunction: SignatureAlgorithm.HashFunction, key: RSAKey) -> RSAPKCS1SignerProtocol {
-#if os(iOS)
+#if os(iOS) || os(watchOS)
         return RSAPKCS1SignerIOS(hashFunction: hashFunction, key: key)
 #elseif os(OSX)
         return RSAPKCS1SignerMacOS(hashFunction: hashFunction, key: key)
