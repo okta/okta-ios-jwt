@@ -55,6 +55,13 @@ open class Utils: NSObject {
         return Data(base64Encoded: base64, options: .ignoreUnknownCharacters)
     }
 
+    /**
+     Returns a hash function from a string formatted like the ALG section of a protected header.
+     - parameters:
+         - alg: the string representing the hash function
+     - returns:
+     the hash function or nil of not supported
+     */
     open class func hashFunction(_ alg: String) -> SignatureAlgorithm.HashFunction? {
     switch alg {
         case "RS256":
