@@ -56,18 +56,22 @@ open class Utils: NSObject {
     }
 
     /**
-     Checks to see if the current "alg" type is supported by this library.
+     Returns a hash function from a string formatted like the ALG section of a protected header.
      - parameters:
-         - alg: String abbreviation of the algorithm type
+         - alg: the string representing the hash function
      - returns:
-     A boolean if the alg type is supported
+     the hash function or nil of not supported
      */
-    open class func isSupportedAlg(_ alg: String) -> Bool {
-        switch alg {
-            case "RS256":
-                return true
-            default:
-                return false
+    open class func hashFunction(_ alg: String) -> SignatureAlgorithm.HashFunction? {
+    switch alg {
+        case "RS256":
+            return .sha256
+        case "RS384":
+            return .sha384
+        case "RS512":
+            return .sha512
+        default:
+            return nil
         }
     }
 
@@ -136,6 +140,7 @@ open class Utils: NSObject {
         return "okta-ios-jwt/\(VERSION) macOS/\(ProcessInfo.processInfo.operatingSystemVersion) Device/\(Utils.deviceModel())"
 #endif
     }
+
 
     /**
      Returns the device model used when making API requests

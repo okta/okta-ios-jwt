@@ -97,7 +97,7 @@ public struct OktaJWTValidator {
         }
 
         // Check for valid algorithm type
-        if !Utils.isSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier) {
+        guard let hashFunction = Utils.hashFunction(jwt.signatureAlgorithm.jwtIdentifier) else {
             throw OktaJWTVerificationError.nonSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier)
         }
 
@@ -133,7 +133,7 @@ public struct OktaJWTValidator {
                 key = self.key!
         }
 
-        let signatureValidation = RSAPKCS1VerifierFactory.createVerifier(key: key, hashFunction: .sha256).validateToken(jwt)
+        let signatureValidation = RSAPKCS1VerifierFactory.createVerifier(key: key, hashFunction: hashFunction).validateToken(jwt)
         if !signatureValidation.isValid {
             throw OktaJWTVerificationError.invalidSignature
         }

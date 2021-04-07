@@ -105,7 +105,23 @@ public class TestUtils {
     ]
 
     static var exampleRSAKey = TestUtils.createRSAKey(modulus: TestUtils.exampleJWK["n"]!, exponent: TestUtils.exampleJWK["e"]!)
-    
+
+
+    class func validRsaKey() -> RSAKey {
+        let publicKeyPem =
+                "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAq0xqpKiMGiH5lVlJI/xBx3b0ZTRXlQfB/+7M9+f8jspyq6YJCt3dlIVRd++GwgvSi8TSmPw43TT+EE7KLUetd810LNi71t9u37JMZD1/z4KJZ5Ji8AnFB7iDfPpVI7a7BYzx/IvEW+xuCsJLBvrV0lBs0Q0btMzFTlr2RBfB4B8GWnGhEAYeaKndA+8aYy2kifbLUCXr2OLKJqP90oO5kF3P1xaaDQ/B2yUxiURieeVQURPgcmkJu07ezRzJ7W8+UbYXGhyBjReGKX8IHtfpiunYGPL080TdA3JHc7f1STAdry/87bRUjhfW7M6XjOBTQhdEKtv0OreRzEKPrClvdrYfTlgaAh8iqQpcyM4k2TlUcb9ihN6bOYWztoj5O4YQpms/r6rcf4CecIuMb47AjI69pNU054JFeVto2tjWbFO6nSTsiBJh14n2FwMffrFssvuEo/tzKbNqmXn7lpNf1VhmDUF3VewY+tGVcY5TIEYamYuMCcpYnBR24aH7rhP+hNi9nsRjMwugTk2g5YQyiFeSghjpxmxf3lcjd0UnpdO+7gdpqvFOTITHMT0asctiAEVkraUzfhMl37Yhddgnza0NMaCrSlIS5mhOre6ekgnHE9YocmZuFbJJQmsym7oBssA/scMc0b67iJJA/KIGAZaRaGP7Zh3X4J4FHi9kof0CAwEAAQ=="
+
+        var error: Unmanaged<CFError>?
+        let attributesRSAPub: [String:Any] = [
+            kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+            kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
+            kSecAttrKeySizeInBits as String: 2048,
+            kSecAttrIsPermanent as String: false
+        ]
+        let pubKeyRSAData = Data(base64Encoded: publicKeyPem, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
+        return RSAKey(secKey: SecKeyCreateWithData(pubKeyRSAData! as CFData, attributesRSAPub as CFDictionary, &error)!)
+    }
+
     class func getMacExampleRSAKey(keyStorageManager: PublicKeyStorageProtocol?) -> RSAKey? {
         return TestUtils.createRSAKey(modulus: TestUtils.exampleJWK["n"]!, exponent: TestUtils.exampleJWK["e"]!, keyStorageManager: keyStorageManager)
     }
