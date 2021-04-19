@@ -57,7 +57,7 @@ public extension RSAKey {
     }
     @discardableResult public static func registerOrUpdateKey(_ keyData : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> RSAKey {
         let key : SecKey? = try {
-            if let existingData = try getKeyData(tag) {
+            if let existingData = try getKeyData(tag, keyStorageManager: keyStorageManager) {
                 let newData = keyData.dataByStrippingX509Header()
                 if existingData != newData {
                     try updateKey(tag, data: newData, keyStorageManager: keyStorageManager)

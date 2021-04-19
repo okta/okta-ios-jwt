@@ -11,7 +11,11 @@
  */
 
 import XCTest
+#if SWIFT_PACKAGE
+@testable import OktaJWT
+#else
 @testable import OktaJWTLib
+#endif
 
 // TODO: port tests to MacOS
 class IdTokenTests: XCTestCase {
@@ -30,7 +34,8 @@ class IdTokenTests: XCTestCase {
     func testInvalidIssuerForIdToken() {
         let options = [ "issuer": "https://myrealsite.com"]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "Token issuer does not match the valid issuer")
@@ -83,7 +88,9 @@ class IdTokenTests: XCTestCase {
             "audience": TestUtils.clientId
         ]
 
-        let validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWKModulus)
+        var validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWKModulus)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "Signature validation failed")
@@ -97,7 +104,9 @@ class IdTokenTests: XCTestCase {
             "exp": true
         ] as [String: Any]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "The JWT expired and is no longer valid")
@@ -112,7 +121,9 @@ class IdTokenTests: XCTestCase {
             "leeway": -800000000
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "The JWT was issued in the future")
@@ -128,7 +139,9 @@ class IdTokenTests: XCTestCase {
             "nonce": "fakeNonce"
         ] as [String : Any]
         
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "Invalid nonce")
@@ -145,7 +158,9 @@ class IdTokenTests: XCTestCase {
             "test1": "abc123"
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "JWT does not contain \"abc123\" in the payload")
@@ -162,7 +177,8 @@ class IdTokenTests: XCTestCase {
             "sub": "00ue1gi0ptZpa67pU0h7"
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
 
         guard let isValid = try? validator.isValid(jwts["OktaIDToken"] as! String) else {
             return XCTFail("VALID token was returned as INVALID.")
@@ -179,7 +195,8 @@ class IdTokenTests: XCTestCase {
             "nonce": "A3ADBD9B-F3B4-4FBD-B51C-2334F1359BEC"
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options, jwk: TestUtils.exampleJWK)
+        var validator = OktaJWTValidator(options, jwk: TestUtils.exampleJWK)
+        validator.keyStorageManager = MockKeyStorageManager()
 
         guard let isValid = try? validator.isValid(jwts["OktaIDToken"] as! String) else {
             return XCTFail()
@@ -190,7 +207,8 @@ class IdTokenTests: XCTestCase {
     func testSuccessForIdTokenGivenJWKNoVerification() {
         let options: [String: Any] = [:]
 
-        let validator = OktaJWTValidator(options, jwk: TestUtils.exampleJWK)
+        var validator = OktaJWTValidator(options, jwk: TestUtils.exampleJWK)
+        validator.keyStorageManager = MockKeyStorageManager()
 
         guard let isValid = try? validator.isValid(jwts["OktaIDToken"] as! String) else {
             return XCTFail("VALID token was returned as INVALID.")

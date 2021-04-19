@@ -13,7 +13,7 @@
 let VERSION = "2.0.1"
 
 public struct OktaJWTValidator {
-    public var keyStorageManager: PublicKeyStorageProtocol? = nil
+    public var keyStorageManager: PublicKeyStorageProtocol?
     private var validatorOptions: [String: Any]
     private var validationType: OktaJWTVerificationType
     private var jwk: [String: String]?

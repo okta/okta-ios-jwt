@@ -10,7 +10,13 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
+import Foundation
+
+#if SWIFT_PACKAGE
+@testable import OktaJWT
+#else
 @testable import OktaJWTLib
+#endif
 
 public class TestUtils {
     var jwts: [String: Any] = [:]
@@ -124,7 +130,14 @@ public class TestUtils {
 
     class func readFromPList(_ name: String) -> [String : Any] {
         // Parse the given plist file
-        if let path = Bundle(for: TestUtils.self).url(forResource: name, withExtension: "plist"),
+        
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: TestUtils.self)
+        #endif
+        
+        if let path = bundle.url(forResource: name, withExtension: "plist"),
             let data = try? Data(contentsOf: path) {
             if let result = try? PropertyListSerialization
                 .propertyList(

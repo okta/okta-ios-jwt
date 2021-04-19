@@ -17,6 +17,7 @@ import PackageDescription
 
 let package = Package(
     name: "OktaJWT",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v11),
         .macOS(.v10_14),
@@ -24,8 +25,7 @@ let package = Package(
     products: [
         .library(name: "OktaJWT",
                  targets: [
-                    "OktaJSONWebToken",
-                    "OktaDataJWT"
+                    "OktaJWT"
                  ]),
     ],
     targets: [
@@ -33,7 +33,7 @@ let package = Package(
                 path: "Sources/ThirdParty/JSONWebToken/NSData+Utils",
                 publicHeadersPath: "."),
         
-        .target(name: "OktaJSONWebToken",
+        .target(name: "OktaJWT",
                 dependencies: [
                     "OktaDataJWT",
                 ],
@@ -45,5 +45,17 @@ let package = Package(
                 resources: [
                     .process("ThirdParty/JSONWebToken/LICENCE"),
                 ]),
+    ] + [
+        .testTarget(name: "OktaJWTTests",
+                    dependencies: [
+                        "OktaJWT",
+                    ],
+                    path: "Tests",
+                    exclude: [
+                        "OktaJWTTestSuite",
+                    ],
+                    resources: [
+                        .copy("TestJWTs.plist"),
+                    ])
     ]
 )

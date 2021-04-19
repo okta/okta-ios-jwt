@@ -11,25 +11,13 @@
 */
 
 import XCTest
+#if SWIFT_PACKAGE
+@testable import OktaJWT
+#else
 @testable import OktaJWTLib
+#endif
 
-class MockKeyStorageManager: PublicKeyStorageProtocol {
-    var dataDictionary: [String: Data] = [:]
-    func data(with key: String) throws -> Data {
-        if let value = dataDictionary[key]{
-            return value
-        }
-        return Data()
-    }
-    
-    func delete(with key: String) throws {
-        dataDictionary.removeValue(forKey: key)
-    }
-    
-    func save(data: Data, with key: String) throws {
-        dataDictionary[key] = data
-    }
-}
+#if os(macOS)
 
 class JWTTests: XCTestCase {
     var jwts: [String: Any] = [:]
@@ -246,3 +234,5 @@ class JWTTests: XCTestCase {
         }
     }
 }
+
+#endif

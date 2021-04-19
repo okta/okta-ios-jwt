@@ -11,7 +11,13 @@
  */
 
 import XCTest
+#if SWIFT_PACKAGE
+@testable import OktaJWT
+#else
 @testable import OktaJWTLib
+#endif
+
+#if os(iOS)
 
 // TODO: port tests to MacOS
 class JWTTests: XCTestCase {
@@ -86,7 +92,9 @@ class JWTTests: XCTestCase {
             "audience": TestUtils.audience
         ]
 
-        let validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWKModulusForJWT)
+        var validator = OktaJWTValidator(options, jwk: TestUtils.invalidJWKModulusForJWT)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "Signature validation failed")
@@ -100,7 +108,9 @@ class JWTTests: XCTestCase {
             "exp": true
         ] as [String: Any]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "The JWT expired and is no longer valid")
@@ -115,7 +125,9 @@ class JWTTests: XCTestCase {
             "leeway": -800000000
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "The JWT was issued in the future")
@@ -131,7 +143,9 @@ class JWTTests: XCTestCase {
             "test1": "abc123"
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options)
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
         XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
             let desc = error as! OktaJWTVerificationError
             XCTAssertEqual(desc.localizedDescription, "JWT does not contain \"abc123\" in the payload")
@@ -147,7 +161,8 @@ class JWTTests: XCTestCase {
             "iat": false
         ] as [String: Any]
 
-        let validator = OktaJWTValidator(options, key: TestUtils.exampleRSAKey!)
+        let validator = OktaJWTValidator(options, key: TestUtils.getMacExampleRSAKey(keyStorageManager: MockKeyStorageManager())!)
+        
         guard let isValid = try? validator.isValid(jwts["OktaJWT"] as! String) else {
             return XCTFail("VALID token was returned as INVALID.")
         }
@@ -161,7 +176,8 @@ class JWTTests: XCTestCase {
             "leeway": -800000000
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+        var validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+        validator.keyStorageManager = MockKeyStorageManager()
 
         guard let isValid = try? validator.isValid(jwts["OktaJWTTypeHeader"] as! String) else {
             return XCTFail("VALID token was returned as INVALID.")
@@ -191,7 +207,8 @@ class JWTTests: XCTestCase {
             "leeway": -800000000
         ] as [String : Any]
 
-        let validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+        var validator = OktaJWTValidator(options, jwk:TestUtils.validJWKCustomizeTypeHeader)
+        validator.keyStorageManager = MockKeyStorageManager()
 
         guard let isValid = try? validator.isValid(jwts["OktaJWTTypeHeaderCustom"] as! String) else {
             return XCTFail("VALID token was returned as INVALID.")
@@ -214,3 +231,5 @@ class JWTTests: XCTestCase {
         }
     }
 }
+
+#endif

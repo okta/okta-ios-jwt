@@ -49,6 +49,8 @@
 		2FF91ADE23B5EC8D00CFC89C /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126079922FA131B007AE25E /* TestJWTs.plist */; };
 		2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073F22FA0C4B007AE25E /* MiscTests.swift */; };
 		2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073D22FA0C4B007AE25E /* TestUtilities.swift */; };
+		92F22D6A262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */; };
+		92F22D6B262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */; };
 		A126073422FA0AF7007AE25E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126072D22FA0AF6007AE25E /* AppDelegate.swift */; };
 		A126073722FA0AF7007AE25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A126073122FA0AF7007AE25E /* Assets.xcassets */; };
 		A126073822FA0AF7007AE25E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073222FA0AF7007AE25E /* ViewController.swift */; };
@@ -134,10 +136,10 @@
 		2FF91AAB23B5E8D300CFC89C /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF91AD223B5EC5600CFC89C /* OktaJWTTests_macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F22D2C262D728F00EE57FD /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKeyStorageManager.swift; sourceTree = "<group>"; };
 		A121D21C22FA090E006C1839 /* OktaJWT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OktaJWT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A121D23022FA0913006C1839 /* OktaJWTTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A126072D22FA0AF6007AE25E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Tests/OktaJWTTestSuite/AppDelegate.swift; sourceTree = "<group>"; };
-		A126072F22FA0AF6007AE25E /* OktaJWTTestSuite.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = OktaJWTTestSuite.entitlements; path = Tests/OktaJWTTestSuite/OktaJWTTestSuite.entitlements; sourceTree = "<group>"; };
 		A126073122FA0AF7007AE25E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Tests/OktaJWTTestSuite/Assets.xcassets; sourceTree = "<group>"; };
 		A126073222FA0AF7007AE25E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Tests/OktaJWTTestSuite/ViewController.swift; sourceTree = "<group>"; };
 		A126073322FA0AF7007AE25E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/OktaJWTTestSuite/Info.plist; sourceTree = "<group>"; };
@@ -315,6 +317,14 @@
 			path = "NSData+Utils";
 			sourceTree = "<group>";
 		};
+		92F22D71262D8BDF00EE57FD /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		A121D21322FA090E006C1839 = {
 			isa = PBXGroup;
 			children = (
@@ -353,7 +363,6 @@
 				A126072D22FA0AF6007AE25E /* AppDelegate.swift */,
 				A126073122FA0AF7007AE25E /* Assets.xcassets */,
 				A126073322FA0AF7007AE25E /* Info.plist */,
-				A126072F22FA0AF6007AE25E /* OktaJWTTestSuite.entitlements */,
 				A126073222FA0AF7007AE25E /* ViewController.swift */,
 			);
 			name = HostApplication;
@@ -362,6 +371,7 @@
 		A126073B22FA0C21007AE25E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				92F22D71262D8BDF00EE57FD /* Mocks */,
 				2FF91A9D23B5E67E00CFC89C /* iOS */,
 				2FF91AA123B5E68400CFC89C /* macOS */,
 				A126079922FA131B007AE25E /* TestJWTs.plist */,
@@ -546,7 +556,7 @@
 		A121D21422FA090E006C1839 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Okta;
 				TargetAttributes = {
@@ -673,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0332BB81250ABE01007F3C48 /* JWTTestsMacOS.swift in Sources */,
+				92F22D6B262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */,
 				2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */,
 				2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */,
 			);
@@ -695,6 +706,7 @@
 				A126074422FA0C4B007AE25E /* MiscTests.swift in Sources */,
 				2F16C59523C746EC009BBA3F /* IdTokenTests.swift in Sources */,
 				2FF91A9C23B5422400CFC89C /* TestUtilities.swift in Sources */,
+				92F22D6A262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,8 +851,10 @@
 		2FF91ADB23B5EC5600CFC89C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -850,6 +864,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.okta.OktaJWTTests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
 			};
@@ -858,8 +873,10 @@
 		2FF91ADC23B5EC5600CFC89C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -869,6 +886,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.okta.OktaJWTTests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
 			};
@@ -1037,6 +1055,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1060,6 +1079,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
