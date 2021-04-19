@@ -10,6 +10,8 @@
 * See the License for the specific language governing permissions and limitations under the License.
 */
 
+import Foundation
+
 public protocol PublicKeyStorageProtocol {
     // save data to custom storage mechanism
     func save(data: Data, with key: String) throws

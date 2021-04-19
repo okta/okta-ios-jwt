@@ -133,6 +133,7 @@
 		2FF91AA323B5E68400CFC89C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF91AAB23B5E8D300CFC89C /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF91AD223B5EC5600CFC89C /* OktaJWTTests_macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92F22D2C262D728F00EE57FD /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		A121D21C22FA090E006C1839 /* OktaJWT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OktaJWT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A121D23022FA0913006C1839 /* OktaJWTTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A126072D22FA0AF6007AE25E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Tests/OktaJWTTestSuite/AppDelegate.swift; sourceTree = "<group>"; };
@@ -303,11 +304,23 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		92F22D2D262D72C500EE57FD /* NSData+Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A126079022FA0F8E007AE25E /* NSData+HMAC.h */,
+				A126079222FA0F8E007AE25E /* NSData+HMAC.m */,
+				A126079122FA0F8E007AE25E /* NSData+SHA.h */,
+				A126079322FA0F8E007AE25E /* NSData+SHA.m */,
+			);
+			path = "NSData+Utils";
+			sourceTree = "<group>";
+		};
 		A121D21322FA090E006C1839 = {
 			isa = PBXGroup;
 			children = (
 				A12607E622FB4C61007AE25E /* LICENSE */,
 				A12607E722FB4C61007AE25E /* OktaJWT.podspec */,
+				92F22D2C262D728F00EE57FD /* Package.swift */,
 				A12607E522FB4C61007AE25E /* README.md */,
 				A126074622FA0D18007AE25E /* Sources */,
 				2FF91A9123B53FB100CFC89C /* Framework */,
@@ -387,10 +400,7 @@
 		A126076122FA0D9B007AE25E /* JSONWebToken */ = {
 			isa = PBXGroup;
 			children = (
-				A126079022FA0F8E007AE25E /* NSData+HMAC.h */,
-				A126079222FA0F8E007AE25E /* NSData+HMAC.m */,
-				A126079122FA0F8E007AE25E /* NSData+SHA.h */,
-				A126079322FA0F8E007AE25E /* NSData+SHA.m */,
+				92F22D2D262D72C500EE57FD /* NSData+Utils */,
 				A126076222FA0D9B007AE25E /* RSASSA_PKCS1.swift */,
 				A126076322FA0D9B007AE25E /* SignatureValidator.swift */,
 				A126076522FA0D9B007AE25E /* HMAC.swift */,

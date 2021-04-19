@@ -7,6 +7,9 @@
 
 import Foundation
 
+#if SWIFT_PACKAGE
+import OktaDataJWT
+#endif
 
 public struct HMACSignature : SignatureValidator,TokenSigner {
     let secret : Data

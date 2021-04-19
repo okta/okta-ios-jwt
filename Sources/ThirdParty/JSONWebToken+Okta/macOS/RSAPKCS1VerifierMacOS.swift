@@ -12,6 +12,12 @@
 
 import Foundation
 
+#if SWIFT_PACKAGE
+import OktaDataJWT
+#endif
+
+#if os(macOS)
+
 public struct RSAPKCS1VerifierMacOS: RSAPKCS1VerifierProtocol {
     public let hashFunction: SignatureAlgorithm.HashFunction
     public let key: RSAKey
@@ -37,3 +43,5 @@ public struct RSAPKCS1VerifierMacOS: RSAPKCS1VerifierProtocol {
         }
     }
 }
+
+#endif
