@@ -216,6 +216,32 @@ class JWTTests: XCTestCase {
         XCTAssertEqual(isValid, true)
     }
 
+    func testValidRS384Token() {
+        let options = [
+            "exp": false,
+        ] as [String : Any]
+
+        let validator = OktaJWTValidator(options, key: TestUtils.validRsaKey())
+
+        guard let isValid = try? validator.isValid(jwts["RS384JWT"] as! String) else {
+            return XCTFail("VALID token was returned as INVALID.")
+        }
+        XCTAssertEqual(isValid, true)
+    }
+
+    func testValidRS512Token() {
+        let options = [
+            "exp": false,
+        ] as [String : Any]
+
+        let validator = OktaJWTValidator(options, key: TestUtils.validRsaKey())
+
+        guard let isValid = try? validator.isValid(jwts["RS512JWT"] as! String) else {
+            return XCTFail("VALID token was returned as INVALID.")
+        }
+        XCTAssertEqual(isValid, true)
+    }
+
     func testInvalidCustomTypeHeaderForJWT() {
         let options = [
             "iat": false,

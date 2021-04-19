@@ -53,7 +53,9 @@ let package = Package(
                         "iOS/OktaJWTTestSuite",
                     ],
                     resources: [
-                        .copy("TestJWTs.plist"),
+                        .copy("Resources/TestJWTs.plist"),
+                        .copy("Resources/sampleIncorrectJSON.json"),
+                        .copy("Resources/sampleCorrectJSON.json"),
                     ])
     ]
 )

@@ -97,7 +97,7 @@ public struct OktaJWTValidator {
         }
 
         // Check for valid algorithm type
-        if !Utils.isSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier) {
+        guard let hashFunction = Utils.hashFunction(jwt.signatureAlgorithm.jwtIdentifier) else {
             throw OktaJWTVerificationError.nonSupportedAlg(jwt.signatureAlgorithm.jwtIdentifier)
         }
 
@@ -133,7 +133,7 @@ public struct OktaJWTValidator {
                 key = self.key!
         }
 
-        let signatureValidation = RSAPKCS1VerifierFactory.createVerifier(key: key, hashFunction: .sha256).validateToken(jwt)
+        let signatureValidation = RSAPKCS1VerifierFactory.createVerifier(key: key, hashFunction: hashFunction).validateToken(jwt)
         if !signatureValidation.isValid {
             throw OktaJWTVerificationError.invalidSignature
         }
@@ -251,8 +251,10 @@ public struct OktaJWTValidator {
                     try keyStorageManager.delete(with: storedKeyString)
                     RSAKey.removeKeyWithTag(tag)
                 }
-                let objectData = tag.data(using: .utf8)
-                try keyStorageManager.save(data: objectData!, with: "com.okta.jwt.keys")
+                guard let objectData = tag.data(using: .utf8) else {
+                    return
+                }
+                try keyStorageManager.save(data: objectData, with: "com.okta.jwt.keys")
             } catch let error {
               print("Error caching key: \(error)")
             }
