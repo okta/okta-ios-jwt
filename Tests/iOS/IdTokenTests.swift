@@ -17,7 +17,6 @@ import XCTest
 @testable import OktaJWTLib
 #endif
 
-// TODO: port tests to MacOS
 class IdTokenTests: XCTestCase {
     var jwts: [String: Any] = [:]
     override func setUp() {
