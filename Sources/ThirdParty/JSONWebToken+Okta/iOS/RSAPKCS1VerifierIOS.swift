@@ -12,7 +12,7 @@
 
 import Foundation
 
-#if os(iOS)
+#if os(iOS) || os(watchOS)
 
 public struct RSAPKCS1VerifierIOS: RSAPKCS1VerifierProtocol {
     public let hashFunction: SignatureAlgorithm.HashFunction

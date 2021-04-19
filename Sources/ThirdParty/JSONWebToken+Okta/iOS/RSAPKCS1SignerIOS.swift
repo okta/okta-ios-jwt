@@ -12,7 +12,7 @@
 
 import Foundation
 
-#if os(iOS)
+#if os(iOS) || os(watchOS)
 
 public struct RSAPKCS1SignerIOS: RSAPKCS1SignerProtocol {
     enum Error: Swift.Error {
