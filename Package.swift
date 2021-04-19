@@ -41,9 +41,7 @@ let package = Package(
                 exclude: [
                     "ThirdParty/JSONWebToken/NSData+Utils",
                     "ThirdParty/JSONWebToken/Info.plist",
-                ],
-                resources: [
-                    .process("ThirdParty/JSONWebToken/LICENCE"),
+                    "ThirdParty/JSONWebToken/LICENCE",
                 ]),
     ] + [
         .testTarget(name: "OktaJWTTests",
@@ -52,7 +50,7 @@ let package = Package(
                     ],
                     path: "Tests",
                     exclude: [
-                        "OktaJWTTestSuite",
+                        "iOS/OktaJWTTestSuite",
                     ],
                     resources: [
                         .copy("TestJWTs.plist"),

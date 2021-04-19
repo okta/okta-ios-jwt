@@ -1,5 +1,38 @@
 language: objective-c
-osx_image: xcode10.1
-xcode_project: OktaJWT.xcodeproj
-xcode_scheme: OktaJWTLib_iOS
-xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone 8
+os: osx
+osx_image: xcode12.2
+
+before_install:
+  - gem install xcpretty
+  - gem install cocoapods
+jobs:
+  include:
+    - stage: Unit Tests
+      name: iOS
+      script:
+      - xcodebuild -project OktaJWT.xcodeproj -scheme "OktaJWTLib_iOS" -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" clean test | xcpretty
+    - stage: Unit Tests
+      name: macOS
+      script:
+      - xcodebuild -project OktaJWT.xcodeproj -scheme "OktaJWTLib_macOS" -destination "platform=macOS" clean test | xcpretty
+    - stage: Unit Tests
+      name: SPM
+      script:
+      - swift test
+    - stage: Dependency Manager Validation
+      name: SPM
+      script:
+      - swift build
+    - stage: Dependency Manager Validation
+      name: CocoaPods
+      script:
+      - pod lib lint --allow-warnings
+    - stage: Dependency Manager Validation
+      name: Carthage
+      addons:
+        homebrew:
+          packages:
+          - carthage
+          update: true
+      script:
+      - carthage build --use-xcframeworks --no-skip-current
