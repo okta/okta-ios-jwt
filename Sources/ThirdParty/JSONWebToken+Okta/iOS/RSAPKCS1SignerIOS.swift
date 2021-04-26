@@ -12,6 +12,8 @@
 
 import Foundation
 
+#if os(iOS) || os(watchOS)
+
 public struct RSAPKCS1SignerIOS: RSAPKCS1SignerProtocol {
     enum Error: Swift.Error {
         case securityError(OSStatus)
@@ -44,3 +46,4 @@ public struct RSAPKCS1SignerIOS: RSAPKCS1SignerProtocol {
     }
 }
 
+#endif

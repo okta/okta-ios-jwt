@@ -49,6 +49,15 @@
 		2FF91ADE23B5EC8D00CFC89C /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126079922FA131B007AE25E /* TestJWTs.plist */; };
 		2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073F22FA0C4B007AE25E /* MiscTests.swift */; };
 		2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073D22FA0C4B007AE25E /* TestUtilities.swift */; };
+		92F22D6A262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */; };
+		92F22D6B262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */; };
+		92F22E93262DCC2100EE57FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22E8A262DCC2100EE57FD /* ViewController.swift */; };
+		92F22E94262DCC2100EE57FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F22E8C262DCC2100EE57FD /* Assets.xcassets */; };
+		92F22E95262DCC2100EE57FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F22E8D262DCC2100EE57FD /* LaunchScreen.storyboard */; };
+		92F22E96262DCC2100EE57FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F22E8F262DCC2100EE57FD /* Main.storyboard */; };
+		92F22E97262DCC2100EE57FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22E91262DCC2100EE57FD /* AppDelegate.swift */; };
+		92F22EA8262DCDEC00EE57FD /* IdTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126074022FA0C4B007AE25E /* IdTokenTests.swift */; };
+		92F22ECD262DD48F00EE57FD /* RequestsAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC727FB25CCB96F0040BCC1 /* RequestsAPITests.swift */; };
 		96EFAB6725E8607C007BEDA2 /* SecKeyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076A22FA0D9B007AE25E /* SecKeyUtils.swift */; };
 		96EFAB6825E8607C007BEDA2 /* SignatureValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076322FA0D9B007AE25E /* SignatureValidator.swift */; };
 		96EFAB6925E8607C007BEDA2 /* TokenSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126076B22FA0D9B007AE25E /* TokenSigner.swift */; };
@@ -85,13 +94,8 @@
 		96EFABB225E86111007BEDA2 /* OktaJWT.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074A22FA0D34007AE25E /* OktaJWT.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		96EFABB325E86111007BEDA2 /* RequestsAPI.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074922FA0D34007AE25E /* RequestsAPI.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		96EFABB425E86111007BEDA2 /* Utils.swift in Headers */ = {isa = PBXBuildFile; fileRef = A126074D22FA0D34007AE25E /* Utils.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		A126073422FA0AF7007AE25E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126072D22FA0AF6007AE25E /* AppDelegate.swift */; };
-		A126073722FA0AF7007AE25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A126073122FA0AF7007AE25E /* Assets.xcassets */; };
-		A126073822FA0AF7007AE25E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073222FA0AF7007AE25E /* ViewController.swift */; };
 		A126074422FA0C4B007AE25E /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073F22FA0C4B007AE25E /* MiscTests.swift */; platformFilter = ios; };
 		A126079B22FA131B007AE25E /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126079922FA131B007AE25E /* TestJWTs.plist */; };
-		A12607A122FA147E007AE25E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A126079D22FA147E007AE25E /* LaunchScreen.storyboard */; };
-		A12607A222FA147E007AE25E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A126079F22FA147E007AE25E /* Main.storyboard */; };
 		A12607B022FA1713007AE25E /* NSData+HMAC.h in Sources */ = {isa = PBXBuildFile; fileRef = A126079022FA0F8E007AE25E /* NSData+HMAC.h */; };
 		A12607B122FA1713007AE25E /* NSData+HMAC.m in Sources */ = {isa = PBXBuildFile; fileRef = A126079222FA0F8E007AE25E /* NSData+HMAC.m */; };
 		A12607B222FA1713007AE25E /* NSData+SHA.h in Sources */ = {isa = PBXBuildFile; fileRef = A126079122FA0F8E007AE25E /* NSData+SHA.h */; };
@@ -169,21 +173,24 @@
 		2FF91A9423B53FB100CFC89C /* OktaJWTLib_macOS_BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OktaJWTLib_macOS_BridgingHeader.h; sourceTree = "<group>"; };
 		2FF91A9523B53FB100CFC89C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF91A9823B53FB100CFC89C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2FF91A9E23B5E67E00CFC89C /* OktaJWTTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OktaJWTTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		2FF91A9F23B5E67E00CFC89C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF91AA323B5E68400CFC89C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF91AAB23B5E8D300CFC89C /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF91AD223B5EC5600CFC89C /* OktaJWTTests_macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92F22D2C262D728F00EE57FD /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKeyStorageManager.swift; sourceTree = "<group>"; };
+		92F22E8A262DCC2100EE57FD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92F22E8B262DCC2100EE57FD /* OktaJWT_iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = OktaJWT_iOS.entitlements; sourceTree = "<group>"; };
+		92F22E8C262DCC2100EE57FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		92F22E8E262DCC2100EE57FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		92F22E90262DCC2100EE57FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		92F22E91262DCC2100EE57FD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		92F22E92262DCC2100EE57FD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96EFAB5325E85F8E007BEDA2 /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EFAB9725E860B4007BEDA2 /* OktaJWTLib_watchOS_BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OktaJWTLib_watchOS_BridgingHeader.h; sourceTree = "<group>"; };
 		96EFAB9825E860B4007BEDA2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A121D21C22FA090E006C1839 /* OktaJWT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OktaJWT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A121D23022FA0913006C1839 /* OktaJWTTests_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A126072D22FA0AF6007AE25E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Tests/OktaJWTTestSuite/AppDelegate.swift; sourceTree = "<group>"; };
-		A126072F22FA0AF6007AE25E /* OktaJWTTestSuite.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = OktaJWTTestSuite.entitlements; path = Tests/OktaJWTTestSuite/OktaJWTTestSuite.entitlements; sourceTree = "<group>"; };
-		A126073122FA0AF7007AE25E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Tests/OktaJWTTestSuite/Assets.xcassets; sourceTree = "<group>"; };
-		A126073222FA0AF7007AE25E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Tests/OktaJWTTestSuite/ViewController.swift; sourceTree = "<group>"; };
-		A126073322FA0AF7007AE25E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/OktaJWTTestSuite/Info.plist; sourceTree = "<group>"; };
 		A126073D22FA0C4B007AE25E /* TestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestUtilities.swift; path = Tests/TestUtilities.swift; sourceTree = SOURCE_ROOT; };
 		A126073E22FA0C4B007AE25E /* JWTTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTTests.swift; path = Tests/iOS/JWTTests.swift; sourceTree = SOURCE_ROOT; };
 		A126073F22FA0C4B007AE25E /* MiscTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MiscTests.swift; path = Tests/MiscTests.swift; sourceTree = SOURCE_ROOT; };
@@ -212,11 +219,8 @@
 		A126079122FA0F8E007AE25E /* NSData+SHA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SHA.h"; sourceTree = "<group>"; };
 		A126079222FA0F8E007AE25E /* NSData+HMAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+HMAC.m"; sourceTree = "<group>"; };
 		A126079322FA0F8E007AE25E /* NSData+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SHA.m"; sourceTree = "<group>"; };
-		A126079922FA131B007AE25E /* TestJWTs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TestJWTs.plist; path = Tests/TestJWTs.plist; sourceTree = SOURCE_ROOT; };
-		A126079E22FA147E007AE25E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Tests/OktaJWTTestSuite/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A12607A022FA147E007AE25E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Tests/OktaJWTTestSuite/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A126079922FA131B007AE25E /* TestJWTs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = TestJWTs.plist; path = Tests/Resources/TestJWTs.plist; sourceTree = SOURCE_ROOT; };
 		A12607A822FA16BA007AE25E /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A12607D222FA19AD007AE25E /* OktaJWT-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OktaJWT-Bridging-Header.h"; path = "Tests/OktaJWTTestSuite/OktaJWT-Bridging-Header.h"; sourceTree = "<group>"; };
 		A12607E522FB4C61007AE25E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A12607E622FB4C61007AE25E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A12607E722FB4C61007AE25E /* OktaJWT.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = OktaJWT.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -341,8 +345,8 @@
 		2FF91A9D23B5E67E00CFC89C /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				92F22E89262DCC2100EE57FD /* OktaJWTTestSuite */,
 				2FF91A9F23B5E67E00CFC89C /* Info.plist */,
-				2FF91A9E23B5E67E00CFC89C /* OktaJWTTests-Bridging-Header.h */,
 				A126074022FA0C4B007AE25E /* IdTokenTests.swift */,
 				A126073E22FA0C4B007AE25E /* JWTTests.swift */,
 			);
@@ -356,6 +360,49 @@
 				0332BB7F250ABDFE007F3C48 /* JWTTestsMacOS.swift */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		92F22D2D262D72C500EE57FD /* NSData+Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A126079022FA0F8E007AE25E /* NSData+HMAC.h */,
+				A126079222FA0F8E007AE25E /* NSData+HMAC.m */,
+				A126079122FA0F8E007AE25E /* NSData+SHA.h */,
+				A126079322FA0F8E007AE25E /* NSData+SHA.m */,
+			);
+			path = "NSData+Utils";
+			sourceTree = "<group>";
+		};
+		92F22D71262D8BDF00EE57FD /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		92F22E89262DCC2100EE57FD /* OktaJWTTestSuite */ = {
+			isa = PBXGroup;
+			children = (
+				92F22E8A262DCC2100EE57FD /* ViewController.swift */,
+				92F22E8B262DCC2100EE57FD /* OktaJWT_iOS.entitlements */,
+				92F22E8C262DCC2100EE57FD /* Assets.xcassets */,
+				92F22E8D262DCC2100EE57FD /* LaunchScreen.storyboard */,
+				92F22E8F262DCC2100EE57FD /* Main.storyboard */,
+				92F22E91262DCC2100EE57FD /* AppDelegate.swift */,
+				92F22E92262DCC2100EE57FD /* Info.plist */,
+			);
+			path = OktaJWTTestSuite;
+			sourceTree = "<group>";
+		};
+		92F22ED4262DD4C500EE57FD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A126079922FA131B007AE25E /* TestJWTs.plist */,
+				CB0101C425D3B8C200E38341 /* sampleIncorrectJSON.json */,
+				CB0101CC25D3B9A600E38341 /* sampleCorrectJSON.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		96EFAB9625E860B4007BEDA2 /* watchOS */ = {
@@ -372,11 +419,11 @@
 			children = (
 				A12607E622FB4C61007AE25E /* LICENSE */,
 				A12607E722FB4C61007AE25E /* OktaJWT.podspec */,
+				92F22D2C262D728F00EE57FD /* Package.swift */,
 				A12607E522FB4C61007AE25E /* README.md */,
 				A126074622FA0D18007AE25E /* Sources */,
 				2FF91A9123B53FB100CFC89C /* Framework */,
 				2FF91A9323B53FB100CFC89C /* OktaJWTLib.h */,
-				A126072C22FA0AB9007AE25E /* HostApplication */,
 				A126073B22FA0C21007AE25E /* Tests */,
 				A121D21D22FA090E006C1839 /* Products */,
 				2FCB032C23C8C6B9001EC758 /* Frameworks */,
@@ -396,32 +443,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A126072C22FA0AB9007AE25E /* HostApplication */ = {
-			isa = PBXGroup;
-			children = (
-				A12607D222FA19AD007AE25E /* OktaJWT-Bridging-Header.h */,
-				A126079D22FA147E007AE25E /* LaunchScreen.storyboard */,
-				A126079F22FA147E007AE25E /* Main.storyboard */,
-				A126072D22FA0AF6007AE25E /* AppDelegate.swift */,
-				A126073122FA0AF7007AE25E /* Assets.xcassets */,
-				A126073322FA0AF7007AE25E /* Info.plist */,
-				A126072F22FA0AF6007AE25E /* OktaJWTTestSuite.entitlements */,
-				A126073222FA0AF7007AE25E /* ViewController.swift */,
-			);
-			name = HostApplication;
-			sourceTree = "<group>";
-		};
 		A126073B22FA0C21007AE25E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				2FF91A9D23B5E67E00CFC89C /* iOS */,
 				2FF91AA123B5E68400CFC89C /* macOS */,
-				A126079922FA131B007AE25E /* TestJWTs.plist */,
+				92F22D71262D8BDF00EE57FD /* Mocks */,
+				92F22ED4262DD4C500EE57FD /* Resources */,
 				A126073F22FA0C4B007AE25E /* MiscTests.swift */,
-				A126073D22FA0C4B007AE25E /* TestUtilities.swift */,
 				CBC727FB25CCB96F0040BCC1 /* RequestsAPITests.swift */,
-				CB0101C425D3B8C200E38341 /* sampleIncorrectJSON.json */,
-				CB0101CC25D3B9A600E38341 /* sampleCorrectJSON.json */,
+				A126073D22FA0C4B007AE25E /* TestUtilities.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -455,10 +486,7 @@
 		A126076122FA0D9B007AE25E /* JSONWebToken */ = {
 			isa = PBXGroup;
 			children = (
-				A126079022FA0F8E007AE25E /* NSData+HMAC.h */,
-				A126079222FA0F8E007AE25E /* NSData+HMAC.m */,
-				A126079122FA0F8E007AE25E /* NSData+SHA.h */,
-				A126079322FA0F8E007AE25E /* NSData+SHA.m */,
+				92F22D2D262D72C500EE57FD /* NSData+Utils */,
 				A126076222FA0D9B007AE25E /* RSASSA_PKCS1.swift */,
 				A126076322FA0D9B007AE25E /* SignatureValidator.swift */,
 				A126076522FA0D9B007AE25E /* HMAC.swift */,
@@ -640,7 +668,7 @@
 		A121D21422FA090E006C1839 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Okta;
 				TargetAttributes = {
@@ -719,9 +747,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A12607A122FA147E007AE25E /* LaunchScreen.storyboard in Resources */,
-				A126073722FA0AF7007AE25E /* Assets.xcassets in Resources */,
-				A12607A222FA147E007AE25E /* Main.storyboard in Resources */,
+				92F22E96262DCC2100EE57FD /* Main.storyboard in Resources */,
+				92F22E94262DCC2100EE57FD /* Assets.xcassets in Resources */,
+				92F22E95262DCC2100EE57FD /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,9 +809,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F22ECD262DD48F00EE57FD /* RequestsAPITests.swift in Sources */,
 				0332BB81250ABE01007F3C48 /* JWTTestsMacOS.swift in Sources */,
+				92F22D6B262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */,
 				2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */,
 				2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */,
+				92F22EA8262DCDEC00EE57FD /* IdTokenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,8 +854,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A126073422FA0AF7007AE25E /* AppDelegate.swift in Sources */,
-				A126073822FA0AF7007AE25E /* ViewController.swift in Sources */,
+				92F22E97262DCC2100EE57FD /* AppDelegate.swift in Sources */,
+				92F22E93262DCC2100EE57FD /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,6 +868,7 @@
 				CBC727FC25CCB96F0040BCC1 /* RequestsAPITests.swift in Sources */,
 				2F16C59523C746EC009BBA3F /* IdTokenTests.swift in Sources */,
 				2FF91A9C23B5422400CFC89C /* TestUtilities.swift in Sources */,
+				92F22D6A262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,18 +927,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A126079D22FA147E007AE25E /* LaunchScreen.storyboard */ = {
+		92F22E8D262DCC2100EE57FD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A126079E22FA147E007AE25E /* Base */,
+				92F22E8E262DCC2100EE57FD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		A126079F22FA147E007AE25E /* Main.storyboard */ = {
+		92F22E8F262DCC2100EE57FD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A12607A022FA147E007AE25E /* Base */,
+				92F22E90262DCC2100EE57FD /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -981,8 +1013,10 @@
 		2FF91ADB23B5EC5600CFC89C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -992,6 +1026,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.okta.OktaJWTTests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
 			};
@@ -1000,8 +1035,10 @@
 		2FF91ADC23B5EC5600CFC89C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1011,6 +1048,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.okta.OktaJWTTests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.2;
 			};
@@ -1206,7 +1244,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/OktaJWTTestSuite/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/iOS/OktaJWTTestSuite/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1214,7 +1252,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tests/OktaJWTTestSuite/OktaJWT-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1227,7 +1265,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "$(SRCROOT)/Tests/OktaJWTTestSuite/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/iOS/OktaJWTTestSuite/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1235,7 +1273,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tests/OktaJWTTestSuite/OktaJWT-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1247,6 +1285,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1256,7 +1295,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tests/iOS/OktaJWTTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1270,6 +1309,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Tests/iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1279,7 +1319,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tests/iOS/OktaJWTTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OktaJWT_iOS.app/OktaJWT_iOS";

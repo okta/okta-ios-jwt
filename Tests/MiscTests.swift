@@ -11,7 +11,11 @@
  */
 
 import XCTest
+#if SWIFT_PACKAGE
+@testable import OktaJWT
+#else
 @testable import OktaJWTLib
+#endif
 
 class MiscTests: XCTestCase {
     var jwts: [String: Any] = [:]
@@ -42,6 +46,8 @@ class MiscTests: XCTestCase {
         XCTAssertEqual(issuer, "https://demo-org.oktapreview.com/oauth2/default")
     }
 
+    // Warning: SPM and macOS (even with hosted app) don't support Keychain during unit tests.
+    #if !SWIFT_PACKAGE && os(iOS)
     func testStoringAndRemoveFromKeychain() {
         let keyId = "abc12345"
         OktaKeychain.set(key: keyId, "testValue")
@@ -49,6 +55,7 @@ class MiscTests: XCTestCase {
         OktaKeychain.remove(keyId)
         XCTAssertEqual(OktaKeychain.get(keyId), nil)
     }
+    #endif
 
     func testInvalidJWT() {
         let options = [ "issuer": TestUtils.issuer ]

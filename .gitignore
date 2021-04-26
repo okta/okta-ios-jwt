@@ -1,8 +1,39 @@
-xcuserdata
-Pods
-build
-*.xcworkspace
-Podfile.lock
-
+# General
+*.swp
+*.swo
+*.rbo
+*.gem
 .DS_Store
+.rbenv-version
+xcuserdata
+project.xcworkspace
+DerivedData
+/.build
 
+# Xcode
+*.xccheckout
+
+## Obj-C/Swift specific
+*.hmap
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+Packages/
+Package.pins
+Package.resolved
+/.swiftpm
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Checkouts
+Carthage/Build/

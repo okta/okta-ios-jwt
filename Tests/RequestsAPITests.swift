@@ -11,8 +11,12 @@
  */
 
 import XCTest
-
+#if SWIFT_PACKAGE
+@testable import OktaJWT
+#else
 @testable import OktaJWTLib
+#endif
+
 class RequestsAPITests: XCTestCase {
     
     let correctJSONfileName = "sampleCorrectJSON"
@@ -24,7 +28,13 @@ class RequestsAPITests: XCTestCase {
     }
     
     func testCorrectJSONWithWorkingURL() throws {
-        let bundle = Bundle(for: type(of: self ))
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+        
+        
         guard let url = bundle.url(forResource: correctJSONfileName, withExtension: "json") else {
             fatalError("Failed to locate \(correctJSONfileName) in bundle.")
         }
@@ -32,7 +42,12 @@ class RequestsAPITests: XCTestCase {
     }
 
     func testIncorrectJSONWithWorkingURL() throws {
-        let bundle = Bundle(for: type(of: self ))
+        #if SWIFT_PACKAGE
+        let bundle = Bundle.module
+        #else
+        let bundle = Bundle(for: type(of: self))
+        #endif
+        
         guard let url = bundle.url(forResource: incorrectJSONFileName, withExtension: "json") else {
             fatalError("Failed to locate \(incorrectJSONFileName) in bundle.")
         }

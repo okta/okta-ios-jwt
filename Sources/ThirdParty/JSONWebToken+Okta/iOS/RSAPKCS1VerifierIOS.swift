@@ -12,6 +12,8 @@
 
 import Foundation
 
+#if os(iOS) || os(watchOS)
+
 public struct RSAPKCS1VerifierIOS: RSAPKCS1VerifierProtocol {
     public let hashFunction: SignatureAlgorithm.HashFunction
     public let key: RSAKey
@@ -46,3 +48,5 @@ public struct RSAPKCS1VerifierIOS: RSAPKCS1VerifierProtocol {
         }
     }
 }
+
+#endif

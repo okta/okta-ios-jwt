@@ -12,6 +12,8 @@
 
 import Foundation
 
+#if os(macOS)
+
 public struct RSAPKCS1SignerMacOS: RSAPKCS1SignerProtocol {
     public let hashFunction: SignatureAlgorithm.HashFunction
     public let key: RSAKey
@@ -27,3 +29,4 @@ public struct RSAPKCS1SignerMacOS: RSAPKCS1SignerProtocol {
     }
 }
 
+#endif
