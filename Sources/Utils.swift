@@ -83,7 +83,7 @@ open class Utils: NSObject {
      String representation of the JWT's kid
      */
     open class func getKeyIdFromHeader(_ header: Data) -> String? {
-        let json = try? JSONSerialization.jsonObject(with: header, options: []) as! [String: Any]
+        let json = try? JSONSerialization.jsonObject(with: header, options: []) as? [String: Any]
         if let kid = json?["kid"] {
             // Return the kid from the header object
             return String(describing: kid)
