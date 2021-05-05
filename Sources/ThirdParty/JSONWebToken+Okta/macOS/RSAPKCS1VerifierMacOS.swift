@@ -29,7 +29,7 @@ public struct RSAPKCS1VerifierMacOS: RSAPKCS1VerifierProtocol {
 
     public func verify(_ input: Data, signature: Data) -> Bool {
         let signedDataHash = (input as NSData).jwt_shaDigest(withSize: self.hashFunction.rawValue)
-        let padding = paddingForHashFunction(self.hashFunction)
+        _ = paddingForHashFunction(self.hashFunction)
         
         switch self.hashFunction.rawValue {
         case 256:

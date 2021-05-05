@@ -1,10 +1,10 @@
 # OktaJWT
 
 [![Version](https://img.shields.io/cocoapods/v/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
+[![CI Status](https://travis-ci.com/okta/okta-ios-jwt.svg?branch=master)](https://travis-ci.com/github/okta/okta-ios-jwt)
 [![License](https://img.shields.io/cocoapods/l/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 [![Platform](https://img.shields.io/cocoapods/p/OktaJWT.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Platform](https://img.shields.io/badge/swift-4.2-green.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 [![Platform](https://img.shields.io/badge/swift-5.0-green.svg?style=flat)](http://cocoapods.org/pods/OktaJWT)
 
 ## Overview
@@ -208,3 +208,7 @@ do {
   // Misc Error: {error}
 }
 ```
+
+## Contributing
+ 
+We are happy to accept contributions and PRs! Please see the [contribution guide](CONTRIBUTING.md) to understand how to structure a contribution.
