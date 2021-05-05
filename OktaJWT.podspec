@@ -21,5 +21,5 @@ Library to validate JSON Web Tokens.
   s.ios.exclude_files = 'Sources/**/macOS/**'
   s.watchos.exclude_files = 'Sources/**/macOS/**'
   s.osx.exclude_files = 'Sources/**/iOS/**'
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 end

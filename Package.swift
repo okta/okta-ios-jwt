@@ -18,7 +18,7 @@ import PackageDescription
 let package = Package(
     name: "OktaJWT",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v12),
         .macOS(.v10_14),
         .watchOS(.v6),
     ],

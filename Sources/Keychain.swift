@@ -65,7 +65,7 @@ public class OktaKeychain: NSObject {
     internal class func get(_ key: String) -> String? {
         var q: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecReturnData as String: kCFBooleanTrue,
+            kSecReturnData as String: kCFBooleanTrue!,
             kSecMatchLimit as String: kSecMatchLimitOne,
             kSecAttrAccount as String: key
         ]
