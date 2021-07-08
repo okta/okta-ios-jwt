@@ -102,4 +102,32 @@ class MiscTests: XCTestCase {
             XCTAssertEqual(desc.localizedDescription, "Could not retrieve well-known metadata endpoint")
         }
     }
+
+    func testRegisterOrUpdateKey() {
+        #if os(iOS)
+        let mockStorage = MockKeyStorageManager()
+        let modulus = TestUtils.exampleJWK["n"]!
+        let exponent = TestUtils.exampleJWK["e"]!
+        let tag = "com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg"
+
+        // Store key to default storage
+        var rsaKey = try? RSAKey.registerOrUpdateKey(modulus: Utils.base64URLDecode(modulus)!,
+                                                     exponent: Utils.base64URLDecode(exponent)!,
+                                                     tag: tag,
+                                                     keyStorageManager: nil)
+        XCTAssertNotNil(rsaKey)
+        var dataFromStorage = try? mockStorage.data(with: tag)
+        XCTAssertTrue(dataFromStorage?.isEmpty ?? false)
+
+        // Store key to custom storage
+        rsaKey = try? RSAKey.registerOrUpdateKey(modulus: Utils.base64URLDecode(modulus)!,
+                                                 exponent: Utils.base64URLDecode(exponent)!,
+                                                 tag: tag,
+                                                 keyStorageManager: mockStorage)
+        XCTAssertNotNil(rsaKey)
+        dataFromStorage = try? mockStorage.data(with: tag)
+        XCTAssertNotNil(dataFromStorage)
+        XCTAssertTrue(dataFromStorage!.count > 0)
+        #endif
+    }
 }

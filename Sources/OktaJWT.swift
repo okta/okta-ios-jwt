@@ -249,7 +249,7 @@ public struct OktaJWTValidator {
                     var storedKeyString : String = ""
                     storedKeyString = String(data: storedKey, encoding: .utf8) ?? ""
                     try keyStorageManager.delete(with: storedKeyString)
-                    RSAKey.removeKeyWithTag(tag)
+                    RSAKey.removeKeyWithTag(tag, keyStorageManager: nil)
                 }
                 guard let objectData = tag.data(using: .utf8) else {
                     return

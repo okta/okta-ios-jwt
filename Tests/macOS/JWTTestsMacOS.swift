@@ -30,7 +30,7 @@ class JWTTests: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
-        RSAKey.removeKeyWithTag("com.okta.jwt.QViC9OB_fQO3d5ktIegAWaR0SJHJqtFRZRSjqTI5m1M")
+        RSAKey.removeKeyWithTag("com.okta.jwt.QViC9OB_fQO3d5ktIegAWaR0SJHJqtFRZRSjqTI5m1M", keyStorageManager: nil)
     }
 
     func testInvalidJWT() {

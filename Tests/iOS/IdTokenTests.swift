@@ -27,7 +27,7 @@ class IdTokenTests: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
-        RSAKey.removeKeyWithTag("com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg")
+        RSAKey.removeKeyWithTag("com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg", keyStorageManager: nil)
     }
 
     func testInvalidIssuerForIdToken() {
@@ -81,7 +81,7 @@ class IdTokenTests: XCTestCase {
     }
 
     func testInvalidSignatureForIdTokenGivenJWK() {
-        RSAKey.removeKeyWithTag("com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg")
+        RSAKey.removeKeyWithTag("com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg", keyStorageManager: nil)
         let options = [
             "issuer": TestUtils.issuer,
             "audience": TestUtils.clientId
