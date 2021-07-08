@@ -55,7 +55,7 @@ public extension RSAKey {
         case notBase64Readable
         case badKeyFormat
     }
-    @discardableResult static func registerOrUpdateKey(_ keyData : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> RSAKey {
+    @discardableResult static func registerOrUpdateKey(_ keyData : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol?) throws -> RSAKey {
         let key : SecKey? = try {
             if let existingData = try getKeyData(tag, keyStorageManager: keyStorageManager) {
                 let newData = keyData.dataByStrippingX509Header()
@@ -73,11 +73,11 @@ public extension RSAKey {
             throw KeyUtilError.badKeyFormat
         }
     }
-    @discardableResult static func registerOrUpdateKey(modulus: Data, exponent : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> RSAKey {
+    @discardableResult static func registerOrUpdateKey(modulus: Data, exponent : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol?) throws -> RSAKey {
         let combinedData = Data(modulus: modulus, exponent: exponent)
         return try RSAKey.registerOrUpdateKey(combinedData, tag : tag, keyStorageManager: keyStorageManager)
     }
-    @discardableResult static func registerOrUpdatePublicPEMKey(_ keyData : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> RSAKey {
+    @discardableResult static func registerOrUpdatePublicPEMKey(_ keyData : Data, tag : String, keyStorageManager: PublicKeyStorageProtocol?) throws -> RSAKey {
         guard let stringValue = String(data: keyData, encoding: String.Encoding.utf8) else {
             throw KeyUtilError.notStringReadable
         }
@@ -107,17 +107,17 @@ public extension RSAKey {
         }
         return try RSAKey.registerOrUpdateKey(decodedKeyData, tag: tag, keyStorageManager: keyStorageManager)
     }
-    static func registeredKeyWithTag(_ tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) -> RSAKey? {
+    static func registeredKeyWithTag(_ tag : String, keyStorageManager: PublicKeyStorageProtocol?) -> RSAKey? {
         return ((try? getKey(tag, keyStorageManager: keyStorageManager)) ?? nil).map(RSAKey.init)
     }
-    static func removeKeyWithTag(_ tag : String, keyStorageManager: PublicKeyStorageProtocol? = nil) {
+    static func removeKeyWithTag(_ tag : String, keyStorageManager: PublicKeyStorageProtocol?) {
         do {
             try deleteKey(tag, keyStorageManager: keyStorageManager)
         } catch {}
     }
 }
 
-private func getKey(_ tag: String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> SecKey? {
+private func getKey(_ tag: String, keyStorageManager: PublicKeyStorageProtocol?) throws -> SecKey? {
     if (keyStorageManager != nil) {
         return getKeyForCustomStorageManager(tag, keyStorageManager: keyStorageManager!)
     } else {
@@ -160,7 +160,7 @@ private func getKeyForCustomStorageManager(_ tag: String, keyStorageManager: Pub
     }
 }
 
-private func getKeyData(_ tag: String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> Data? {
+private func getKeyData(_ tag: String, keyStorageManager: PublicKeyStorageProtocol?) throws -> Data? {
     if let keyStorageManager = keyStorageManager {
         do {
             return try keyStorageManager.data(with: tag)
@@ -184,7 +184,7 @@ private func getKeyData(_ tag: String, keyStorageManager: PublicKeyStorageProtoc
         }
     }
 }
-private func updateKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStorageProtocol? = nil) throws {
+private func updateKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStorageProtocol?) throws {
     if let keyStorageManager = keyStorageManager {
         do {
             try keyStorageManager.save(data: data, with: tag)
@@ -199,7 +199,7 @@ private func updateKey(_ tag: String, data: Data, keyStorageManager: PublicKeySt
     }
 }
 
-private func deleteKey(_ tag: String, keyStorageManager: PublicKeyStorageProtocol? = nil) throws {
+private func deleteKey(_ tag: String, keyStorageManager: PublicKeyStorageProtocol?) throws {
     if let keyStorageManager = keyStorageManager {
         do {
             try keyStorageManager.delete(with: tag)
@@ -226,7 +226,7 @@ private func matchQueryWithTag(_ tag : String) -> Dictionary<String, Any> {
     return query
 }
 
-private func addKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStorageProtocol? = nil) throws -> SecKey? {
+private func addKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStorageProtocol?) throws -> SecKey? {
     if let keyStorageManager = keyStorageManager {
         do {
             try keyStorageManager.save(data: data, with: tag)
@@ -248,7 +248,7 @@ private func addKey(_ tag: String, data: Data, keyStorageManager: PublicKeyStora
         var persistentRef: CFTypeRef?
         let status = SecItemAdd(publicAttributes as CFDictionary, &persistentRef)
         if status == noErr || status == errSecDuplicateItem {
-            return try getKey(tag)
+            return try getKey(tag, keyStorageManager: nil)
         }
         throw RSAKey.Error.securityError(status)
     }

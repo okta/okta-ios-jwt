@@ -23,7 +23,7 @@ public class OktaKeychain: NSObject {
     public class func loadKey(tag: String) {
         if let storedKey = self.get("com.okta.jwt.keys") {
             self.remove(storedKey)
-            RSAKey.removeKeyWithTag(tag)
+            RSAKey.removeKeyWithTag(tag, keyStorageManager: nil)
         }
 
         self.set(key: "com.okta.jwt.keys", tag)
