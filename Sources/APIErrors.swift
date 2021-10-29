@@ -16,6 +16,7 @@ public enum OktaAPIError: Error {
     case noWellKnown
     case noJWKSEndpoint
     case noKey
+    case offline
 }
 
 extension OktaAPIError: LocalizedError {
@@ -27,6 +28,8 @@ extension OktaAPIError: LocalizedError {
                 return NSLocalizedString("Unable to capture jwks_uri from well-known endpoint", comment: "")
             case .noKey:
                 return NSLocalizedString("Unable to find JWK for Key ID", comment: "")
+            case .offline:
+                return NSLocalizedString("Internet connection has not been established", comment: "")
             }
     }
 }

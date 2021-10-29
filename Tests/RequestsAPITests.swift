@@ -23,8 +23,9 @@ class RequestsAPITests: XCTestCase {
     let incorrectJSONFileName = "sampleIncorrectJSON"
 
     func testRandomURL() throws {
-        let url:URL = URL(string: "hts://dummy.com")!
-        XCTAssertNil(RequestsAPI.getJSON(url))
+        let url = URL(string: "hts://dummy.com")!
+    
+        XCTAssertThrowsError(try RequestsAPI.getJSON(url))
     }
     
     func testCorrectJSONWithWorkingURL() throws {
@@ -38,7 +39,7 @@ class RequestsAPITests: XCTestCase {
         guard let url = bundle.url(forResource: correctJSONfileName, withExtension: "json") else {
             fatalError("Failed to locate \(correctJSONfileName) in bundle.")
         }
-        XCTAssertTrue(RequestsAPI.getJSON(url) != nil)
+        XCTAssertTrue(try! RequestsAPI.getJSON(url) != nil)
     }
 
     func testIncorrectJSONWithWorkingURL() throws {
@@ -51,6 +52,6 @@ class RequestsAPITests: XCTestCase {
         guard let url = bundle.url(forResource: incorrectJSONFileName, withExtension: "json") else {
             fatalError("Failed to locate \(incorrectJSONFileName) in bundle.")
         }
-        XCTAssertNil(RequestsAPI.getJSON(url))
+        XCTAssertNil(try! RequestsAPI.getJSON(url))
     }
 }

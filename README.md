@@ -122,6 +122,14 @@ do {
   // idToken issued in the future
 } catch OktaJWTVerificationError.invalidNonce {
   // Invalid nonce
+} catch OktaAPIError.noWellKnown {
+  // Could not retrieve well-known metadata
+} catch OktaAPIError.noJWKSEndpoint {
+  // Unable to capture jwks_uri from well-known
+} catch OktaAPIError.noKey {
+  // Unable to find JWK for Key ID
+} catch OktaAPIError.offline {
+  // Internet connection has not been established (device is offline)
 } catch let error {
   // Misc Error: {error}
 }

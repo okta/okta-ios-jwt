@@ -32,7 +32,7 @@ open class OktaJWTVerifier: NSObject {
         }
 
         // Try to get issuer from well-known endpoint first
-        if let wellKnownIssuer = RequestsAPI.getIssuerEndpoint(issuer: validIssuer!) {
+        if let wellKnownIssuer = try? RequestsAPI.getIssuerEndpoint(issuer: validIssuer!) {
             if dirtyIssuer! == wellKnownIssuer {
                 return true
             } else {

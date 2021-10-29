@@ -21,10 +21,10 @@ open class RequestsAPI: NSObject {
      - returns:
      The JSON response from the URL
      */
-    open class func getDiscoveryDocument(issuer: String) -> [String: Any]? {
+    open class func getDiscoveryDocument(issuer: String) throws -> [String: Any]? {
         // Extracts the discovery information from the OpenID Connect metadata object
         let discoveryUrl = URL(string: issuer + "/.well-known/openid-configuration")
-        guard let data = self.get(discoveryUrl!) else {
+        guard let data = try self.get(discoveryUrl!) else {
             return nil
         }
 
@@ -61,8 +61,8 @@ open class RequestsAPI: NSObject {
      - returns:
      The "issuer" URL as a String
      */
-    open class func getIssuerEndpoint(issuer: String) -> String? {
-        if let json = getDiscoveryDocument(issuer: issuer), let issuerEndpoint = json["issuer"] {
+    open class func getIssuerEndpoint(issuer: String) throws -> String? {
+        if let json = try getDiscoveryDocument(issuer: issuer), let issuerEndpoint = json["issuer"] {
             return issuerEndpoint as? String
         }
 
@@ -76,8 +76,8 @@ open class RequestsAPI: NSObject {
      - returns:
      A JSON representation of the HTTP response body.
      */
-    open class func getJSON(_ url: URL) -> [String: Any]? {
-        guard let data = self.get(url) else {
+    open class func getJSON(_ url: URL) throws -> [String: Any]? {
+        guard let data = try self.get(url) else {
             return nil
         }
         if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
@@ -94,20 +94,28 @@ open class RequestsAPI: NSObject {
      - returns:
      A Data representation of the HTTP response body.
      */
-    open class func get(_ url: URL) -> Data? {
+    open class func get(_ url: URL) throws -> Data? {
         // Default timeout of 5 seconds
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 5)
         request.addValue(Utils.buildUserAgentString(), forHTTPHeaderField: "User-Agent")
 
         var responseData: Data?
+        var responseError: Error?
         let semaphore = DispatchSemaphore(value: 0)
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             responseData = data
+            responseError = error
+            
             semaphore.signal()
         }
         task.resume()
         semaphore.wait()
+        
+        if let error = responseError {
+            throw error
+        }
+        
         return responseData
     }
 }
