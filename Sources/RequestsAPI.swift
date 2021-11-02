@@ -14,6 +14,14 @@ import Foundation
 
 open class RequestsAPI: NSObject {
 
+    /// Internal. Only for tests reason.
+    private static var urlSession = URLSession.shared
+    
+    /// Internal. Only for tests reason.
+    static func setURLSession(_ urlSession: URLSession) {
+        self.urlSession = urlSession
+    }
+    
     /**
      Returns the OpenID Connect well-known metadata.
      - parameters:
@@ -103,7 +111,7 @@ open class RequestsAPI: NSObject {
         var responseError: Error?
         let semaphore = DispatchSemaphore(value: 0)
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = urlSession.dataTask(with: request) { data, response, error in
             responseData = data
             responseError = error
             
