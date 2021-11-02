@@ -215,8 +215,14 @@ public struct OktaJWTValidator {
             let nsError = error as NSError
             
             switch nsError.code {
-            case NSURLErrorNotConnectedToInternet:
+            case
+                NSURLErrorNotConnectedToInternet,
+                NSURLErrorNetworkConnectionLost,
+                NSURLErrorTimedOut:
                 throw OktaAPIError.offline
+            case NSURLErrorCannotConnectToHost:
+                // Throws noWellKnown for backward-compatibility
+                throw OktaAPIError.noWellKnown
             default:
                 // Throws noWellKnown for backward-compatibility
                 throw OktaAPIError.noWellKnown
