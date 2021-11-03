@@ -221,8 +221,8 @@ public struct OktaJWTValidator {
                 NSURLErrorTimedOut:
                 throw OktaAPIError.offline
             case NSURLErrorCannotConnectToHost:
-                // Throws noWellKnown for backward-compatibility
-                throw OktaAPIError.noWellKnown
+                // This case should throw default error for backward-compatibility
+                fallthrough
             default:
                 // Throws noWellKnown for backward-compatibility
                 throw OktaAPIError.noWellKnown
