@@ -29,7 +29,7 @@ extension OktaAPIError: LocalizedError {
             case .noKey:
                 return NSLocalizedString("Unable to find JWK for Key ID", comment: "")
             case .offline:
-                return NSLocalizedString("Internet connection has not been established", comment: "")
+                return NSLocalizedString("Internet connection could not been established", comment: "")
             }
     }
 }
