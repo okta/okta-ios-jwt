@@ -100,12 +100,13 @@ open class Utils: NSObject {
      - returns:
      A JSON Web Key dictionary matching the JWTs kid
      */
-    open class func getKeyFromEndpoint(kid: String, _ keysEndpoint: String) -> [String: String]? {
-        let url = URL(string: keysEndpoint)
-        guard let keys = RequestsAPI.getJSON(url!)?["keys"] as? [Any] else {
-            return nil
-        }
-
+    open class func getKeyFromEndpoint(kid: String, _ keysEndpoint: String) throws -> [String: String]? {
+        guard let url = URL(string: keysEndpoint),
+              let keys = try RequestsAPI.getJSON(url)?["keys"] as? [Any] else
+              {
+                  return nil
+              }
+        
         return self.findKeyByKeyId(kid: kid, keys)
     }
 

@@ -98,8 +98,9 @@ class MiscTests: XCTestCase {
 
         let validator = OktaJWTValidator(options)
         XCTAssertThrowsError(try validator.isValid(jwts["NoDiscoveryJWT"] as! String)) { error in
-            let desc = error as! OktaAPIError
-            XCTAssertEqual(desc.localizedDescription, "Could not retrieve well-known metadata endpoint")
+            let apiError = error as! OktaAPIError
+            XCTAssertEqual(apiError, .noWellKnown)
+            XCTAssertEqual(apiError.localizedDescription, "Could not retrieve well-known metadata endpoint")
         }
     }
 

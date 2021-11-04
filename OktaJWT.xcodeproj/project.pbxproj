@@ -49,6 +49,8 @@
 		2FF91ADE23B5EC8D00CFC89C /* TestJWTs.plist in Resources */ = {isa = PBXBuildFile; fileRef = A126079922FA131B007AE25E /* TestJWTs.plist */; };
 		2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073F22FA0C4B007AE25E /* MiscTests.swift */; };
 		2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126073D22FA0C4B007AE25E /* TestUtilities.swift */; };
+		925D9C4C27301CCA00380FA3 /* MockErroredURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D9C4B27301CCA00380FA3 /* MockErroredURLSession.swift */; };
+		925D9C4D27301CCA00380FA3 /* MockErroredURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925D9C4B27301CCA00380FA3 /* MockErroredURLSession.swift */; };
 		92F22D6A262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */; };
 		92F22D6B262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */; };
 		92F22E93262DCC2100EE57FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F22E8A262DCC2100EE57FD /* ViewController.swift */; };
@@ -176,6 +178,7 @@
 		2FF91AA323B5E68400CFC89C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FF91AAB23B5E8D300CFC89C /* OktaJWTLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OktaJWTLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FF91AD223B5EC5600CFC89C /* OktaJWTTests_macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaJWTTests_macOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		925D9C4B27301CCA00380FA3 /* MockErroredURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockErroredURLSession.swift; sourceTree = "<group>"; };
 		92F22D2C262D728F00EE57FD /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockKeyStorageManager.swift; sourceTree = "<group>"; };
 		92F22E8A262DCC2100EE57FD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -193,7 +196,7 @@
 		A126073D22FA0C4B007AE25E /* TestUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestUtilities.swift; path = Tests/TestUtilities.swift; sourceTree = SOURCE_ROOT; };
 		A126073E22FA0C4B007AE25E /* JWTTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTTests.swift; path = Tests/iOS/JWTTests.swift; sourceTree = SOURCE_ROOT; };
 		A126073F22FA0C4B007AE25E /* MiscTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MiscTests.swift; path = Tests/MiscTests.swift; sourceTree = SOURCE_ROOT; };
-		A126074022FA0C4B007AE25E /* IdTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdTokenTests.swift; path = Tests/iOS/IdTokenTests.swift; sourceTree = SOURCE_ROOT; };
+		A126074022FA0C4B007AE25E /* IdTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IdTokenTests.swift; path = Tests/IdTokenTests.swift; sourceTree = SOURCE_ROOT; };
 		A126074722FA0D34007AE25E /* JWTVerificationErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTVerificationErrors.swift; path = Sources/JWTVerificationErrors.swift; sourceTree = "<group>"; };
 		A126074822FA0D34007AE25E /* JWTVerifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTVerifier.swift; path = Sources/JWTVerifier.swift; sourceTree = "<group>"; };
 		A126074922FA0D34007AE25E /* RequestsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestsAPI.swift; path = Sources/RequestsAPI.swift; sourceTree = "<group>"; };
@@ -346,7 +349,6 @@
 			children = (
 				92F22E89262DCC2100EE57FD /* OktaJWTTestSuite */,
 				2FF91A9F23B5E67E00CFC89C /* Info.plist */,
-				A126074022FA0C4B007AE25E /* IdTokenTests.swift */,
 				A126073E22FA0C4B007AE25E /* JWTTests.swift */,
 			);
 			path = iOS;
@@ -376,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				92F22D69262D8BD700EE57FD /* MockKeyStorageManager.swift */,
+				925D9C4B27301CCA00380FA3 /* MockErroredURLSession.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				92F22D71262D8BDF00EE57FD /* Mocks */,
 				92F22ED4262DD4C500EE57FD /* Resources */,
 				A126073F22FA0C4B007AE25E /* MiscTests.swift */,
+				A126074022FA0C4B007AE25E /* IdTokenTests.swift */,
 				CBC727FB25CCB96F0040BCC1 /* RequestsAPITests.swift */,
 				A126073D22FA0C4B007AE25E /* TestUtilities.swift */,
 			);
@@ -811,6 +815,7 @@
 				0332BB81250ABE01007F3C48 /* JWTTestsMacOS.swift in Sources */,
 				92F22D6B262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */,
 				2FF91AE023B5EC9800CFC89C /* MiscTests.swift in Sources */,
+				925D9C4D27301CCA00380FA3 /* MockErroredURLSession.swift in Sources */,
 				2FF91AE123B5EC9C00CFC89C /* TestUtilities.swift in Sources */,
 				92F22EA8262DCDEC00EE57FD /* IdTokenTests.swift in Sources */,
 			);
@@ -865,6 +870,7 @@
 				A126074422FA0C4B007AE25E /* MiscTests.swift in Sources */,
 				CBC727FC25CCB96F0040BCC1 /* RequestsAPITests.swift in Sources */,
 				2F16C59523C746EC009BBA3F /* IdTokenTests.swift in Sources */,
+				925D9C4C27301CCA00380FA3 /* MockErroredURLSession.swift in Sources */,
 				2FF91A9C23B5422400CFC89C /* TestUtilities.swift in Sources */,
 				92F22D6A262D8BD700EE57FD /* MockKeyStorageManager.swift in Sources */,
 			);

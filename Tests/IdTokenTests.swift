@@ -21,12 +21,16 @@ class IdTokenTests: XCTestCase {
     var jwts: [String: Any] = [:]
     override func setUp() {
         super.setUp()
+        
+        RequestsAPI.setURLSession(.shared)
         OktaKeychain.clearAll()
         jwts = TestUtils().jwts
     }
 
     override func tearDown() {
         super.tearDown()
+        
+        RequestsAPI.setURLSession(.shared)
         RSAKey.removeKeyWithTag("com.okta.jwt.0XoqZmZm5nBQtRxTwq5T29s0TzqtDj0zsr8lFHp98vg", keyStorageManager: nil)
     }
 
@@ -183,6 +187,28 @@ class IdTokenTests: XCTestCase {
             return XCTFail("VALID token was returned as INVALID.")
         }
         XCTAssertEqual(isValid, true)
+    }
+    
+    func testValidIdTokenWithNetworkError() {
+        let options = [
+            "issuer": TestUtils.issuer,
+            "audience": TestUtils.clientId,
+            "exp": false,
+            "iat": false,
+            "nonce": "A3ADBD9B-F3B4-4FBD-B51C-2334F1359BEC",
+            "sub": "00ue1gi0ptZpa67pU0h7"
+        ] as [String : Any]
+
+        var validator = OktaJWTValidator(options)
+        validator.keyStorageManager = MockKeyStorageManager()
+        
+        let mockURLSession = MockErroredURLSession(responseError: NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet, userInfo: [:]))
+        RequestsAPI.setURLSession(mockURLSession)
+
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
+            let apiError = error as! OktaAPIError
+            XCTAssertEqual(apiError, .offline)
+        }
     }
 
     func testSuccessForIdTokenGivenJWK() {

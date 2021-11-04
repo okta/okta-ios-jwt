@@ -10,6 +10,8 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
+import Foundation
+
 let VERSION = "2.0.1"
 
 public struct OktaJWTValidator {
@@ -187,29 +189,45 @@ public struct OktaJWTValidator {
             return key
         }
 
-        var mJWK: [String: String]
-
-        if jwk == nil {
+        guard jwk == nil else {
+            return try self.createRSAKey(jwk!, kid: kid)
+        }
+        
+        do {
             // Set the class's wellKnown object to ensure we validate the JWT based on values pulled from the well-known endpoint
-            guard let wellKnown = RequestsAPI.getDiscoveryDocument(issuer: validatorOptions["iss"] as! String) else {
+            guard let wellKnown = try RequestsAPI.getDiscoveryDocument(issuer: validatorOptions["iss"] as! String) else {
                 throw OktaAPIError.noWellKnown
             }
-
+            
             // Call keys endpoint and find matching kid and create key
             guard let keysEndpoint = RequestsAPI.getKeysEndpoint(json: wellKnown) else {
                 throw OktaAPIError.noJWKSEndpoint
             }
-
-            guard let mKey = Utils.getKeyFromEndpoint(kid: kid, keysEndpoint) else {
+            
+            guard let mKey = try Utils.getKeyFromEndpoint(kid: kid, keysEndpoint) else {
                 throw OktaAPIError.noKey
             }
-
-            mJWK = mKey
-        } else {
-            mJWK = jwk!
+            
+            return try self.createRSAKey(mKey, kid: kid)
+        } catch where error is OktaAPIError {
+          throw error
+        } catch {
+            let nsError = error as NSError
+            
+            switch nsError.code {
+            case
+                NSURLErrorNotConnectedToInternet,
+                NSURLErrorNetworkConnectionLost,
+                NSURLErrorTimedOut:
+                throw OktaAPIError.offline
+            case NSURLErrorCannotConnectToHost:
+                // This case should throw default error for backward-compatibility
+                fallthrough
+            default:
+                // Throws noWellKnown for backward-compatibility
+                throw OktaAPIError.noWellKnown
+            }
         }
-
-        return try self.createRSAKey(mJWK, kid: kid)
     }
 
     /**
