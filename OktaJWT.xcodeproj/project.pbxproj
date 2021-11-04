@@ -969,6 +969,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
 				PRODUCT_MODULE_NAME = OktaJWTLib;
 				PRODUCT_NAME = OktaJWTLib;
@@ -999,6 +1000,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
 				PRODUCT_MODULE_NAME = OktaJWTLib;
 				PRODUCT_NAME = OktaJWTLib;
@@ -1069,6 +1071,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
 				PRODUCT_MODULE_NAME = OktaJWTLib;
 				PRODUCT_NAME = OktaJWTLib;
@@ -1100,6 +1103,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
 				PRODUCT_MODULE_NAME = OktaJWTLib;
 				PRODUCT_NAME = OktaJWTLib;
@@ -1249,6 +1253,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1268,6 +1273,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1337,6 +1343,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
 				PRODUCT_MODULE_NAME = OktaJWTLib;
 				PRODUCT_NAME = OktaJWTLib;
@@ -1366,6 +1373,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.okta.OktaJWTLib;
 				PRODUCT_MODULE_NAME = OktaJWTLib;
 				PRODUCT_NAME = OktaJWTLib;
