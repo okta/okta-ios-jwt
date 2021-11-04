@@ -1,3 +1,9 @@
+# 2.3.4
+
+### Features
+
+- [#53](https://github.com/okta/okta-ios-jwt/pull/53) - Improve error handling - introduced offline error
+
 # 2.3.3
 
 ### Features
