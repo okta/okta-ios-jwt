@@ -17,8 +17,12 @@ open class RequestsAPI: NSObject {
     /// Internal. Only for tests reason.
     private static var urlSession = URLSession.shared
     
-    /// Internal. Only for tests reason.
-    static func setURLSession(_ urlSession: URLSession) {
+    /**
+     Overrides default URLSession object
+     - parameters:
+         - urlSession: Custom URLSession object
+     */
+    public class func setURLSession(_ urlSession: URLSession) {
         self.urlSession = urlSession
     }
     

@@ -256,6 +256,79 @@ class JWTTests: XCTestCase {
             XCTAssertEqual(desc.localizedDescription, "String injected is not formatted as a JSON Web Token")
         }
     }
+
+    func testValidationClaimsSet() {
+        // Issuer claim
+        var options: [String: Any] = [ "issuer": "https://myrealsite.com" ]
+        var validator = OktaJWTValidator(options)
+        var validationOptionsSet = OktaJWTValidator.ValidationOptions.allOptions
+        validationOptionsSet.remove(.signature)
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
+            XCTAssertTrue(error is OktaJWTVerificationError)
+            XCTAssertEqual(error.localizedDescription, "Token issuer does not match the valid issuer")
+        }
+        validationOptionsSet.remove(.issuer)
+        validator.validationOptionsSet = validationOptionsSet
+        XCTAssertNoThrow(try validator.isValid(jwts["OktaJWT"] as! String))
+
+        // Audience claim
+        options = [ "audience": "abc123" ]
+        validator = OktaJWTValidator(options)
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
+            XCTAssertTrue(error is OktaJWTVerificationError)
+            XCTAssertEqual(error.localizedDescription, "Token audience does not match the valid audience")
+        }
+        validationOptionsSet.remove(.audience)
+        validator.validationOptionsSet = validationOptionsSet
+        XCTAssertNoThrow(try validator.isValid(jwts["OktaJWT"] as! String))
+
+        // Expiration claim
+        options = [ "exp": true ]
+        validator = OktaJWTValidator(options)
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
+            XCTAssertTrue(error is OktaJWTVerificationError)
+            XCTAssertEqual(error.localizedDescription, "The JWT expired and is no longer valid")
+        }
+        validationOptionsSet.remove(.expiration)
+        validator.validationOptionsSet = validationOptionsSet
+        XCTAssertNoThrow(try validator.isValid(jwts["OktaJWT"] as! String))
+
+        // IssuedAt claim
+        options = [ "iat": true,
+                    "leeway": -800000000 ]
+        validator = OktaJWTValidator(options)
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaJWT"] as! String)) { error in
+            XCTAssertTrue(error is OktaJWTVerificationError)
+            XCTAssertEqual(error.localizedDescription, "The JWT was issued in the future")
+        }
+        validationOptionsSet.remove(.issuedAt)
+        validator.validationOptionsSet = validationOptionsSet
+        XCTAssertNoThrow(try validator.isValid(jwts["OktaJWT"] as! String))
+
+        // Nonce claim
+        options = [ "nonce": "nonce" ]
+        validator = OktaJWTValidator(options)
+        XCTAssertThrowsError(try validator.isValid(jwts["OktaIDToken"] as! String)) { error in
+            XCTAssertTrue(error is OktaJWTVerificationError)
+            XCTAssertEqual(error.localizedDescription, "Invalid nonce")
+        }
+        validationOptionsSet.remove(.nonce)
+        validator.validationOptionsSet = validationOptionsSet
+        XCTAssertNoThrow(try validator.isValid(jwts["OktaIDToken"] as! String))
+
+        // Signature
+        options = [ "issuer": "https://myrealsite.com" ]
+        validator = OktaJWTValidator(options)
+        var validationOptions = OktaJWTValidator.ValidationOptions.allOptions
+        validationOptions.remove(.issuer)
+        validator.validationOptionsSet = validationOptions
+        XCTAssertThrowsError(try validator.isValid(jwts["RS512JWT"] as! String)) { error in
+            XCTAssertTrue(error is OktaAPIError)
+        }
+        validationOptionsSet.remove(.signature)
+        validator.validationOptionsSet = validationOptionsSet
+        XCTAssertNoThrow(try validator.isValid(jwts["RS512JWT"] as! String))
+    }
 }
 
 #endif
