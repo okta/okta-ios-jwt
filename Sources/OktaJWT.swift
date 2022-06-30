@@ -12,10 +12,28 @@
 
 import Foundation
 
-let VERSION = "2.0.1"
+let VERSION = "2.1.0"
 
 public struct OktaJWTValidator {
+
+    public struct ValidationOptions: OptionSet {
+        public let rawValue: Int
+        public init(rawValue: Int) {
+            self.rawValue = rawValue
+        }
+
+        public static let issuer      = ValidationOptions(rawValue: 1 << 0)
+        public static let audience    = ValidationOptions(rawValue: 1 << 1)
+        public static let expiration  = ValidationOptions(rawValue: 1 << 2)
+        public static let issuedAt    = ValidationOptions(rawValue: 1 << 3)
+        public static let nonce       = ValidationOptions(rawValue: 1 << 4)
+        public static let signature   = ValidationOptions(rawValue: 1 << 5)
+
+        public static let allOptions: ValidationOptions = [.issuer, .audience, .expiration, .issuedAt, nonce, .signature]
+    }
+
     public var keyStorageManager: PublicKeyStorageProtocol?
+    public var validationOptionsSet = ValidationOptions.allOptions
     private var validatorOptions: [String: Any]
     private var validationType: OktaJWTVerificationType
     private var jwk: [String: String]?
@@ -104,58 +122,36 @@ public struct OktaJWTValidator {
         }
 
         // Check for valid issuer
-        if !OktaJWTVerifier.hasValidIssuer(jwt.payload.issuer, validIssuer: self.validatorOptions["iss"] as? String) {
+        if validationOptionsSet.contains(.issuer) && !OktaJWTVerifier.hasValidIssuer(jwt.payload.issuer, validIssuer: self.validatorOptions["iss"] as? String) {
             throw OktaJWTVerificationError.invalidIssuer
         }
 
         // Check for valid audience
-        if !OktaJWTVerifier.hasValidAudience(jwt.payload.audience, validAudience: self.validatorOptions["aud"] as? String) {
+        if validationOptionsSet.contains(.audience) && !OktaJWTVerifier.hasValidAudience(jwt.payload.audience, validAudience: self.validatorOptions["aud"] as? String) {
             throw OktaJWTVerificationError.invalidAudience
         }
 
         // TODO Support azp claim
 
-        // Validate the JWK signature
-        var key: RSAKey
-        switch self.validationType {
-            case .JWK:
-                guard let kid = Utils.getKeyIdFromHeader(jwt.decodedDataForPart(.header)) else {
-                    throw OktaJWTVerificationError.noKIDFromJWT
-                }
-
-                if let givenJWK = self.jwk, let givenJWKId = givenJWK["kid"] {
-                    if givenJWKId != kid {
-                        throw OktaJWTVerificationError.invalidKID
-                    }
-                    key = try self.getOrRetrieveKey(jwk: givenJWK, kid:givenJWKId)
-                    break
-                }
-                key = try self.getOrRetrieveKey(jwk: nil, kid: kid)
-            case .RSAKey:
-                key = self.key!
-        }
-
-        let signatureValidation = RSAPKCS1VerifierFactory.createVerifier(key: key, hashFunction: hashFunction).validateToken(jwt)
-        if !signatureValidation.isValid {
-            throw OktaJWTVerificationError.invalidSignature
-        }
-
         // Validate the exp claim with or without leeway
-        if let validateExp = self.validatorOptions["exp"] as? Bool, validateExp == true {
+        if validationOptionsSet.contains(.expiration),
+           let validateExp = self.validatorOptions["exp"] as? Bool, validateExp == true {
             if OktaJWTVerifier.isExpired(jwt.payload.expiration, leeway: self.validatorOptions["leeway"] as? Int) {
                 throw OktaJWTVerificationError.expiredJWT
             }
         }
 
         // Validate the iat claim with or without leeway
-        if let validateIssuedAt = self.validatorOptions["iat"] as? Bool, validateIssuedAt == true {
+        if validationOptionsSet.contains(.issuedAt),
+           let validateIssuedAt = self.validatorOptions["iat"] as? Bool, validateIssuedAt == true {
             if OktaJWTVerifier.isIssuedInFuture(jwt.payload.issuedAt, leeway: self.validatorOptions["leeway"] as? Int) {
                 throw OktaJWTVerificationError.issuedInFuture
             }
         }
 
         // Validate the nonce claim
-        if let nonce = jwt.payload.jsonPayload["nonce"] as? String {
+        if validationOptionsSet.contains(.nonce),
+           let nonce = jwt.payload.jsonPayload["nonce"] as? String {
             if !OktaJWTVerifier.hasValidNonce(nonce, validNonce: self.validatorOptions["nonce"] as? String) {
                 throw OktaJWTVerificationError.invalidNonce
             }
@@ -170,7 +166,33 @@ public struct OktaJWTValidator {
             if !OktaJWTVerifier.hasValue(jwt.payload.jsonPayload[k] as? String, validClaim: v as? String) {
                 throw OktaJWTVerificationError.invalidClaim(v)
             }
+        }
 
+        if validationOptionsSet.contains(.signature) {
+            // Validate the JWK signature
+            var key: RSAKey
+            switch self.validationType {
+                case .JWK:
+                    guard let kid = Utils.getKeyIdFromHeader(jwt.decodedDataForPart(.header)) else {
+                        throw OktaJWTVerificationError.noKIDFromJWT
+                    }
+
+                    if let givenJWK = self.jwk, let givenJWKId = givenJWK["kid"] {
+                        if givenJWKId != kid {
+                            throw OktaJWTVerificationError.invalidKID
+                        }
+                        key = try self.getOrRetrieveKey(jwk: givenJWK, kid:givenJWKId)
+                        break
+                    }
+                    key = try self.getOrRetrieveKey(jwk: nil, kid: kid)
+                case .RSAKey:
+                    key = self.key!
+            }
+
+            let signatureValidation = RSAPKCS1VerifierFactory.createVerifier(key: key, hashFunction: hashFunction).validateToken(jwt)
+            if !signatureValidation.isValid {
+                throw OktaJWTVerificationError.invalidSignature
+            }
         }
 
         return true
