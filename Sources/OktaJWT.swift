@@ -12,7 +12,7 @@
 
 import Foundation
 
-let VERSION = "2.1.0"
+let VERSION = "2.3.5"
 
 public struct OktaJWTValidator {
 
