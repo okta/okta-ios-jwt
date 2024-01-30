@@ -1,20 +1,12 @@
 version: 2.1
 
 orbs:
-  general-platform-helpers: okta/eng-services-platform-helpers-general@2
-
-parameters:
-  ruby-version:
-    type: string
-    default: "3.2.2"
-  xcode-version:
-    type: string
-    default: "14.3.1"
+  general-platform-helpers: okta/general-platform-helpers@1.8
 
 executors:
-  apple-ci-m1-medium:
+  apple-ci-arm-medium:
     macos:
-      xcode: <<pipeline.parameters.xcode-version>>
+      xcode: 14.3.1
     resource_class: macos.m1.medium.gen1
 
 workflows:
