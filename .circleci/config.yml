@@ -1,0 +1,15 @@
+version: 2.1
+
+orbs:
+  general-platform-helpers: atko-devices/eng-services-platform-helpers-general@2
+
+workflows:
+  semgrep:
+    jobs:
+      - general-platform-helpers/job-semgrep-prepare:
+          name: semgrep-prepare
+      - general-platform-helpers/job-semgrep-scan:
+          name: "Scan with Semgrep"
+          requires:
+            - semgrep-prepare
+
