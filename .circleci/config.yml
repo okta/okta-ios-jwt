@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  general-platform-helpers: atko-devices/eng-services-platform-helpers-general@2
+  general-platform-helpers: okta/eng-services-platform-helpers-general@2
 
 parameters:
   ruby-version:
