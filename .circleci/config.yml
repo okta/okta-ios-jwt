@@ -4,7 +4,7 @@ orbs:
   general-platform-helpers: okta/general-platform-helpers@1.8
 
 executors:
-  apple-ci-arm-medium:
+  apple-ci-m1-medium:
     macos:
       xcode: 14.3.1
     resource_class: macos.m1.medium.gen1
